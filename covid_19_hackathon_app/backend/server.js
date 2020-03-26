@@ -31,6 +31,10 @@ mongoose
   .then(() => console.log('MongoDB database connection established successfully!'));
   .catch((reason) => console.log('Unable to connect to the mongodb instance. Error: ', reason));
 
+// Set up passport
+app.use(passport.initialize());
+
+
 // Set up routes
 app.use('/api/users', usersRouter);
 

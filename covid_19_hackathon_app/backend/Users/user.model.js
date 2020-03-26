@@ -19,11 +19,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 6
   },
-  confirm: {
-    type: String,
-    required: true,
-    minlength: 6
-  },
 }, {
   timestamps: true,
 });

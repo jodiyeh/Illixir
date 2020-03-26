@@ -7,16 +7,16 @@ module.exports = function validateUserRegister(data) {
 
 
   // Check empty data
-  if(isEmpty(data.name)){
+  if(isEmpty(data.name)) {
     data.name = "";
 
-  if(isEmpty(data.email)){
+  if(isEmpty(data.email)) {
     data.email = "";
   }
-  if(isEmpty(data.password)){
+  if(isEmpty(data.password)) {
     data.password = "";
   }
-  if(isEmpty(data.confirm)){
+  if(isEmpty(data.confirm)) {
     data.confirm = "";
   }
 
@@ -38,28 +38,25 @@ module.exports = function validateUserRegister(data) {
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    if(isEmpty(errors.password)){
+    if(isEmpty(errors.password)) {
       errors.password = "Password must be at least 6 characters";
-    }
-    else{
+    } else {
       errors.password += "\nPassword must be at least 6 characters";
     }
   }
 
   if(!specialCharacters.test(newPassword)) {
-    if(isEmpty(errors.password)){
+    if(isEmpty(errors.password)) {
       errors.password = "Password must include a special character";
-    }
-    else{
+    } else {
       errors.password += "\nPassword must include a special character";
     }
   }
 
   if (!Validator.isUppercase(data.password)) {
-    if(isEmpty(errors.password)){
+    if(isEmpty(errors.password)) {
       errors.password = "Password include an uppercase letter";
-    }
-    else{
+    } else {
       errors.password += "\nPassword include an uppercase letter";
     }
   }
@@ -69,7 +66,7 @@ module.exports = function validateUserRegister(data) {
   }
 
   // Return validity
-  if(isEmpty(errors)){
+  if(isEmpty(errors)) {
     return {errors, isValid: true};
   }
   return {errors, isValid: false};

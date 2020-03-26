@@ -5,10 +5,10 @@ module.exports = function validateUserLogin(data) {
   let errors = {};
 
   // Check empty data
-  if(isEmpty(data.email)){
+  if(isEmpty(data.email)) {
     data.email = "";
   }
-  if(isEmpty(data.password)){
+  if(isEmpty(data.password)) {
     data.password = "";
   }
 
