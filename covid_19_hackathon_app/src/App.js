@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
-import Main from './components/main';
+import Main from './components/main.js';
 import {Link} from 'react-router-dom';
 
 
