@@ -19,6 +19,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 6
   },
+  date: {
+    type: Date,
+    default: Date.now
+  },
 }, {
   timestamps: true,
 });

@@ -4,7 +4,7 @@ const cors = require("cors");
 // bodyParser = require("body-parser");
 const passport = require("passport");
 
-const usersRouter = require('./Users/user.routes');
+const usersRouter = require('./user/user.routes');
 const port = process.env.PORT || 5000;
 const app = express();
 
@@ -28,12 +28,11 @@ mongoose
     useCreateIndex: true,
     useUnifiedTopology: true
   })
-  .then(() => console.log('MongoDB database connection established successfully!'));
-  .catch((reason) => console.log('Unable to connect to the mongodb instance. Error: ', reason));
+  .then(() => console.log('MongoDB database connection established successfully!'))
+  .catch((reason) => console.log(reason));
 
-// Set up passport
+// Passport middleware
 app.use(passport.initialize());
-
 
 // Set up routes
 app.use('/api/users', usersRouter);

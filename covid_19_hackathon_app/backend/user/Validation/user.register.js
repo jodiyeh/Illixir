@@ -9,7 +9,8 @@ module.exports = function validateUserRegister(data) {
   // Check empty data
   if(isEmpty(data.name)) {
     data.name = "";
-
+  }
+  
   if(isEmpty(data.email)) {
     data.email = "";
   }
