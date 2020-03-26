@@ -3,10 +3,13 @@ import React, {Component } from 'react';
 class Landing extends Component{
     render(){
     return(
-        <div>
-            <h1>Landing page</h1>
+        <div style = {{width: '100%', margin: 'auto'}}>
+            <Grid className="landing-grid">
+                <Cell col={12}>
+                    Hello
+                </Cell>
+            </Grid>
         </div>
-
     )
     }   
 }
