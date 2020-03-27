@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
@@ -14,6 +15,9 @@ import Register from "./Components/Auth/register";
 import Login from "./Components/Auth/login";
 import PrivateRoute from "./Components/PrivateRoute/privateroute";
 import Main from "./Components/Home/main";
+import Home from "./Components/Home/homepage";
+import InfoPage from "./Components/Home/infopage";
+
 
 import "./App.css";
 
@@ -48,6 +52,8 @@ render() {
           <Route exact path="/login" component={Login} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Main} />
+            <PrivateRoute exact path="/home" component={Home} />
+            <PrivateRoute exact path="/infopage" component={InfoPage} />
           </Switch>
         </div>
       </Router>

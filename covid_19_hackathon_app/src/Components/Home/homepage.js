@@ -2,7 +2,7 @@ import React, {Component } from 'react';
 import {Grid, Cell} from 'react-mdl';
 import {useHistory} from 'react-router-dom';
 
-class Landing extends Component{
+class Home extends Component{
   routeChange=()=>{
         let path = '/InfoPage';
         let history = useHistory();
@@ -47,4 +47,4 @@ class Landing extends Component{
     }
 }
 
-export default Landing
+export default Home
