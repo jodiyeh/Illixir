@@ -1,7 +1,15 @@
 import React, {Component } from 'react';
 import {Grid, Cell} from 'react-mdl';
+import {useHistory} from 'react-router-dom';
 
 class Landing extends Component{
+
+    routeChange=()=>{
+        let path = '/InfoPage';
+        let history = useHistory();
+        history.push(path);
+    }
+
     render(){
     return(
         <div style = {{width: '100%'}}>
@@ -29,7 +37,7 @@ class Landing extends Component{
                     </p1>
 
                     <p2> 
-                        <button>Submit</button>
+                        <button onClick={this.routeChange}>Submit</button>
                     </p2>
                     </form>
                     
@@ -41,4 +49,4 @@ class Landing extends Component{
     }   
 }
 
-export default Landing
+export default Landing;
