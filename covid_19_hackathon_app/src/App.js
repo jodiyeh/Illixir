@@ -9,13 +9,11 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
-import Landing from "./Components/Landing/landing";
-import Register from "./Components/Auth/register";
-import Login from "./Components/Auth/login";
 import PrivateRoute from "./Components/PrivateRoute/privateroute";
 import Main from "./Components/Home/main";
 import Home from "./Components/Home/homepage";
 import InfoPage from "./Components/Home/infopage";
+import Greetings from "./Components/PrivateRoute/greeting";
 
 
 import "./App.css";
@@ -39,22 +37,14 @@ if (localStorage.jwtToken) {
     window.location.href = "./login";
   }
 }
+
 class App extends Component {
+
 render() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="App">
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <Switch>
-            <Main />
-            <PrivateRoute exact path="/dashboard/home" component={Home} />
-            <PrivateRoute exact path="/dashboard/info" component={InfoPage} />
-
-          </Switch>
-        </div>
+        <Greetings />
       </Router>
     </Provider>
   );
