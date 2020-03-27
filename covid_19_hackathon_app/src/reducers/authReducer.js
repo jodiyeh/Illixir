@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, USER_LOADING } from "../actions/types";
+import { SET_CURRENT_USER, USER_LOADING } from "../actions/authActionTypes";
 
 // if SET_CURRENT_USER, the reducer will set authentication and user...
 // if USER_LOADING, the reducer will return loading true.

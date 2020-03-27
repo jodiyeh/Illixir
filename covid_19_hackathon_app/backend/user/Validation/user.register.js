@@ -10,7 +10,7 @@ module.exports = function validateUserRegister(data) {
   if(isEmpty(data.name)) {
     data.name = "";
   }
-  
+
   if(isEmpty(data.email)) {
     data.email = "";
   }
@@ -46,21 +46,21 @@ module.exports = function validateUserRegister(data) {
     }
   }
 
-  if(!specialCharacters.test(newPassword)) {
-    if(isEmpty(errors.password)) {
-      errors.password = "Password must include a special character";
-    } else {
-      errors.password += "\nPassword must include a special character";
-    }
-  }
-
-  if (!Validator.isUppercase(data.password)) {
-    if(isEmpty(errors.password)) {
-      errors.password = "Password include an uppercase letter";
-    } else {
-      errors.password += "\nPassword include an uppercase letter";
-    }
-  }
+  // if(!specialCharacters.test(data.password)) {
+  //   if(isEmpty(errors.password)) {
+  //     errors.password = "Password must include a special character";
+  //   } else {
+  //     errors.password += "\nPassword must include a special character";
+  //   }
+  // }
+  // 
+  // if (!Validator.isUppercase(data.password)) {
+  //   if(isEmpty(errors.password)) {
+  //     errors.password = "Password include an uppercase letter";
+  //   } else {
+  //     errors.password += "\nPassword include an uppercase letter";
+  //   }
+  // }
 
   if (!Validator.equals(data.password, data.confirm)) {
     errors.confirm = "Passwords must match";

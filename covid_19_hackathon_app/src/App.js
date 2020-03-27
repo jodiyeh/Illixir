@@ -1,42 +1,58 @@
-import React, {Component} from 'react';
-import './App.css';
-import {Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
-import Main from './components/main.js';
-import {Link} from 'react-router-dom';
 
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
 
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+import { Provider } from "react-redux";
+import store from "./store";
+
+import Navbar from "./Components/Landing/navbar";
+import Landing from "./Components/Landing/landing";
+import Register from "./Components/Auth/register";
+import Login from "./Components/Auth/login";
+import PrivateRoute from "./Components/PrivateRoute/privateroute";
+import Main from "./Components/Home/main";
+
+import "./App.css";
+
+// Check for token to keep user logged in
+if (localStorage.jwtToken) {
+  // Set auth token header auth
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(token);
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+  // Check for expired token
+  const currentTime = Date.now() / 1000; // to get in milliseconds
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+
+    // Redirect to login
+    window.location.href = "./login";
+  }
+}
 class App extends Component {
-  render() {
-    return(
+render() {
+  return (
+    <Provider store={store}>
       <Router>
-      <div class="container">
-        </br>
-        <Route path='/' exact component={TestUserComponent}>
-      </div>
-    </Router>
-    <div style={{height: '300px', position: 'relative'}}>
-    <Layout fixedHeader fixedDrawer>
-        <Header className= "header-color" title="Covid-19 App" scroll>
-           <Textfield
-                value=""
-                onChange={() => {}}
-                label="Search"
-                expandable
-                expandableIcon="search"
-            />
-        </Header>
-        <Drawer title="Title">
-            <Navigation>
-                <a href="#">Link</a>
-                <a href="#">Link</a>
-                <a href="#">Link</a>
-                <a href="#">Link</a>
-            </Navigation>
-        </Drawer>
-        <Main/>
-        <Content />
-    </Layout>
-</div>
-    )}}
-
-export default Main;
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Switch>
+            <PrivateRoute exact path="/dashboard" component={Main} />
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
+  );
+}
+}
+export default App;

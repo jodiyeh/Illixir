@@ -14,6 +14,8 @@ let User = require('./user.model');
 
 // Login user
 router.post("/register", (req, res) => {
+  console.log("hi")
+
   // Form validation
   const {errors, isValid} = validateUserRegister(req.body);
 
@@ -51,7 +53,7 @@ router.post("/register", (req, res) => {
 router.post("/login", (req, res) => {
   // Form validation
   const {errors, isValid} = validateUserLogin(req.body);
-
+  console.log("login attempt");
   // Check validation
   if(!isValid){
     return res.status(400).json(errors);

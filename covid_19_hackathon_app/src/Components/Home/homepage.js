@@ -1,7 +1,13 @@
 import React, {Component } from 'react';
 import {Grid, Cell} from 'react-mdl';
+import {useHistory} from 'react-router-dom';
 
 class Landing extends Component{
+  routeChange=()=>{
+        let path = '/InfoPage';
+        let history = useHistory();
+        history.push(path);
+    }
     render(){
     return(
         <div style = {{width: '100%'}}>
@@ -15,7 +21,7 @@ class Landing extends Component{
                 </Cell>
 
                 <div className = "Title">
-                    <h1>COVID-19 Facilities Finder</h1>          
+                    <h1>COVID-19 Facilities Finder</h1>
                 </div>
 
                 <div className = "Description">
@@ -28,17 +34,17 @@ class Landing extends Component{
                     <input type="text" placeholder = "Your Address: " style={{width: "400px"}} s/>
                     </p1>
 
-                    <p2> 
-                        <button>Submit</button>
+                    <p2>
+                        <button onClick={this.routeChange}>Submit</button>
                     </p2>
                     </form>
-                    
+
                 </div>
-                
+
             </Grid>
         </div>
     )
-    }   
+    }
 }
 
 export default Landing
