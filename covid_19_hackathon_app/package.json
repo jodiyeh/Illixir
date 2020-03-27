@@ -15,14 +15,10 @@
     "passport": "^0.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-<<<<<<< HEAD
     "react-mdl": "^2.1.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
-=======
     "react-scripts": "3.4.1",
     "validator": "^13.0.0"
->>>>>>> 15cb6a83584064be9bfef61f62614b7c18adb467
   },
   "scripts": {
     "start": "react-scripts start",
