@@ -5,6 +5,7 @@ import LandingPage from './landingpage';
 const Main= () =>(
     <Switch>
         <Route exact path = "/" component ={LandingPage} />
+        {/* <Route path='/' exact component={TestUserComponent}> */}
     </Switch>
 )
 

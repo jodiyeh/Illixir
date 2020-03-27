@@ -6,14 +6,23 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.6",
     "nodemon": "^2.0.2",
+    "passport": "^0.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+<<<<<<< HEAD
     "react-mdl": "^2.1.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
+=======
+    "react-scripts": "3.4.1",
+    "validator": "^13.0.0"
+>>>>>>> 15cb6a83584064be9bfef61f62614b7c18adb467
   },
   "scripts": {
     "start": "react-scripts start",

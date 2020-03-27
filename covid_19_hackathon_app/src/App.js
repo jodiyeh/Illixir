@@ -8,6 +8,12 @@ import {Link} from 'react-router-dom';
 class App extends Component {
   render() {
     return(
+      <Router>
+      <div class="container">
+        </br>
+        <Route path='/' exact component={TestUserComponent}>
+      </div>
+    </Router>
     <div style={{height: '300px', position: 'relative'}}>
     <Layout fixedHeader fixedDrawer>
         <Header className= "header-color" title="Covid-19 App" scroll>
