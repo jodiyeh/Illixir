@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 
 class Navbar extends Component {
   render() {
     return (
-      <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
-            <Link
-              to="/"
-              style={{
-                fontFamily: "monospace"
-              }}
-              className="col s5 brand-logo center black-text"
-            >
-              Home
-            </Link>
-          </div>
-        </nav>
-      </div>
+      <Nav
+        activeKey="/dashboard"
+      >
+        <Nav.Item>
+          <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/home">Home</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/infopage">Info</Nav.Link>
+        </Nav.Item>
+      </Nav>
+
     );
   }
 }

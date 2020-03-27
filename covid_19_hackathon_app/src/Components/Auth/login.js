@@ -35,7 +35,7 @@ class Login extends Component {
   // Checks after each update
   static getDerivedStateFromProps(nextProps, prevState){
     if(nextProps.auth.isAuthenticated){
-      return true;
+      window.location = '/dashboard';
     }
     else return null;
   }
@@ -135,7 +135,7 @@ class Login extends Component {
                     marginTop: "1rem"
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-large waves-effect waves-light hoverable pink accent-3"
                 >
                   Login
                 </button>
