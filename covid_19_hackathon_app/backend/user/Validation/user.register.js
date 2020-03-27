@@ -7,8 +7,8 @@ module.exports = function validateUserRegister(data) {
 
 
   // Check empty data
-  if(isEmpty(data.name)) {
-    data.name = "";
+  if(isEmpty(data.username)) {
+    data.username = "";
   }
 
   if(isEmpty(data.email)) {
@@ -22,27 +22,33 @@ module.exports = function validateUserRegister(data) {
   }
 
   // Validate className
-  if (Validator.isEmpty(data.name)) {
-    errors.name = "Name field is required";
+  if (Validator.isEmpty(data.username)) {
+    errors.username = "Name field is required";
+    console.log("EEEEEEE");
   }
 
   // Validate email
   if (Validator.isEmpty(data.email)) {
     errors.email = "Email field is required";
+    console.log("EEEEEEE");
   } else if (!Validator.isEmail(data.email)) {
     errors.email = "Email is invalid";
+    console.log("EEEEEEE");
   }
 
   // Validate password
   if (Validator.isEmpty(data.password)) {
     errors.password = "Password field is required";
+    console.log("EEEEEEE");
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     if(isEmpty(errors.password)) {
       errors.password = "Password must be at least 6 characters";
+      console.log("EEEEEEE");
     } else {
       errors.password += "\nPassword must be at least 6 characters";
+      console.log("EEEEEEE");
     }
   }
 
@@ -53,7 +59,7 @@ module.exports = function validateUserRegister(data) {
   //     errors.password += "\nPassword must include a special character";
   //   }
   // }
-  // 
+  //
   // if (!Validator.isUppercase(data.password)) {
   //   if(isEmpty(errors.password)) {
   //     errors.password = "Password include an uppercase letter";
@@ -64,6 +70,7 @@ module.exports = function validateUserRegister(data) {
 
   if (!Validator.equals(data.password, data.confirm)) {
     errors.confirm = "Passwords must match";
+    console.log("EEEEEEE");
   }
 
   // Return validity

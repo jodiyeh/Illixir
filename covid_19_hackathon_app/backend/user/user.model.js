@@ -3,29 +3,25 @@ const Schema = mongoose.Schema;
 
 // TODO: add more fields to the schema
 const userSchema = new Schema({
-  name: {
+  username: {
     type: String,
-    required: true,
-    trim: true,
+    required: true
   },
   email: {
     type: String,
-    required: true,
-    unique: true,
-    trim: true,
+    required: true
   },
   password: {
     type: String,
-    required: true,
-    minlength: 6
+    required: true
   },
   date: {
     type: Date,
     default: Date.now
-  },
-}, {
-  timestamps: true,
+  }
 });
+userSchema.plugin(require('mongoose-beautiful-unique-validation'));
+
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

@@ -29,7 +29,7 @@ class Main extends Component {
             />
           </Header>
           <Drawer title="Title">
-            <b>Hey there,</b> {user.name.split(" ")[0]}
+            <b>Hey there,</b> {user.username.split(" ")[0]}
             <Navigation>
               <a href="#">Link</a>
               <a href="#">Link</a>

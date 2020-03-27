@@ -14,10 +14,13 @@ let User = require('./user.model');
 
 // Login user
 router.post("/register", (req, res) => {
-  console.log("hi")
+  console.log("register attempt");
 
   // Form validation
   const {errors, isValid} = validateUserRegister(req.body);
+  console.log(errors);
+  console.log(isValid);
+  console.log(JSON.stringify(req.body));
 
   // Check validation
   if(!isValid) {
@@ -26,25 +29,29 @@ router.post("/register", (req, res) => {
 
   User.findOne({email: req.body.email}).then(user => {
     // Check if email exists
+    console.log("1");
     if(user) {
       return res.status(400).json({email: "Email already exists"});
     } else {
       newUser = new User({
-        name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password
       });
+      console.log("2");
 
       // Hash password
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
+          console.log("4");
           newUser.save()
             .then(user => res.json(user))
             .catch(err => console.log(err));
         });
       });
+      console.log("3");
     }
   });
 });
@@ -70,7 +77,7 @@ router.post("/login", (req, res) => {
         // User matched Create JWT Payload ?
         const payload = {
           id: user.id,
-          name: user.name
+          username: user.username
         };
 
         // Sign token

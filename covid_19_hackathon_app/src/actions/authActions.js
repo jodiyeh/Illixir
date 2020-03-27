@@ -15,9 +15,10 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./authActionTypes";
 // returns an action of type GET_ERRORS and the response error
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("/api/users/register", userData)
+    .post("http://localhost:5000/api/users/register", userData)
     .then((res) => {
       history.push("/login");
+      alert("hi")
     })
     .catch(err =>
       dispatch({
