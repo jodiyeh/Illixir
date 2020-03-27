@@ -9,9 +9,6 @@ class Navbar extends Component {
         activeKey="/dashboard"
       >
         <Nav.Item>
-          <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
           <Nav.Link href="/home">Home</Nav.Link>
         </Nav.Item>
         <Nav.Item>

@@ -8,11 +8,12 @@ const passport = require("passport");
 // Validation
 const validateUserRegister = require("./Validation/user.register");
 const validateUserLogin = require("./Validation/user.login");
+const validateUserAddress = require("./Validation/user.address");
 
 // User model
 let User = require('./user.model');
 
-// Login user
+// Register user
 router.post("/register", (req, res) => {
   console.log("register attempt");
 
@@ -56,7 +57,7 @@ router.post("/register", (req, res) => {
   });
 });
 
-// Register user
+// Login user
 router.post("/login", (req, res) => {
   // Form validation
   const {errors, isValid} = validateUserLogin(req.body);
@@ -102,5 +103,23 @@ router.post("/login", (req, res) => {
     });
   });
 })
+
+router.route('/address/update/:id').post((req,res) => {
+  // Form validation
+  const {errors, isValid} = validateUserAddress(req.body);
+  console.log("address change attempt");
+  // Check validation
+  if(!isValid){
+    return res.status(400).json(errors);
+  }
+  User.findById(req.params.id)
+    .then(user => {
+      user.address = req.body.address;
+      user.save()
+        .then(() => res.json('User address updated!'))
+        .catch(err => res.status(400).json('Error ' + err));
+    })
+    .catch(err => res.status(400).json('Error ' + err));
+});
 
 module.exports = router;

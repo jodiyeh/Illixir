@@ -6,6 +6,9 @@ import HomePage from './homepage';
 import InfoPage from './infopage';
 import {Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
 import { Route, Switch } from "react-router-dom";
+import Navbar from "../Landing/navbar";
+import PrivateRoute from "../PrivateRoute/privateroute";
+
 
 class Main extends Component {
   onLogoutClick = e => {
@@ -17,7 +20,7 @@ class Main extends Component {
     const { user } = this.props.auth;
 
     return (
-      <div style={{height: '300px', position: 'relative'}}>
+      <div style={{height: '100vh', position: 'relative'}}>
         <Layout fixedHeader fixedDrawer>
           <Header className= "header-color" title="Covid-19 App" scroll>
             <Textfield
@@ -31,28 +34,33 @@ class Main extends Component {
           <Drawer title="Title">
             <b>Hey there,</b> {user.username.split(" ")[0]}
             <Navigation>
+              <a href="/dashboard/home">Home</a>
+              <a href="/dashboard/infopage">Info</a>
               <a href="#">Link</a>
               <a href="#">Link</a>
-              <a href="#">Link</a>
-              <a href="#">Link</a>
+              <button
+                style={{
+                  width: "150px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem"
+                }}
+                onClick={this.onLogoutClick}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                Logout
+              </button>
+
             </Navigation>
-            <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
-            </button>
+
           </Drawer>
+          <Content>
+          <div />
           <Switch>
-            <Route path = "/home" component ={HomePage} />
-            <Route exact path = "/infopage" component = {InfoPage} />
+            <PrivateRoute path="/dashboard/home" component ={HomePage} />
+            <PrivateRoute path="/dashboard/infopage" component ={InfoPage} />
           </Switch>
+          </Content>
         </Layout>
       </div>
     );
