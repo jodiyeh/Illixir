@@ -62,7 +62,10 @@ class Register extends Component {
     const newUser = {
       username: this.state.username,
       email: this.state.email,
-      address: this.state.address,
+      streetAddress: this.state.streetAddress,
+      city: this.state.city,
+      state: this.state.state,
+      zipcode: this.state.zipcode,
       password: this.state.password,
       confirm: this.state.confirm
     };
@@ -116,22 +119,62 @@ class Register extends Component {
                 <label htmlFor="email">Email</label>
                 <span className="red-text">{errors.email}</span>
               </div>
-              // address
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
-                  value={this.state.password}
-                  error={errors.password}
-                  id="password"
-                  type="password"
+                  value={this.state.streetAddress}
+                  error={errors.streetAddress}
+                  id="streetAddress"
+                  type="text"
                   className={classnames("", {
-                    invalid: errors.password
+                    invalid: errors.streetAddress
                   })}
                 />
-                <label htmlFor="password">Password</label>
-                <span className="red-text">{errors.password}</span>
+                <label htmlFor="streetAddress">Address</label>
+                <span className="red-text">{errors.streetAddress}</span>
               </div>
-              // address
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.city}
+                  error={errors.city}
+                  id="city"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.city
+                  })}
+                />
+                <label htmlFor="city">City</label>
+                <span className="red-text">{errors.city}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.state}
+                  error={errors.state}
+                  id="state"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.state
+                  })}
+                />
+                <label htmlFor="state">State</label>
+                <span className="red-text">{errors.state}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.zipcode}
+                  error={errors.zipcode}
+                  id="zipcode"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.zipcode
+                  })}
+                />
+                <label htmlFor="zipcode">Zipcode</label>
+                <span className="red-text">{errors.zipcode}</span>
+              </div>
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}

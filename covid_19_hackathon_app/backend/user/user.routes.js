@@ -37,6 +37,10 @@ router.post("/register", (req, res) => {
       newUser = new User({
         username: req.body.username,
         email: req.body.email,
+        streetAddress: req.body.streetAddress,
+        city: req.body.city,
+        state: req.body.state,
+        zipcode: req.body.zipcode,
         password: req.body.password
       });
       console.log("2");
@@ -78,7 +82,12 @@ router.post("/login", (req, res) => {
         // User matched Create JWT Payload ?
         const payload = {
           id: user.id,
-          username: user.username
+          username: user.username,
+          email: user.email,
+          streetAddress: user.streetAddress,
+          city: user.city,
+          state: user.state,
+          zipcode: user.zipcode,
         };
 
         // Sign token
@@ -114,7 +123,10 @@ router.route('/address/update/:id').post((req,res) => {
   }
   User.findById(req.params.id)
     .then(user => {
-      user.address = req.body.address;
+      user.streetAddress = req.body.streetAddress;
+      user.city = req.body.city;
+      user.state = req.body.state;
+      user.zipcode = req.body.zipcode;
       user.save()
         .then(() => res.json('User address updated!'))
         .catch(err => res.status(400).json('Error ' + err));

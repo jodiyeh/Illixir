@@ -8,7 +8,7 @@ class InfoPage extends Component{
           <Map google={this.props.google} zoom={14}>
 
             <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
+                    name={'Los Altos, California'} />
 
             <InfoWindow onClose={this.onInfoWindowClose}>
 
@@ -20,4 +20,4 @@ class InfoPage extends Component{
 
  export default GoogleApiWrapper({
     apiKey: ('AIzaSyATfqDvOYhuTkacoeFvXzrvbgGIYw7YwWM')
-  })(InfoPage) 
+  })(InfoPage)

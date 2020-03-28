@@ -34,7 +34,25 @@ class Main extends Component {
             />
           </Header>
           <Drawer title="Title">
-            <b>Hey there,</b> {user.username.split(" ")[0]}
+            <div>
+              <b>Hey there,</b> {user.username.split(" ")[0]}
+            </div>
+            <div>
+              <b>{JSON.stringify(user)}</b>
+            </div>
+            <div>
+              <b>{user.streetAddress}</b>
+            </div>
+            <div>
+              <b>{user.city}</b>
+            </div>
+            <div>
+              <b>{user.state}</b>
+            </div>
+            <div>
+              <b>{user.zipcode}</b>
+            </div>
+
             <Navigation>
               <a href="/dashboard/home">Home</a>
               <a href="/dashboard/infopage">Info</a>
