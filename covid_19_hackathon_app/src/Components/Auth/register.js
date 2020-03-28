@@ -13,7 +13,7 @@ class Register extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      name: "",
+      username: "",
       email: "",
       password: "",
       confirm: "",
