@@ -8,7 +8,6 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./authActionTypes";
 // They must include a type, which is a string variable and a payload of information.
 // The reducer is the type and will perform an action.
 
-
 // Register User
 // Adds user to the database
 // Adds a string to the history
@@ -46,6 +45,7 @@ export const loginUser = userData => dispatch => {
       const decoded = jwt_decode(token);
       // Set current user
       dispatch(setCurrentUser(decoded));
+      window.location = '/dashboard/home';
     })
     .catch(err =>
       dispatch({

@@ -26,8 +26,8 @@ class Login extends Component {
   // Check if already logged in
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
-      window.location = '/dashboard';
+      this.props.history.push("/dashboard/home");
+      window.location = '/dashboard/home';
     }
   }
 
@@ -35,15 +35,15 @@ class Login extends Component {
   // Checks after each update
   static getDerivedStateFromProps(nextProps, prevState){
     if(nextProps.auth.isAuthenticated){
-      window.location = '/dashboard';
+      window.location = '/dashboard/home';
     }
     else return null;
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(prevProps.auth.isAuthenticated){
-      this.props.history.push("/dashboard");
-      window.location = '/dashboard';
+      this.props.history.push("/dashboard/home");
+      window.location = '/dashboard/home';
     }
   }
 
