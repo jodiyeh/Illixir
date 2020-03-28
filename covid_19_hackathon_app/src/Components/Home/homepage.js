@@ -3,11 +3,24 @@ import {Grid, Cell} from 'react-mdl';
 import {useHistory} from 'react-router-dom';
 
 class Home extends Component{
-  routeChange=()=>{
-        let path = '/InfoPage';
-        let history = useHistory();
-        history.push(path);
-    }
+  constructor() {
+    super();
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.state = {
+      address: "",
+    };
+  }
+  onChange(e) {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  onSubmit(e) {
+    e.preventDefault();
+    window.location = '/dashboard/infopage';
+  };
     render(){
     return(
         <div style = {{width: '100%'}}>
@@ -30,12 +43,17 @@ class Home extends Component{
 
                 <div className = "inputbox">
                 <form>
-                    <p1>
-                    <input type="text" placeholder = "Your Address: " style={{width: "400px"}} s/>
-                    </p1>
+                <div className="input-field col s12">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.address}
+                    id="address"
 
+                  />
+                  <label htmlFor="address">Address</label>
+                </div>
                     <p2>
-                        <button onClick={this.routeChange}>Submit</button>
+                        <button onClick={this.onSubmit}>Search</button>
                     </p2>
                     </form>
 

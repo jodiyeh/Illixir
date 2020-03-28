@@ -18,13 +18,6 @@ class Main extends Component {
 
   };
 
-  onSetAddress = e => {
-    e.preventDefault();
-    this.props.logoutUser();
-    window.location.href = "../login";
-
-  };
-
   render() {
     const { user } = this.props.auth;
 
@@ -45,15 +38,6 @@ class Main extends Component {
             <Navigation>
               <a href="/dashboard/home">Home</a>
               <a href="/dashboard/infopage">Info</a>
-              <form>
-                <h5>Address</h5>
-                <p1>
-                  <input type="text" placeholder = {this.props.auth.address} style={{width: "400px"}} s/>
-                </p1>
-                <p2>
-                  <button onClick={this.onSetAddress}>Set Address</button>
-                </p2>
-              </form>
               <button
                 style={{
                   width: "150px",

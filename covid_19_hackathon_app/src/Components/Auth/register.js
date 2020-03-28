@@ -15,6 +15,7 @@ class Register extends Component {
     this.state = {
       username: "",
       email: "",
+      address: "",
       password: "",
       confirm: "",
       errors: {}
@@ -61,6 +62,7 @@ class Register extends Component {
     const newUser = {
       username: this.state.username,
       email: this.state.email,
+      address: this.state.address,
       password: this.state.password,
       confirm: this.state.confirm
     };
@@ -114,6 +116,22 @@ class Register extends Component {
                 <label htmlFor="email">Email</label>
                 <span className="red-text">{errors.email}</span>
               </div>
+              // address
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.password}
+                  error={errors.password}
+                  id="password"
+                  type="password"
+                  className={classnames("", {
+                    invalid: errors.password
+                  })}
+                />
+                <label htmlFor="password">Password</label>
+                <span className="red-text">{errors.password}</span>
+              </div>
+              // address
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
