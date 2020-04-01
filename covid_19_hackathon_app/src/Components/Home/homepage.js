@@ -15,7 +15,6 @@ class Home extends Component{
   }
 
   componentDidMount(){
-    alert("home page");
 
   }
   onChange(e) {
