@@ -13,13 +13,18 @@ class Home extends Component{
       address: "",
     };
   }
+
+  componentDidMount(){
+    alert("home page");
+
+  }
   onChange(e) {
     this.setState({ [e.target.id]: e.target.value });
   };
 
   onSubmit(e) {
     e.preventDefault();
-    window.location = '/dashboard/infopage';
+    window.location = '/hospitals';
   };
     render(){
     return(

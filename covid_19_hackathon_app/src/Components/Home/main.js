@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import HomePage from './homepage';
 import InfoPage from './infopage';
+import HospitalPage from './hospitalpage';
 import {Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
 import { Route, Switch } from "react-router-dom";
 import Navbar from "../Landing/navbar";
@@ -54,8 +55,8 @@ class Main extends Component {
             </div>
 
             <Navigation>
-              <a href="/dashboard/home">Home</a>
-              <a href="/dashboard/infopage">Info</a>
+              <a href="/home">Home</a>
+              <a href="/hospitals">Hospitals</a>
               <button
                 style={{
                   width: "150px",
@@ -75,8 +76,8 @@ class Main extends Component {
           <Content>
           <div />
           <Switch>
-            <PrivateRoute path="/dashboard/home" component ={HomePage} />
-            <PrivateRoute path="/dashboard/infopage" component ={InfoPage} />
+            <PrivateRoute path="/home" component ={HomePage} />
+            <Route path="/hospitals" render={() => (<HospitalPage city={user.city} state={user.state}/>)}/>
           </Switch>
           </Content>
         </Layout>

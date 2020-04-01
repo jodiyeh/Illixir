@@ -5,6 +5,8 @@ const cors = require("cors");
 const passport = require("passport");
 
 const usersRouter = require('./user/user.routes');
+const hospitalsRouter = require('./hospital/hospital.routes');
+
 const port = process.env.PORT || 5000;
 const app = express();
 
@@ -36,6 +38,8 @@ app.use(passport.initialize());
 
 // Set up routes
 app.use('/api/users', usersRouter);
+app.use('/api/hospitals', hospitalsRouter);
+
 
 // Run app
 app.listen(port, () => {
