@@ -49,7 +49,7 @@ class Home extends Component{
         <div className="home-content">
           <h1 className = "home-title">#discover!</h1>
           <div className = "home-description">welcome! enter your to discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more!</div>
-          <Button variant="outlined" color="primary" component={Link} to={"/facilities?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode}>
+          <Button variant="outlined" color="primary" component={Link} to={"/select?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode}>
             search your current address
           </Button>
           <Button variant="outlined" color="primary" component={Link} to={"/update/"+this.props.id}>
@@ -98,7 +98,7 @@ class Home extends Component{
               onChange={this.onChange}
             />
           </div>
-          <Button variant="outlined" color="primary" component={Link} to={"/facilities?state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode}>
+          <Button variant="outlined" color="primary" component={Link} to={"/select?state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode}>
             search address
           </Button>
         </form>

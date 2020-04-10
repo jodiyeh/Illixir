@@ -1,4 +1,5 @@
 import React, {Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class SelectPage extends Component{
   constructor(props) {
@@ -7,8 +8,11 @@ class SelectPage extends Component{
       city: "",
       state: "",
       latitude: "",
-      longitude: ""
+      longitude: "",
+      zipcode: "",
+      streetAddress: "",
     };
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount(){
     const params = new URLSearchParams(this.props.location.search);
@@ -19,6 +23,11 @@ class SelectPage extends Component{
       streetAddress: params.get("streetAddress"),
     })
   }
+
+  handleClick(string) {
+    window.location = "/facility?facility="+string+"&state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode
+  }
+
   render(){
     return(
       <div className="sidebar-page">
@@ -29,7 +38,7 @@ class SelectPage extends Component{
         </div>
         <div class="cards-list">
           <div class="card 1">
-            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_image" onClick={this.handleClick.bind(this, "hospitals")}> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
             <div class="card_title title-white">
               <p>hospitals</p>
             </div>

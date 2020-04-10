@@ -6,9 +6,10 @@ import HomePage from './homepage';
 import InfoPage from './infopage';
 import SelectPage from './SelectPage';
 import UpdateAddress from './UpdateAddress';
+import FacilityList from './FacilityList';
+import FacilityPage from './FacilityPage';
 import {Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
 import { Route, Switch, useLocation} from "react-router-dom";
-import Navbar from "../Landing/navbar";
 import PrivateRoute from "../PrivateRoute/privateroute";
 import Geocode from "react-geocode";
 import { Link } from 'react-router-dom';
@@ -88,7 +89,9 @@ class SideBar extends Component {
             <Switch>
               <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
               <Route path="/update/:id" render = {() => (<UpdateAddress id={this.props.auth.user.id}/>)}/>
-              <Route path="/facilities" component = {SelectPage}/>
+              <Route path="/select" component = {SelectPage}/>
+              <Route path="/facility" component = {FacilityList}/>
+              <Route path="/information" component = {FacilityPage}/>
             </Switch>
           </Content>
         </Layout>

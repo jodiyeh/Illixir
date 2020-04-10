@@ -129,8 +129,8 @@
 
 .card {
   margin: 2vw;
-  width: 150px;
-  height: 150px;
+  width: 21vh;
+  height: 21vh;
   border-radius: 40px;
   box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
   cursor: pointer;
