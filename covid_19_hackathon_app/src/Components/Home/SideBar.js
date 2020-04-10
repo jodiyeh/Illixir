@@ -12,13 +12,19 @@ import Navbar from "../Landing/navbar";
 import PrivateRoute from "../PrivateRoute/privateroute";
 import Geocode from "react-geocode";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class SideBar extends Component {
   constructor(props) {
     super();
     this.state = {
-      latidude: 100,
-      longitude: 100,
+      username: "",
+      streetAddress: "",
+      city: "",
+      state: "",
+      zipcode: "",
+      latidude: 0,
+      longitude: 0,
     };
   }
   onLogoutClick = e => {
@@ -28,9 +34,7 @@ class SideBar extends Component {
 
   };
 
-  render() {
-
-    const { user } = this.props.auth;
+  componentDidMount () {
     //Geocode.setApiKey("AIzaSyATfqDvOYhuTkacoeFvXzrvbgGIYw7YwWM");
 
     //Geocode.setLanguage("en");
@@ -49,7 +53,23 @@ class SideBar extends Component {
       //   console.error(error);
       // }
     //);
+    axios.get('http://localhost:5000/api/users/'+this.props.auth.user.id)
+      .then(response => {
+        this.setState({
+          username: response.data.username,
+          state: response.data.state,
+          city: response.data.city,
+          streetAddress: response.data.streetAddress,
+          zipcode: response.data.zipcode
+        })
+      })
+      .catch( function (error) {
+        console.log(error);
+      })
+  }
 
+
+  render() {
     return (
       <div style={{height: '100vh', position: 'relative'}}>
         <Layout fixedHeader fixedDrawer>
@@ -64,26 +84,23 @@ class SideBar extends Component {
           </Header>
           <Drawer title="Title">
             <div>
-              <b>Hey there,</b> {user.username.split(" ")[0]}
+              <b>Hey there,</b> {this.state.username.split(" ")[0]}
             </div>
             <div>
-              <b>{JSON.stringify(user)}</b>
+              <b>{this.state.streetAddress}</b>
             </div>
             <div>
-              <b>{user.streetAddress}</b>
+              <b>{this.state.city}</b>
             </div>
             <div>
-              <b>{user.city}</b>
+              <b>{this.state.state}</b>
             </div>
             <div>
-              <b>{user.state}</b>
+              <b>{this.state.zipcode}</b>
             </div>
-            <div>
-              <b>{user.zipcode}</b>
-            </div>
-            <Link to={"/update/" + user.id}>Update Address</Link>
             <Navigation>
               <a href="/home">Home</a>
+              <a href={"/update/" + this.props.auth.user.id}>Update Address</a>
               <a href="/facilities">Facilities</a>
               <button
                 style={{
@@ -105,8 +122,8 @@ class SideBar extends Component {
           <div />
           <Switch>
             <PrivateRoute path="/home" component = {HomePage} />
-            <Route path="/facilities" render = {() => (<SelectPage latitude={this.state.latitude} longitude={this.state.longitide} city={user.city} state={user.state}/>)}/>
-            <Route path="/update/:id" render = {() => (<UpdateAddress id={user.id}/>)}/>
+            <Route path="/facilities" render = {() => (<SelectPage latitude={this.state.latitude} longitude={this.state.longitide} city={this.state.city} state={this.state.state}/>)}/>
+            <Route path="/update/:id" render = {() => (<UpdateAddress id={this.props.auth.user.id}/>)}/>
           </Switch>
           </Content>
         </Layout>

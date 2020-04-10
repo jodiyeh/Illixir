@@ -27,6 +27,8 @@ export const registerUser = (userData, history) => dispatch => {
     );
 };
 
+
+
 // Login - get user token
 // Checks user valid
 // Sets token and then sets the current user
@@ -45,7 +47,7 @@ export const loginUser = userData => dispatch => {
       const decoded = jwt_decode(token);
       // Set current user
       dispatch(setCurrentUser(decoded));
-      window.location = '/dashboard/home';
+      window.location = '/home';
     })
     .catch(err =>
       dispatch({

@@ -20,6 +20,7 @@ export default class UpdateAddress  extends Component {
   }
 
   componentDidMount() { // called before anything is displayed
+
     axios.get('http://localhost:5000/api/users/'+this.props.id)
       .then(response => {
         this.setState({

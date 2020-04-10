@@ -121,14 +121,15 @@ router.route('/:id').get((req,res) => { // mongo has :id variable that can be us
 
 router.route('/update/:id').post((req,res) => {
   // Form validation
-  const {errors, isValid} = validateUserAddress(req.body);
+  //const {errors, isValid} = validateUserAddress(req.body);
   console.log("address change attempt");
   // Check validation
-  if(!isValid){
-    return res.status(400).json(errors);
-  }
+  //if(!isValid){
+  //  return res.status(400).json(errors);
+  //}
   User.findById(req.params.id)
     .then(user => {
+      console.log("user found");
       user.streetAddress = req.body.streetAddress;
       user.city = req.body.city;
       user.state = req.body.state;
