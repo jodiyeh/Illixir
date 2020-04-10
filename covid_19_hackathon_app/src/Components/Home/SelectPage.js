@@ -24,10 +24,59 @@ class SelectPage extends Component{
       <div className="sidebar-page">
         <div className="select-content">
           <h1 className="select-title">#category!</h1>
+          <div className="select-address">{this.state.streetAddress} {this.state.city} {this.state.state} {this.state.zipcode}</div>
+          <div className="select-subtitle">facilities</div>
         </div>
-        <div>Your Address: {this.state.streetAddress} {this.state.city} {this.state.state} {this.state.zipcode}</div>
-        <div>Change Address</div>
-        <div>Hospitals</div>
+        <div class="cards-list">
+          <div class="card 1">
+            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_title title-white">
+              <p>hospitals</p>
+            </div>
+          </div>
+          <div class="card 2">
+            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_title title-white">
+              <p>pharmacies</p>
+            </div>
+          </div>
+          <div class="card 3">
+            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_title title-white">
+              <p>emergency medical services stations</p>
+            </div>
+          </div>
+          <div class="card 4">
+            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_title title-white">
+              <p>urgent care facilities</p>
+            </div>
+          </div>
+          <div class="card 5">
+            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_title title-white">
+              <p>veterans health administrations</p>
+            </div>
+          </div>
+          <div class="card 6">
+            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_title title-white">
+              <p>national shelter systems facilities</p>
+            </div>
+          </div>
+          <div class="card 7">
+            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_title title-white">
+              <p>local emergency operations</p>
+            </div>
+          </div>
+          <div class="card 8">
+            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_title title-white">
+              <p>fire stations</p>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
