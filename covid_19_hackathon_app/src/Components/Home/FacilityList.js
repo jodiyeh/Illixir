@@ -1,14 +1,29 @@
 import React, {Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
+
 const Facility = props => (
   <tr>
     <td>{ props.facility.attributes.NAME }</td>
     <td>{ props.facility.attributes.ADDRESS }</td>
     <td>{ props.facility.attributes.CITY }</td>
     <td>{ props.facility.attributes.STATE }</td>
-    <td>{ props.facility.attributes.LATITUDE }</td>
-    <td>{ props.facility.attributes.LONGITUDE }</td>
+    <td>
+    <Button variant="outlined" color="primary" component={Link} to={
+      "/information?state="+props.user.state
+      +"&city="+props.user.city
+      +"&streetAddress="+props.user.streetAddress
+      +"&zipcode="+props.user.zipcode
+      +"&facility="+props.user.facility
+      +"&userLongitude="+props.user.userLongitude
+      +"&userLatitude="+props.user.userLatitude
+      +"&latitude="+props.facility.attributes.LATITUDE
+      +"&longitude="+props.facility.attributes.LONGITUDE
+    }>
+      More Info
+    </Button>
+    </td>
   </tr>
 )
 
@@ -39,14 +54,11 @@ class FacilityList extends Component{
     })
     const backendRequest = "http://localhost:5000/api/"+params.get("facility")+"/";
     const cityFilter = params.get("city");
-    alert(cityFilter);
-    alert(backendRequest);
     axios.get(backendRequest)
       .then(response => {
-        const filter1 = response.data.filter(d => d.attributes.CITY === params.get("city"));
+        const filter1 = response.data.filter(d => d.attributes.CITY === cityFilter);
         //const filter2 = filter1.filter(d => d.attributes.LATITUDE === this.state.latitude);
         //const filter3 = filter3.data.filter(d => d.attributes.LONGITUDE === this.state.longitide);
-        alert(JSON.stringify(response.data));
         this.setState({
           facilities: filter1,
         })
@@ -56,15 +68,26 @@ class FacilityList extends Component{
       });
   }
   facilitiesList() {
+    const user = {
+      city: this.state.city,
+      state: this.state.state,
+      userLatitude: this.state.latitude,
+      userLongitude: this.state.longitude,
+      facility: this.state.facility,
+      zipcode: this.state.zipcode,
+      streetAddress: this.state.streetAddress,
+    }
     return this.state.facilities.map(current => {
-      return <Facility facility={current}/>;
+      return <Facility facility={current} user={user}/>;
     })
   }
   render(){
     return(
       <div className="sidebar-page">
+      <div className="list-content">
+        <h1 className="list-title">#nearby!</h1>
+      </div>
       <div>
-        <h3>{this.state.facility} Filtered By City</h3>
         <table className="table">
           <thread className="thread-light">
             <tr>

@@ -180,3 +180,39 @@
     flex-direction: column;
   }
 }
+
+.list-content{
+  text-align: center;
+}
+
+.list-title {
+	display: inline;
+	position: relative;
+	font: 10vw Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: rgba(0,0,255,0.5);
+}
+
+.list-title:after {
+	content: "#nearby!";
+	position: absolute; left: .5vw; top: .5vw;
+	color: rgba(255,0,0,0.5);
+}
+
+.facility-content{
+  text-align: center;
+}
+
+.facility-title {
+	display: inline;
+	position: relative;
+	font: 10vw Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: rgba(0,0,255,0.5);
+}
+
+.facility-title:after {
+	content: "#details!";
+	position: absolute; left: .5vw; top: .5vw;
+	color: rgba(255,0,0,0.5);
+}
