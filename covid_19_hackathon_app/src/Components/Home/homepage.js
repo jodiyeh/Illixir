@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Route, Switch } from "react-router-dom";
 import SelectPage from './SelectPage';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 class Home extends Component{
   constructor() {
@@ -44,71 +45,63 @@ class Home extends Component{
   };
     render(){
     return(
-      <div className="landing-grid">
-        <div className="container">
-          <div>
-            <img
-              src="https://cdn2.iconfinder.com/data/icons/medical-v1-0-outline/32/Hospital-512.png"
-              alt="hospital"
-              className = "hosp-img"
+      <div className="sidebar-page">
+        <div className="home-content">
+          <h1 className = "home-title">#discover!</h1>
+          <div className = "home-description">welcome! enter your to discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more!</div>
+          <Button variant="outlined" color="primary" component={Link} to={"/facilities?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode}>
+            search your current address
+          </Button>
+          <Button variant="outlined" color="primary" component={Link} to={"/update/"+this.props.id}>
+            update address
+          </Button>
+          <div className="home-description">search different address:</div>
+        </div>
+        <form className="home-search" onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <div className="search-title">street address: </div>
+            <input
+              id="streetAddress"
+              type="text"
+              className="form-control"
+              value={this.state.streetAddress}
+              onChange={this.onChange}
             />
           </div>
-          <div className = "Title">
-            <h3>COVID-19 Facilities Finder</h3>
+          <div className="form-group">
+            <div className="search-title">city: </div>
+            <input
+              id="city"
+              type="text"
+              className="form-control"
+              value={this.state.city}
+              onChange={this.onChange}
+            />
           </div>
-          <div className = "Description">
-            <div>This application matches you to nearby hospitals, pharmacies, shelters, emergency medical centers, and more!</div>
+          <div className="form-group">
+            <div className="search-title">state: </div>
+            <input
+              id="state"
+              type="text"
+              className="form-control"
+              value={this.state.state}
+              onChange={this.onChange}
+            />
           </div>
-          <Link to={"/facilities?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode}>Search your current address</Link>
-          <h3>Search Different Address:</h3>
-          <Collapsible trigger="Search A Different Address!">
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label>Street Address: </label>
-              <input
-                id="streetAddress"
-                type="text"
-                className="form-control"
-                value={this.state.streetAddress}
-                onChange={this.onChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>City: </label>
-              <input
-                id="city"
-                type="text"
-                className="form-control"
-                value={this.state.city}
-                onChange={this.onChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>State: </label>
-              <input
-                id="state"
-                type="text"
-                className="form-control"
-                value={this.state.state}
-                onChange={this.onChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Zipcode: </label>
-              <input
-                id="zipcode"
-                type="text"
-                className="form-control"
-                value={this.state.zipcode}
-                onChange={this.onChange}
-              />
-            </div>
-            <div className="form-group">
-              <Link to={"/facilities?state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode}>Search</Link>
-            </div>
-          </form>
-          </Collapsible>
-        </div>
+          <div className="form-group">
+            <div className="search-title">zipcode: </div>
+            <input
+              id="zipcode"
+              type="text"
+              className="form-control"
+              value={this.state.zipcode}
+              onChange={this.onChange}
+            />
+          </div>
+          <Button variant="outlined" color="primary" component={Link} to={"/facilities?state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode}>
+            search address
+          </Button>
+        </form>
       </div>
     )
   }

@@ -1,0 +1,101 @@
+.sidebar{
+}
+
+.sidebar-content{
+}
+
+.sidebar-page{
+  height: 100%;
+  padding: 5vw;
+  overflow-y: scroll;
+}
+
+.header-color{
+  background: #CC95C0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.landing-grid{
+  background: #CC95C0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100%;
+  padding: 5vw;
+  overflow-y: scroll;
+}
+
+.hosp-img{
+  height: 30vh;
+}
+
+.inputbox{
+  padding-left: 5cm;
+}
+
+.inputbox p2{
+  width: 5cm;
+}
+
+.home-content{
+  text-align: center;
+}
+
+.home-title {
+	display: inline;
+	position: relative;
+	font: 10vw Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: rgba(0,0,255,0.5);
+}
+
+.home-title:after {
+	content: "#discover!";
+	position: absolute; left: .5vw; top: .5vw;
+	color: rgba(255,0,0,0.5);
+}
+
+.home-description{
+
+}
+
+.search-title{
+  font-size: 1.5vh;
+  color: gray;
+}
+
+.update-title {
+	display: inline;
+	position: relative;
+	font: 10vw Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: rgba(0,0,255,0.5);
+}
+
+.update-title:after {
+	content: "#home!";
+	position: absolute; left: .5vw; top: .5vw;
+	color: rgba(255,0,0,0.5);
+}
+
+.update-content{
+  text-align: center;
+}
+
+.select-title {
+	display: inline;
+	position: relative;
+	font: 10vw Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: rgba(0,0,255,0.5);
+}
+
+.select-title:after {
+	content: "#category!";
+	position: absolute; left: .5vw; top: .5vw;
+	color: rgba(255,0,0,0.5);
+}
+
+.select-content{
+  text-align: center;
+}

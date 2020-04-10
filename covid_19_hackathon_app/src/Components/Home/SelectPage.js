@@ -11,19 +11,21 @@ class SelectPage extends Component{
     };
   }
   componentDidMount(){
-    alert(JSON.stringify(this.props.history));
-    alert(this.props.location.search);
     const params = new URLSearchParams(this.props.location.search);
-    alert(params.get("state"))
     this.setState({
-      state: this.props.location.search.state,
+      state: params.get("state"),
+      city: params.get("city"),
+      zipcode: params.get("zipcode"),
+      streetAddress: params.get("streetAddress"),
     })
   }
   render(){
     return(
-      <div>
-        <div>Select Page</div>
-        <div>Your Address: {this.state.city} {this.state.state}</div>
+      <div className="sidebar-page">
+        <div className="select-content">
+          <h1 className="select-title">#category!</h1>
+        </div>
+        <div>Your Address: {this.state.streetAddress} {this.state.city} {this.state.state} {this.state.zipcode}</div>
         <div>Change Address</div>
         <div>Hospitals</div>
       </div>

@@ -38,8 +38,6 @@ export const loginUser = userData => dispatch => {
     .then(res => {
       // Sets token to the response data
       const { token } = res.data;
-      alert("hi");
-      alert(JSON.stringify(res.data));
       localStorage.setItem("jwtToken", token);
       // Set axios header to token
       setAuthToken(token);

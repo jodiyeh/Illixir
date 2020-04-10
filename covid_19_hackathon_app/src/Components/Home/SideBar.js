@@ -13,7 +13,7 @@ import PrivateRoute from "../PrivateRoute/privateroute";
 import Geocode from "react-geocode";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import './SideBar.css';
 
 class SideBar extends Component {
   constructor(props) {
@@ -73,59 +73,23 @@ class SideBar extends Component {
 
   render() {
     return (
-      <div style={{height: '100vh', position: 'relative'}}>
+      <div className="sidebar">
         <Layout fixedHeader fixedDrawer>
           <Header className= "header-color" title="Covid-19 App" scroll>
-            <Textfield
-              value=""
-              onChange={() => {}}
-              label="Search"
-              expandable
-              expandableIcon="search"
-            />
           </Header>
-          <Drawer title="Title">
-            <div>
-              <b>Hey there,</b> {this.state.username.split(" ")[0]}
-            </div>
-            <div>
-              <b>{this.state.streetAddress}</b>
-            </div>
-            <div>
-              <b>{this.state.city}</b>
-            </div>
-            <div>
-              <b>{this.state.state}</b>
-            </div>
-            <div>
-              <b>{this.state.zipcode}</b>
-            </div>
-            <Navigation>
-              <a href={"/home"}>Home</a>
-              <a href={"/update/" + this.props.auth.user.id}>Update Address</a>
-              <button
-                style={{
-                  width: "150px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px",
-                  marginTop: "1rem"
-                }}
-                onClick={this.onLogoutClick}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-              >
-                Logout
-              </button>
-
+          <Drawer title={"Hey there, "+this.state.username.split(" ")[0] + "!"}>
+            <Navigation style={{height: '50vh'}}>
+            <a href={"/home"}>Home</a>
+            <a href={"/update/" + this.props.auth.user.id}>Update Address</a>
+            <a onClick={this.onLogoutClick}>Logout</a>
             </Navigation>
-
           </Drawer>
-          <Content>
-          <div />
-          <Switch>
-            <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
-            <Route path="/update/:id" render = {() => (<UpdateAddress id={this.props.auth.user.id}/>)}/>
-            <Route path="/facilities" component = {SelectPage}/>
-          </Switch>
+          <Content className="sidebar-content">
+            <Switch>
+              <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
+              <Route path="/update/:id" render = {() => (<UpdateAddress id={this.props.auth.user.id}/>)}/>
+              <Route path="/facilities" component = {SelectPage}/>
+            </Switch>
           </Content>
         </Layout>
       </div>

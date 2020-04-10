@@ -74,11 +74,13 @@ export default class UpdateAddress  extends Component {
 
   render (){
     return (
-      <div>
-        <h3>Update Address</h3>
+      <div className="sidebar-page">
+        <div className="update-content">
+          <h1 className="update-title">#home!</h1>
+        </div>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Street Address: </label>
+            <div className="search-title">street address: </div>
             <input
               type="text"
               className="form-control"
@@ -87,7 +89,7 @@ export default class UpdateAddress  extends Component {
             />
           </div>
           <div className="form-group">
-            <label>City: </label>
+            <div className="search-title">city: </div>
             <input
               type="text"
               className="form-control"
@@ -96,7 +98,7 @@ export default class UpdateAddress  extends Component {
             />
           </div>
           <div className="form-group">
-            <label>State: </label>
+            <div className="search-title">state: </div>
             <input
               type="text"
               className="form-control"
@@ -105,7 +107,7 @@ export default class UpdateAddress  extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Zipcode: </label>
+            <div className="search-title">zipcode: </div>
             <input
               type="text"
               className="form-control"
