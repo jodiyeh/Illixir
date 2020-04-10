@@ -19,6 +19,8 @@ class HospitalPage extends Component{
     this.state = {
       city: props.city,
       state: props.state,
+      latitude: props.latitude,
+      longitude: props.longitude,
       hospitals: []
     };
   }
@@ -26,9 +28,11 @@ class HospitalPage extends Component{
   componentDidMount(){
     axios.get('http://localhost:5000/api/hospitals/')
       .then(response => {
-        const arr1 = response.data.filter(d => d.attributes.CITY === "MOUNTAIN VIEW");
+        const filter1 = response.data.filter(d => d.attributes.CITY === this.state.city);
+        const filter2 = filter1.filter(d => d.attributes.LATITUDE === this.state.latitude);
+        const filter3 = filter3.data.filter(d => d.attributes.LONGITUDE === this.state.longitide);
         this.setState({
-          hospitals: arr1,
+          hospitals: filter3,
         })
       })
       .catch(error => {

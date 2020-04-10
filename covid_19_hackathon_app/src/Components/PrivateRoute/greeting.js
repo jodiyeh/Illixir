@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Main from "../Home/main";
+import SideBar from "../Home/SideBar";
 import Landing from "../Landing/landing";
 import Register from "../Auth/register";
 import Login from "../Auth/login";
@@ -10,7 +10,7 @@ import Login from "../Auth/login";
 function Check(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {
-    return <Main />;
+    return <SideBar />;
   }
   return <div className="App">
     <Route exact path="/" component={Landing} />

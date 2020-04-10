@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import PrivateRoute from "./Components/PrivateRoute/privateroute";
-import Main from "./Components/Home/main";
+import SideBar from "./Components/Home/SideBar";
 import Home from "./Components/Home/homepage";
 import InfoPage from "./Components/Home/infopage";
 import Greetings from "./Components/PrivateRoute/greeting";

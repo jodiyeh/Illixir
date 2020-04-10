@@ -4,14 +4,23 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import HomePage from './homepage';
 import InfoPage from './infopage';
-import HospitalPage from './hospitalpage';
+import SelectPage from './SelectPage';
+import UpdateAddress from './UpdateAddress';
 import {Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
 import { Route, Switch } from "react-router-dom";
 import Navbar from "../Landing/navbar";
 import PrivateRoute from "../PrivateRoute/privateroute";
+import Geocode from "react-geocode";
+import { Link } from 'react-router-dom';
 
-
-class Main extends Component {
+class SideBar extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      latidude: 100,
+      longitude: 100,
+    };
+  }
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
@@ -20,7 +29,26 @@ class Main extends Component {
   };
 
   render() {
+
     const { user } = this.props.auth;
+    //Geocode.setApiKey("AIzaSyATfqDvOYhuTkacoeFvXzrvbgGIYw7YwWM");
+
+    //Geocode.setLanguage("en");
+    //alert("hi");
+    // Get latidude & longitude from address.
+    //Geocode.fromAddress("Eiffel Tower").then(
+      // response => {
+      //   const { lat, lng } = response.results[0].geometry.location;
+      //   console.log(lat, lng);
+      //   alert(lat, lng);
+      //   this.state.latidude = lat;
+      //   this.state.longitude = lng;
+      // },
+      // error => {
+      //   alert(error);
+      //   console.error(error);
+      // }
+    //);
 
     return (
       <div style={{height: '100vh', position: 'relative'}}>
@@ -53,10 +81,10 @@ class Main extends Component {
             <div>
               <b>{user.zipcode}</b>
             </div>
-
+            <Link to={"/update/" + user.id}>Update Address</Link>
             <Navigation>
               <a href="/home">Home</a>
-              <a href="/hospitals">Hospitals</a>
+              <a href="/facilities">Facilities</a>
               <button
                 style={{
                   width: "150px",
@@ -76,8 +104,9 @@ class Main extends Component {
           <Content>
           <div />
           <Switch>
-            <PrivateRoute path="/home" component ={HomePage} />
-            <Route path="/hospitals" render={() => (<HospitalPage city={user.city} state={user.state}/>)}/>
+            <PrivateRoute path="/home" component = {HomePage} />
+            <Route path="/facilities" render = {() => (<SelectPage latitude={this.state.latitude} longitude={this.state.longitide} city={user.city} state={user.state}/>)}/>
+            <Route path="/update/:id" render = {() => (<UpdateAddress id={user.id}/>)}/>
           </Switch>
           </Content>
         </Layout>
@@ -86,7 +115,7 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
+SideBar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -98,4 +127,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Main);
+)(SideBar);

@@ -113,7 +113,13 @@ router.post("/login", (req, res) => {
   });
 })
 
-router.route('/address/update/:id').post((req,res) => {
+router.route('/:id').get((req,res) => { // mongo has :id variable that can be used to access the id of an object
+  User.findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(err => res.status(400).json('Error ' + err));
+});
+
+router.route('/update/:id').post((req,res) => {
   // Form validation
   const {errors, isValid} = validateUserAddress(req.body);
   console.log("address change attempt");
