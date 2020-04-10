@@ -12,10 +12,7 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+
 }
 
 .hosp-img{
-  height: 250px;
-  padding-top: 0cm;
-  padding-left: 7.3cm;
-  
+  height: 30vh;
 }
 
 .Title h1{

@@ -7,12 +7,13 @@ import InfoPage from './infopage';
 import SelectPage from './SelectPage';
 import UpdateAddress from './UpdateAddress';
 import {Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation} from "react-router-dom";
 import Navbar from "../Landing/navbar";
 import PrivateRoute from "../PrivateRoute/privateroute";
 import Geocode from "react-geocode";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 
 class SideBar extends Component {
   constructor(props) {
@@ -35,24 +36,6 @@ class SideBar extends Component {
   };
 
   componentDidMount () {
-    //Geocode.setApiKey("AIzaSyATfqDvOYhuTkacoeFvXzrvbgGIYw7YwWM");
-
-    //Geocode.setLanguage("en");
-    //alert("hi");
-    // Get latidude & longitude from address.
-    //Geocode.fromAddress("Eiffel Tower").then(
-      // response => {
-      //   const { lat, lng } = response.results[0].geometry.location;
-      //   console.log(lat, lng);
-      //   alert(lat, lng);
-      //   this.state.latidude = lat;
-      //   this.state.longitude = lng;
-      // },
-      // error => {
-      //   alert(error);
-      //   console.error(error);
-      // }
-    //);
     axios.get('http://localhost:5000/api/users/'+this.props.auth.user.id)
       .then(response => {
         this.setState({
@@ -66,6 +49,25 @@ class SideBar extends Component {
       .catch( function (error) {
         console.log(error);
       })
+
+      //Geocode.setApiKey("AIzaSyATfqDvOYhuTkacoeFvXzrvbgGIYw7YwWM");
+
+      //Geocode.setLanguage("en");
+      //alert("hi");
+      // Get latidude & longitude from address.
+      //Geocode.fromAddress("Eiffel Tower").then(
+        // response => {
+        //   const { lat, lng } = response.results[0].geometry.location;
+        //   console.log(lat, lng);
+        //   alert(lat, lng);
+        //   this.state.latidude = lat;
+        //   this.state.longitude = lng;
+        // },
+        // error => {
+        //   alert(error);
+        //   console.error(error);
+        // }
+      //);
   }
 
 
@@ -99,9 +101,8 @@ class SideBar extends Component {
               <b>{this.state.zipcode}</b>
             </div>
             <Navigation>
-              <a href="/home">Home</a>
+              <a href={"/home"}>Home</a>
               <a href={"/update/" + this.props.auth.user.id}>Update Address</a>
-              <a href="/facilities">Facilities</a>
               <button
                 style={{
                   width: "150px",
@@ -121,9 +122,9 @@ class SideBar extends Component {
           <Content>
           <div />
           <Switch>
-            <PrivateRoute path="/home" component = {HomePage} />
-            <Route path="/facilities" render = {() => (<SelectPage latitude={this.state.latitude} longitude={this.state.longitide} city={this.state.city} state={this.state.state}/>)}/>
+            <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
             <Route path="/update/:id" render = {() => (<UpdateAddress id={this.props.auth.user.id}/>)}/>
+            <Route path="/facilities" component = {SelectPage}/>
           </Switch>
           </Content>
         </Layout>
