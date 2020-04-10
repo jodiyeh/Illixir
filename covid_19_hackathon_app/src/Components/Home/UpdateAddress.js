@@ -4,7 +4,8 @@ import axios from 'axios';
 export default class UpdateAddress  extends Component {
   constructor (props){
     super(props);
-
+    this.autocomplete = null;
+    this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
     this.onChangeState = this.onChangeState.bind(this);
     this.onChangeCity = this.onChangeCity.bind(this);
     this.onChangeAddress = this.onChangeAddress.bind(this);
@@ -20,7 +21,8 @@ export default class UpdateAddress  extends Component {
   }
 
   componentDidMount() { // called before anything is displayed
-
+    this.autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {})
+    this.autocomplete.addListener("place_changed", this.handlePlaceSelect)
     axios.get('http://localhost:5000/api/users/'+this.props.id)
       .then(response => {
         this.setState({
@@ -34,6 +36,36 @@ export default class UpdateAddress  extends Component {
         console.log(error);
       })
   }
+
+  handlePlaceSelect() {
+    //address[7].long_name
+      let addressObject = this.autocomplete.getPlace()
+      let address = addressObject.address_components
+      var results = [];
+      var city = "locality";
+      var state = "administrative_area_level_1";
+      var zip = "postal_code";
+
+      for (var i=0 ; i < address.length ; i++) {
+        if (address[i].types[0] == city) {
+          results.push(address[i].long_name);
+        }
+        else if (address[i].types[0] == state) {
+          results.push(address[i].short_name);
+        }
+        else if (address[i].types[0] == zip) {
+          results.push(address[i].long_name);
+        }
+      }
+      alert(JSON.stringify(address))
+      this.setState({
+        streetAddress: `${address[0].long_name} ${address[1].long_name}`,
+        city: results[0],
+        state: results[1],
+        zipcode: results[2],
+      })
+
+    }
 
   onChangeState(e){
     this.setState({
@@ -80,6 +112,7 @@ export default class UpdateAddress  extends Component {
         </div>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
+          <input id="autocomplete" className="input-field" ref="input" type="text"/>
             <div className="search-title">street address: </div>
             <input
               type="text"

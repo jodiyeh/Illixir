@@ -11,6 +11,8 @@ class Register extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.autocomplete = null;
+    this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
 
     this.state = {
       username: "",
@@ -26,6 +28,8 @@ class Register extends Component {
   }
 
   componentDidMount() {
+    this.autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {})
+    this.autocomplete.addListener("place_changed", this.handlePlaceSelect)
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/login");
@@ -48,13 +52,32 @@ class Register extends Component {
     }
   }
 
-  // componentWillRecieveProps(nextProps) {
-  //   if (nextProps.errors) {
-  //     this.setState({
-  //       errors: nextProps.errors
-  //     });
-  //   }
-  // }
+  handlePlaceSelect() {
+    let addressObject = this.autocomplete.getPlace()
+    let address = addressObject.address_components
+    var results = [];
+    var city = "locality";
+    var state = "administrative_area_level_1";
+    var zip = "postal_code";
+
+    for (var i=0 ; i < address.length ; i++) {
+      if (address[i].types[0] == city) {
+        results.push(address[i].long_name);
+      }
+      else if (address[i].types[0] == state) {
+        results.push(address[i].short_name);
+      }
+      else if (address[i].types[0] == zip) {
+        results.push(address[i].long_name);
+      }
+    }
+    this.setState({
+      streetAddress: `${address[0].long_name} ${address[1].long_name}`,
+      city: results[0],
+      state: results[1],
+      zipcode: results[2],
+    })
+  }
 
   onChange(e) {
     this.setState({ [e.target.id]: e.target.value });
@@ -122,75 +145,46 @@ class Register extends Component {
                 <label htmlFor="email">Email</label>
                 <span className="red-text">{errors.email}</span>
               </div>
-              <div className="input-field col s12">
+              <div className="form-group">
+                <input id="autocomplete" className="input-field" ref="input" type="text"/>
+                <div className="search-title">street address: </div>
                 <input
-                  onChange={this.onChange}
+                  name="streetAddress"
+                  type="text"
+                  className="form-control"
                   value={this.state.streetAddress}
-                  error={errors.streetAddress}
-                  id="streetAddress"
-                  type="text"
-                  className={classnames("", {
-                    invalid: errors.streetAddress
-                  })}
-                />
-                <label htmlFor="streetAddress">Address</label>
-                <span className="red-text">{errors.streetAddress}</span>
-              </div>
-              <div className="input-field col s12">
-                <input
                   onChange={this.onChange}
+                />
+              </div>
+              <div className="form-group">
+                <div className="search-title">city: </div>
+                <input
+                  name="city"
+                  type="text"
+                  className="form-control"
                   value={this.state.city}
-                  error={errors.city}
-                  id="city"
-                  type="text"
-                  className={classnames("", {
-                    invalid: errors.city
-                  })}
-                />
-                <label htmlFor="city">City</label>
-                <span className="red-text">{errors.city}</span>
-              </div>
-              <div className="input-field col s12">
-                <input
                   onChange={this.onChange}
+                />
+              </div>
+              <div className="form-group">
+                <div className="search-title">state: </div>
+                <input
+                  name="state"
+                  type="text"
+                  className="form-control"
                   value={this.state.state}
-                  error={errors.state}
-                  id="state"
-                  type="text"
-                  className={classnames("", {
-                    invalid: errors.state
-                  })}
-                />
-                <label htmlFor="state">State</label>
-                <span className="red-text">{errors.state}</span>
-              </div>
-              <div className="input-field col s12">
-                <input
                   onChange={this.onChange}
+                />
+              </div>
+              <div className="form-group">
+                <div className="search-title">zipcode: </div>
+                <input
+                  name="zipcode"
+                  type="text"
+                  className="form-control"
                   value={this.state.zipcode}
-                  error={errors.zipcode}
-                  id="zipcode"
-                  type="text"
-                  className={classnames("", {
-                    invalid: errors.zipcode
-                  })}
-                />
-                <label htmlFor="zipcode">Zipcode</label>
-                <span className="red-text">{errors.zipcode}</span>
-              </div>
-              <div className="input-field col s12">
-                <input
                   onChange={this.onChange}
-                  value={this.state.password}
-                  error={errors.password}
-                  id="password"
-                  type="password"
-                  className={classnames("", {
-                    invalid: errors.password
-                  })}
                 />
-                <label htmlFor="password">Password</label>
-                <span className="red-text">{errors.password}</span>
               </div>
               <div className="input-field col s12">
                 <input

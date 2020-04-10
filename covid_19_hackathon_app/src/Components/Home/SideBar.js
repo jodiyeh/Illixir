@@ -50,25 +50,6 @@ class SideBar extends Component {
       .catch( function (error) {
         console.log(error);
       })
-
-      //Geocode.setApiKey("AIzaSyATfqDvOYhuTkacoeFvXzrvbgGIYw7YwWM");
-
-      //Geocode.setLanguage("en");
-      //alert("hi");
-      // Get latidude & longitude from address.
-      //Geocode.fromAddress("Eiffel Tower").then(
-        // response => {
-        //   const { lat, lng } = response.results[0].geometry.location;
-        //   console.log(lat, lng);
-        //   alert(lat, lng);
-        //   this.state.latidude = lat;
-        //   this.state.longitude = lng;
-        // },
-        // error => {
-        //   alert(error);
-        //   console.error(error);
-        // }
-      //);
   }
 
 

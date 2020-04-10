@@ -7,13 +7,16 @@ import { Route, Switch } from "react-router-dom";
 import SelectPage from './SelectPage';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
+import { google } from 'google-maps';
+
 
 class Home extends Component{
   constructor() {
     super();
 
     this.onChange = this.onChange.bind(this);
-
+    this.autocomplete = null;
+    this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
     this.state = {
       streetAddress: "",
       city: "",
@@ -27,6 +30,9 @@ class Home extends Component{
   }
 
   componentDidMount(){
+    this.autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {})
+    this.autocomplete.addListener("place_changed", this.handlePlaceSelect)
+
     axios.get('http://localhost:5000/api/users/'+this.props.id)
       .then(response => {
         this.setState({
@@ -40,8 +46,37 @@ class Home extends Component{
         console.log(error);
       })
   }
+
+  handlePlaceSelect() {
+    let addressObject = this.autocomplete.getPlace()
+    let address = addressObject.address_components
+    var results = [];
+    var city = "locality";
+    var state = "administrative_area_level_1";
+    var zip = "postal_code";
+
+    for (var i=0 ; i < address.length ; i++) {
+      if (address[i].types[0] == city) {
+        results.push(address[i].long_name);
+      }
+      else if (address[i].types[0] == state) {
+        results.push(address[i].short_name);
+      }
+      else if (address[i].types[0] == zip) {
+        results.push(address[i].long_name);
+      }
+    }
+    this.setState({
+      streetAddress: `${address[0].long_name} ${address[1].long_name}`,
+      city: results[0],
+      state: results[1],
+      zipcode: results[2],
+    })
+
+
+    }
   onChange(e) {
-    this.setState({ [e.target.id]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   };
     render(){
     return(
@@ -59,9 +94,10 @@ class Home extends Component{
         </div>
         <form className="home-search" onSubmit={this.onSubmit}>
           <div className="form-group">
+            <input id="autocomplete" className="input-field" ref="input" type="text"/>
             <div className="search-title">street address: </div>
             <input
-              id="streetAddress"
+              name="streetAddress"
               type="text"
               className="form-control"
               value={this.state.streetAddress}
@@ -71,7 +107,7 @@ class Home extends Component{
           <div className="form-group">
             <div className="search-title">city: </div>
             <input
-              id="city"
+              name="city"
               type="text"
               className="form-control"
               value={this.state.city}
@@ -81,7 +117,7 @@ class Home extends Component{
           <div className="form-group">
             <div className="search-title">state: </div>
             <input
-              id="state"
+              name="state"
               type="text"
               className="form-control"
               value={this.state.state}
@@ -91,7 +127,7 @@ class Home extends Component{
           <div className="form-group">
             <div className="search-title">zipcode: </div>
             <input
-              id="zipcode"
+              name="zipcode"
               type="text"
               className="form-control"
               value={this.state.zipcode}
