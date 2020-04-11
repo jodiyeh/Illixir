@@ -10,6 +10,19 @@
   overflow-y: scroll;
 }
 
+.sidebar-drawer-container{
+   display: flex;
+   flex-direction: column;
+
+}
+
+.sidebar-header-element{
+  padding: 10px;
+  margin: 10px;
+  font-color: white;
+  border-radius: 5px;
+}
+
 .list-page{
   height: 100%;
   padding: 2vw;
@@ -29,18 +42,6 @@
   height: 100%;
   padding: 5vw;
   overflow-y: scroll;
-}
-
-.hosp-img{
-  height: 30vh;
-}
-
-.inputbox{
-  padding-left: 5cm;
-}
-
-.inputbox p2{
-  width: 5cm;
 }
 
 .home-content{

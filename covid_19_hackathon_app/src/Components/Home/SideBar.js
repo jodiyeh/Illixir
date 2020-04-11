@@ -8,13 +8,14 @@ import SelectPage from './SelectPage';
 import UpdateAddress from './UpdateAddressPage';
 import FacilityList from './FacilityListPage';
 import FacilityPage from './FacilityPage';
-import {Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
+import {HeaderRow, Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
 import { Route, Switch, useLocation} from "react-router-dom";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Geocode from "react-geocode";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './SideBar.css';
+import Button from '@material-ui/core/Button';
 
 class SideBar extends Component {
   constructor(props) {
@@ -56,15 +57,22 @@ class SideBar extends Component {
   render() {
     return (
       <div className="sidebar">
-        <Layout fixedHeader fixedDrawer>
-          <Header className= "header-color" title="Covid-19 App" scroll>
-          </Header>
+        <Layout >
+        <Header title="Title" scroll>
+           <div className="sidebar-header-container">
+            <a className="sidebar-header-element" href={"/home"}>FAQ</a>
+            <a className="sidebar-header-element" href={"/home"}>Tell Friends</a>
+            <a className="sidebar-header-element" href={"/home"}>Add Database</a>
+            <a className="sidebar-header-element" href={"/home"}>Contact Us</a>
+            <a className="sidebar-header-element" onClick={this.onLogoutClick}>Logout</a>
+           </div>
+       </Header>
           <Drawer title={"Hey there, "+this.state.username.split(" ")[0] + "!"}>
-            <Navigation style={{height: '50vh'}}>
-            <a href={"/home"}>Home</a>
-            <a href={"/update/" + this.props.auth.user.id}>Update Address</a>
-            <a onClick={this.onLogoutClick}>Logout</a>
-            </Navigation>
+            <div className="sidebar-drawer-container">
+            <Link className="sidebar-header-element" href={"/home"}>Home</Link>
+            <a className="sidebar-header-element" href={"/update/" + this.props.auth.user.id}>Update Address</a>
+            <a className="sidebar-header-element" onClick={this.onLogoutClick}>Logout</a>
+            </div>
           </Drawer>
           <Content className="sidebar-content">
             <Switch>
