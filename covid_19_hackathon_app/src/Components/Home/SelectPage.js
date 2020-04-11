@@ -28,6 +28,28 @@ class SelectPage extends Component{
     window.location = "/facility?facility="+string+"&state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode
   }
 
+  styleObj = {
+    fontSize: 14,
+    color: "#000000",
+    fontWeight: 100,
+    textAlign: "center",
+    backgroundColor: "#FFFFFF",
+    margin: 10,
+    opacity: 0.8,
+    borderRadius: 10,
+}
+
+styleObj2 = {
+  fontSize: 14,
+  color: "#000000",
+  fontWeight: 100,
+  textAlign: "center",
+  backgroundColor: "#FFFFFF",
+  margin: 2,
+  opacity: 0.8,
+  borderRadius: 10,
+}
+
   render(){
     return(
       <div className="sidebar-page">
@@ -38,51 +60,55 @@ class SelectPage extends Component{
         </div>
         <div class="cards-list">
           <div class="card 1">
-            <div class="card_image" onClick={this.handleClick.bind(this, "hospitals")}> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_image" onClick={this.handleClick.bind(this, "hospitals")}> <img src= {process.env.PUBLIC_URL + "resources/hospital.jpg"} /> </div>
             <div class="card_title title-white">
-              <p>hospitals</p>
+              <p style = {this.styleObj}>
+                Hospitals
+                </p>
             </div>
           </div>
           <div class="card 2">
-            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/pharmacy.jpg"} /> </div>
             <div class="card_title title-white">
-              <p>pharmacies</p>
+            <p style = {this.styleObj}>
+                Pharmacies
+                </p>
             </div>
           </div>
           <div class="card 3">
-            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/ems-station.jpg"} /> </div>
             <div class="card_title title-white">
-              <p>emergency medical services stations</p>
+              <p style = {this.styleObj2}> Emergency Medical Services Stations</p>
             </div>
           </div>
           <div class="card 4">
-            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/urgentcare.jpg"} /> </div>
             <div class="card_title title-white">
-              <p>urgent care facilities</p>
+              <p style = {this.styleObj}>Urgent Care Facilities</p>
             </div>
           </div>
           <div class="card 5">
-            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/veteranhealth.jpg"} /> </div>
             <div class="card_title title-white">
-              <p>veterans health administrations</p>
+              <p style = {this.styleObj}> Veterans Health Administrations</p>
             </div>
           </div>
           <div class="card 6">
-            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/shelter.jpg"} /> </div>
             <div class="card_title title-white">
-              <p>national shelter systems facilities</p>
+              <p style = {this.styleObj}>National Shelter Systems Facilities</p>
             </div>
           </div>
           <div class="card 7">
-            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/localemerg.jpg"} /> </div>
             <div class="card_title title-white">
-              <p>local emergency operations</p>
+              <p style = {this.styleObj}>Local Emergency Operations</p>
             </div>
           </div>
           <div class="card 8">
-            <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/firestation.jpeg"}/> </div>
             <div class="card_title title-white">
-              <p>fire stations</p>
+              <p style = {this.styleObj}>Fire Stations</p>
             </div>
           </div>
         </div>
