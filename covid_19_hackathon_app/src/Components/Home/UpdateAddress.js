@@ -38,7 +38,6 @@ export default class UpdateAddress  extends Component {
   }
 
   handlePlaceSelect() {
-    //address[7].long_name
       let addressObject = this.autocomplete.getPlace()
       let address = addressObject.address_components
       var results = [];
@@ -57,14 +56,12 @@ export default class UpdateAddress  extends Component {
           results.push(address[i].long_name);
         }
       }
-      alert(JSON.stringify(address))
       this.setState({
         streetAddress: `${address[0].long_name} ${address[1].long_name}`,
         city: results[0],
         state: results[1],
         zipcode: results[2],
       })
-
     }
 
   onChangeState(e){

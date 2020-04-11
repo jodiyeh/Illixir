@@ -1,5 +1,6 @@
 import React, {Component } from 'react';
 import { Link } from 'react-router-dom';
+import { google } from 'google-maps';
 
 class SelectPage extends Component{
   constructor(props) {
@@ -7,15 +8,16 @@ class SelectPage extends Component{
     this.state = {
       city: "",
       state: "",
-      latitude: "",
-      longitude: "",
       zipcode: "",
       streetAddress: "",
+      userLatitude: "",
+      userLongitude: ""
     };
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount(){
     const params = new URLSearchParams(this.props.location.search);
+
     this.setState({
       state: params.get("state"),
       city: params.get("city"),
@@ -23,9 +25,15 @@ class SelectPage extends Component{
       streetAddress: params.get("streetAddress"),
     })
   }
-
   handleClick(string) {
-    window.location = "/facility?facility="+string+"&state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode
+
+
+      window.location = "/facility?facility="+string
+        +"&state="+this.state.state
+        +"&city="+this.state.city
+        +"&streetAddress="+this.state.streetAddress
+        +"&zipcode="+this.state.zipcode
+
   }
 
   render(){

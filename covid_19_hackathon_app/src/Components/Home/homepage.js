@@ -72,8 +72,6 @@ class Home extends Component{
       state: results[1],
       zipcode: results[2],
     })
-
-
     }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
