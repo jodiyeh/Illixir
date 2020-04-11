@@ -45,7 +45,6 @@ class FacilityList extends Component{
     };
   }
   componentDidMount(){
-    //alert("called first");
     const params = new URLSearchParams(this.props.location.search);
     this.setState({
       state: params.get("state"),
@@ -54,11 +53,22 @@ class FacilityList extends Component{
       streetAddress: params.get("streetAddress"),
       facility: params.get("facility"),
     })
+    axios.get('http://localhost:5000/api/'+params.get("facility")+'/')
+      .then(response => {
+        const filter1 = response.data.filter(d => d.attributes.STATE === this.state.state);
+        this.setState({
+          facilities: filter1,
+        })
+      })
+      .catch(error => {
+        console.log("ERROR: " + error);
+      });
+  }
+
     //var geocoder = new window.google.maps.Geocoder();
     //var address = params.get("streetAddress") + ", " + params.get("city") + ", " + params.get("state") + " " + params.get("zipcode");
     //var address = params.get("streetAddress") + ", " + params.get("city") + ", " + params.get("state") + " " + params.get("zipcode")
     //this.geoAddress(geocoder, address, params.get("facility"));
-  }
 
   // geoAddress(geocoder, address, facility){
   //   alert("geocod");

@@ -76,53 +76,51 @@ styleObj2 = {
             </div>
           </div>
           <div class="card 2">
-            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/pharmacy.jpg"} /> </div>
+            <div class="card_image" onClick={this.handleClick.bind(this, "nursingHomes")}> <img src={process.env.PUBLIC_URL + "resources/pharmacy.jpg"} /> </div>
             <div class="card_title title-white">
             <p style = {this.styleObj}>
-                Pharmacies
+                Nursing Homes
                 </p>
             </div>
           </div>
           <div class="card 3">
-            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/ems-station.jpg"} /> </div>
+            <div class="card_image" onClick={this.handleClick.bind(this, "emergencyServices")}> <img src={process.env.PUBLIC_URL + "resources/ems-station.jpg"} /> </div>
             <div class="card_title title-white">
               <p style = {this.styleObj2}> Emergency Medical Services Stations</p>
             </div>
           </div>
           <div class="card 4">
-            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/urgentcare.jpg"} /> </div>
+            <div class="card_image" onClick={this.handleClick.bind(this, "urgentCare")}> <img src={process.env.PUBLIC_URL + "resources/urgentcare.jpg"} /> </div>
             <div class="card_title title-white">
               <p style = {this.styleObj}>Urgent Care Facilities</p>
             </div>
           </div>
           <div class="card 5">
-            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/veteranhealth.jpg"} /> </div>
+            <div class="card_image" onClick={this.handleClick.bind(this, "veteranHealth")}> <img src={process.env.PUBLIC_URL + "resources/veteranhealth.jpg"} /> </div>
             <div class="card_title title-white">
               <p style = {this.styleObj}> Veterans Health Administrations</p>
             </div>
           </div>
-          <div class="card 6">
-            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/shelter.jpg"} /> </div>
-            <div class="card_title title-white">
-              <p style = {this.styleObj}>National Shelter Systems Facilities</p>
-            </div>
-          </div>
           <div class="card 7">
-            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/localemerg.jpg"} /> </div>
+            <div class="card_image" onClick={this.handleClick.bind(this, "emergencyOps")}> <img src={process.env.PUBLIC_URL + "resources/localemerg.jpg"} /> </div>
             <div class="card_title title-white">
               <p style = {this.styleObj}>Local Emergency Operations</p>
-            </div>
-          </div>
-          <div class="card 8">
-            <div class="card_image"> <img src={process.env.PUBLIC_URL + "resources/firestation.jpeg"}/> </div>
-            <div class="card_title title-white">
-              <p style = {this.styleObj}>Fire Stations</p>
             </div>
           </div>
         </div>
       </div>
     )
   }
-}
-
+}          // <div class="card 6">
+          //   <div class="card_image" onClick={this.handleClick.bind(this, "shelter")}> <img src={process.env.PUBLIC_URL + "resources/shelter.jpg"} /> </div>
+          //   <div class="card_title title-white">
+          //     <p style = {this.styleObj}>National Shelter Systems Facilities</p>
+          //   </div>
+          // </div>
+// <div class="card 8">
+//   <div class="card_image" onClick={this.handleClick.bind(this, "fireStations")}> <img src={process.env.PUBLIC_URL + "resources/firestation.jpeg"}/> </div>
+//   <div class="card_title title-white">
+//     <p style = {this.styleObj}>Fire Stations</p>
+//   </div>
+// </div>
 export default SelectPage

@@ -5,13 +5,21 @@ const cors = require("cors");
 const passport = require("passport");
 
 const usersRouter = require('./user/user.routes');
-const hospitalsRouter = require('./hospital/hospital.routes');
+const hospitalsRouter = require('./facilities/hospitals.routes');
+const urgentCareRouter = require('./facilities/urgentCare.routes');
+const emergencyOpsRouter = require('./facilities/emergencyOps.routes');
+const fireStationsRouter = require('./facilities/fireStations.routes');
+const nursingHomesRouter = require('./facilities/nursingHomes.routes');
+const shelterRouter = require('./facilities/shelter.routes');
+const veteranHealthRouter = require('./facilities/veteranHealth.routes');
+const emergencyServicesRouter = require('./facilities/emergencyServices.routes');
 
 const port = process.env.PORT || 5000;
 const app = express();
 
 // Set up middleware: Cors
 app.use('*', cors());
+
 app.use(
   express.urlencoded({
     extended: false
@@ -39,6 +47,15 @@ app.use(passport.initialize());
 // Set up routes
 app.use('/api/users', usersRouter);
 app.use('/api/hospitals', hospitalsRouter);
+app.use('/api/urgentCare', urgentCareRouter);
+app.use('/api/emergencyOps', emergencyOpsRouter);
+app.use('/api/fireStations', fireStationsRouter);
+app.use('/api/nursingHomes', nursingHomesRouter);
+app.use('/api/shelter', shelterRouter);
+app.use('/api/veteranHealth', veteranHealthRouter);
+app.use('/api/emergencyServices', emergencyServicesRouter);
+
+
 
 
 // Run app

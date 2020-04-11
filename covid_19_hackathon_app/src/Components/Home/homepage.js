@@ -32,7 +32,6 @@ class Home extends Component{
   componentDidMount(){
     this.autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {})
     this.autocomplete.addListener("place_changed", this.handlePlaceSelect)
-
     axios.get('http://localhost:5000/api/users/'+this.props.id)
       .then(response => {
         this.setState({
