@@ -8,7 +8,7 @@ import SelectPage from './SelectPage';
 import UpdateAddress from './UpdateAddressPage';
 import FacilityList from './FacilityListPage';
 import FacilityPage from './FacilityPage';
-import {HeaderRow, Layout, Header, Navigation, Drawer,Textfield, Content} from 'react-mdl';
+import {HeaderRow, Layout, Header, Navigation, Drawer,Textfield, Content, FooterLinkList, Footer, FooterSection, FooterDropDownSection} from 'react-mdl';
 import { Route, Switch, useLocation} from "react-router-dom";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Geocode from "react-geocode";
@@ -58,7 +58,7 @@ class SideBar extends Component {
     return (
       <div className="sidebar">
         <Layout >
-        <Header title="Title" scroll>
+        <Header title="Covid 19 App" scroll>
            <div className="sidebar-header-container">
             <a className="sidebar-header-element" href={"/home"}>FAQ</a>
             <a className="sidebar-header-element" href={"/home"}>Tell Friends</a>
@@ -83,7 +83,49 @@ class SideBar extends Component {
               <Route path="/information" component = {FacilityPage}/>
             </Switch>
           </Content>
+          <Footer size="mega">
+      <FooterSection type="middle">
+          <FooterDropDownSection title="Features">
+              <FooterLinkList>
+                  <a href="#">About</a>
+                  <a href="#">Terms</a>
+                  <a href="#">Partners</a>
+                  <a href="#">Updates</a>
+              </FooterLinkList>
+          </FooterDropDownSection>
+          <FooterDropDownSection title="Details">
+              <FooterLinkList>
+                  <a href="#">Specs</a>
+                  <a href="#">Tools</a>
+                  <a href="#">Resources</a>
+              </FooterLinkList>
+          </FooterDropDownSection>
+          <FooterDropDownSection title="Technology">
+              <FooterLinkList>
+                  <a href="#">How it works</a>
+                  <a href="#">Patterns</a>
+                  <a href="#">Usage</a>
+                  <a href="#">Products</a>
+                  <a href="#">Contracts</a>
+              </FooterLinkList>
+          </FooterDropDownSection>
+          <FooterDropDownSection title="FAQ">
+              <FooterLinkList>
+                  <a href="#">Questions</a>
+                  <a href="#">Answers</a>
+                  <a href="#">Contact Us</a>
+              </FooterLinkList>
+          </FooterDropDownSection>
+      </FooterSection>
+      <FooterSection type="bottom" logo="Title">
+          <FooterLinkList>
+              <a href="#">Help</a>
+              <a href="#">Privacy & Terms</a>
+          </FooterLinkList>
+      </FooterSection>
+  </Footer>
         </Layout>
+
       </div>
     );
   }
