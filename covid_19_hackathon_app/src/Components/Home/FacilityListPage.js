@@ -4,11 +4,9 @@ import axios from 'axios';
 import Button from '@material-ui/core/Button';
 
 const Facility = props => (
-  <tr>
+  <tr className='list-container'>
     <td>{ props.facility.attributes.NAME }</td>
-    <td>{ props.facility.attributes.ADDRESS }</td>
-    <td>{ props.facility.attributes.CITY }</td>
-    <td>{ props.facility.attributes.STATE }</td>
+    <td>{ props.facility.attributes.ADDRESS}, {props.facility.attributes.CITY}, {props.facility.attributes.STATE }</td>
     <td>
     <Button variant="outlined" color="primary" component={Link} to={
       "/information?state="+props.user.state
@@ -21,7 +19,7 @@ const Facility = props => (
       +"&latitude="+props.facility.attributes.LATITUDE
       +"&longitude="+props.facility.attributes.LONGITUDE
     }>
-      More Info
+    Details
     </Button>
     </td>
   </tr>
@@ -153,7 +151,7 @@ class FacilityList extends Component{
   }
   render(){
     return(
-      <div className="sidebar-page">
+      <div className="list-page">
       <div className="list-content">
         <h1 className="list-title">#nearby!</h1>
       </div>
@@ -163,10 +161,6 @@ class FacilityList extends Component{
             <tr>
               <th>Name</th>
               <th>Address</th>
-              <th>City</th>
-              <th>State</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
             </tr>
           </thread>
           <tbody>

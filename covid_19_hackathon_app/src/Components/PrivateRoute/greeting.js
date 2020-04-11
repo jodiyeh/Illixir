@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import SideBar from "../Home/SideBar";
-import Landing from "../Landing/landing";
+import LandingPage from "../Landing/LandingPage";
 import Register from "../Auth/register";
 import Login from "../Auth/login";
 
@@ -13,7 +13,7 @@ function Check(props) {
     return <SideBar />;
   }
   return <div className="App">
-    <Route exact path="/" component={Landing} />
+    <Route exact path="/" component={LandingPage} />
     <Route exact path="/register" component={Register} />
     <Route exact path="/login" component={Login} />
   </div>

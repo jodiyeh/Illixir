@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {useHistory} from 'react-router-dom';
 
-class Landing extends Component {
+class LandingPage extends Component {
   render() {
     return (
       <div className="container valign-wrapper">
@@ -53,4 +53,4 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+export default LandingPage;

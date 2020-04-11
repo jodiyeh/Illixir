@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import { google } from 'google-maps';
 
 
-class Home extends Component{
+class HomePage extends Component{
   constructor() {
     super();
 
@@ -140,4 +140,4 @@ class Home extends Component{
   }
 }
 
-export default Home
+export default HomePage

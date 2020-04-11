@@ -10,6 +10,12 @@
   overflow-y: scroll;
 }
 
+.list-page{
+  height: 100%;
+  padding: 2vw;
+  overflow-y: scroll;
+}
+
 .header-color{
   background: #CC95C0;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
@@ -183,6 +189,10 @@
 
 .list-content{
   text-align: center;
+}
+
+.list-container{
+  font-size: 1.3vh;
 }
 
 .list-title {
