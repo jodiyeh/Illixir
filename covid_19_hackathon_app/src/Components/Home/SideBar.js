@@ -59,21 +59,16 @@ class SideBar extends Component {
       <div className="sidebar">
         <Layout >
         <Header title="Covid 19 App" scroll>
-           <div className="sidebar-header-container">
-            <a className="sidebar-header-element" href={"/home"}>FAQ</a>
-            <a className="sidebar-header-element" href={"/home"}>Tell Friends</a>
-            <a className="sidebar-header-element" href={"/home"}>Add Database</a>
-            <a className="sidebar-header-element" href={"/home"}>Contact Us</a>
-            <a className="sidebar-header-element" onClick={this.onLogoutClick}>Logout</a>
-           </div>
        </Header>
-          <Drawer title={"Hey there, "+this.state.username.split(" ")[0] + "!"}>
-            <div className="sidebar-drawer-container">
-            <Link className="sidebar-header-element" href={"/home"}>Home</Link>
-            <a className="sidebar-header-element" href={"/update/" + this.props.auth.user.id}>Update Address</a>
-            <a className="sidebar-header-element" onClick={this.onLogoutClick}>Logout</a>
-            </div>
-          </Drawer>
+       <Drawer title={"Hey there, "+this.state.username.split(" ")[0] + "!"}>
+         <div className="sidebar-drawer-container">
+         <a className="sidebar-header-element" href={"/home"}>Home</a>
+         <a className="sidebar-header-element" href={"/update/" + this.props.auth.user.id}>Update Address</a>
+         <a className="sidebar-header-element" href={"/home"}>Tell Friends</a>
+         <a className="sidebar-header-element" href={"/home"}>Add Database</a>
+         <a className="sidebar-header-element" onClick={this.onLogoutClick}>Logout</a>
+         </div>
+       </Drawer>
           <Content className="sidebar-content">
             <Switch>
               <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
@@ -85,42 +80,21 @@ class SideBar extends Component {
           </Content>
           <Footer size="mega">
       <FooterSection type="middle">
-          <FooterDropDownSection title="Features">
-              <FooterLinkList>
-                  <a href="#">About</a>
-                  <a href="#">Terms</a>
-                  <a href="#">Partners</a>
-                  <a href="#">Updates</a>
-              </FooterLinkList>
-          </FooterDropDownSection>
-          <FooterDropDownSection title="Details">
-              <FooterLinkList>
-                  <a href="#">Specs</a>
-                  <a href="#">Tools</a>
-                  <a href="#">Resources</a>
-              </FooterLinkList>
-          </FooterDropDownSection>
-          <FooterDropDownSection title="Technology">
-              <FooterLinkList>
-                  <a href="#">How it works</a>
-                  <a href="#">Patterns</a>
-                  <a href="#">Usage</a>
-                  <a href="#">Products</a>
-                  <a href="#">Contracts</a>
-              </FooterLinkList>
-          </FooterDropDownSection>
-          <FooterDropDownSection title="FAQ">
-              <FooterLinkList>
-                  <a href="#">Questions</a>
-                  <a href="#">Answers</a>
-                  <a href="#">Contact Us</a>
-              </FooterLinkList>
-          </FooterDropDownSection>
+        <FooterDropDownSection title="Footer">
+        <FooterLinkList>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Update Address</a>
+            <a href="#">FAQ</a>
+            <a href="#">Tell Friends</a>
+            <a href="#">Add Database</a>
+        </FooterLinkList>
+        </FooterDropDownSection>
       </FooterSection>
-      <FooterSection type="bottom" logo="Title">
+      <FooterSection type="bottom" logo="Covid App">
           <FooterLinkList>
-              <a href="#">Help</a>
-              <a href="#">Privacy & Terms</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Logout</a>
           </FooterLinkList>
       </FooterSection>
   </Footer>
