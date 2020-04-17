@@ -32,7 +32,7 @@ const Facility = props => (
 class FacilityList extends Component{
   constructor(props) {
     super();
-    //this.geoAddress = this.geoAddress.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       city: "",
       state: "",
@@ -42,8 +42,21 @@ class FacilityList extends Component{
       zipcode: "",
       streetAddress: "",
       facilities: [],
+      distance: "",
     };
   }
+  handleClick(){
+    window.location = "/facility?facility="+this.state.facility
+      +"&state="+this.state.state
+      +"&city="+this.state.city
+      +"&streetAddress="+this.state.streetAddress
+      +"&zipcode="+this.state.zipcode
+      +"&latitude="+this.state.latitude
+      +"&longitude="+this.state.longitude
+      +"&distance="+.5
+  }
+
+
 
   componentDidMount(){
     const params = new URLSearchParams(this.props.location.search);
@@ -55,25 +68,25 @@ class FacilityList extends Component{
       facility: params.get("facility"),
       latitude: params.get("latitude"),
       longitude: params.get("longitude"),
-
+      distance: params.get("distance")
     })
     axios.get('http://localhost:5000/api/'+params.get("facility")+'/')
       .then(response => {
-        const filter1 = response.data.filter(d => Math.abs(d.attributes.LATITUDE - this.state.latitude) < .36 );
-        const filter2 = filter1.filter(d => Math.abs(d.attributes.LONGITUDE - this.state.longitude) < .36 );
+        const data = response.data.filter(d => Math.sqrt(Math.pow((d.attributes.LATITUDE - params.get("latitude")), 2) + Math.pow((d.attributes.LONGITUDE - params.get("longitude")), 2)) < this.state.distance );
+        //const filter2 = filter1.filter(d => Math.abs(d.attributes.LONGITUDE - this.state.longitude) < .36 );
         // const filter3 = filter2.sort(function(a, b) {
         //   return a.attributes.LONGITUDE - b.attributes.LONGITUDE;
         // });
         // filter3.sort(function(a, b) {
         //   return a.attributes.LATITUDE - b.attributes.LATITUDE;
         // });
-        filter2.sort(function(a, b) {
+        data.sort(function(a, b) {
           var distance_a = Math.sqrt(Math.pow((a.attributes.LATITUDE - params.get("latitude")), 2) + Math.pow((a.attributes.LONGITUDE - params.get("longitude")), 2));
           var distance_b = Math.sqrt(Math.pow((b.attributes.LATITUDE - params.get("latitude")), 2) + Math.pow((b.attributes.LONGITUDE - params.get("longitude")), 2));
           return distance_a - distance_b;
         });
         this.setState({
-          facilities: filter2,
+          facilities: data,
         })
       })
       .catch(error => {
@@ -173,6 +186,9 @@ class FacilityList extends Component{
       <div className="list-content">
         <h1 className="list-title">#nearby!</h1>
         {this.state.latitude}, {this.state.longitude}
+        <Button variant="outlined" color="primary" component={Link} onClick={this.handleClick}>
+          refresh
+        </Button>
       </div>
       <div>
         <table className="table">

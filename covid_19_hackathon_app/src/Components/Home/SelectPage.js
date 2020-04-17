@@ -37,6 +37,7 @@ class SelectPage extends Component{
         +"&zipcode="+this.state.zipcode
         +"&latitude="+this.state.latitude
         +"&longitude="+this.state.longitude
+        +"&distance=.36"
 
   }
 
