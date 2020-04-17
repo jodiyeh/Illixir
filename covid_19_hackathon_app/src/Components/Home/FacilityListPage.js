@@ -7,6 +7,8 @@ const Facility = props => (
   <tr className='list-container'>
     <td>{ props.facility.attributes.NAME }</td>
     <td>{ props.facility.attributes.ADDRESS}, {props.facility.attributes.CITY}, {props.facility.attributes.STATE }</td>
+    <td>{ props.facility.attributes.LATITUDE}, {props.facility.attributes.LONGITUDE}</td>
+    <td>{69 * Math.sqrt(Math.pow(props.facility.attributes.LATITUDE - props.user.userLatitude, 2) + Math.pow(props.facility.attributes.LONGITUDE - props.user.userLongitude, 2))} miles</td>
     <td>
     <Button variant="outlined" color="primary" component={Link} to={
       "/information?state="+props.user.state
@@ -25,12 +27,12 @@ const Facility = props => (
   </tr>
 )
 
+
+
 class FacilityList extends Component{
   constructor(props) {
     super();
     //this.geoAddress = this.geoAddress.bind(this);
-    //this.componentDidMount = this.componentDidMount.bind(this);
-
     this.state = {
       city: "",
       state: "",
@@ -42,6 +44,7 @@ class FacilityList extends Component{
       facilities: [],
     };
   }
+
   componentDidMount(){
     const params = new URLSearchParams(this.props.location.search);
     this.setState({
@@ -56,9 +59,21 @@ class FacilityList extends Component{
     })
     axios.get('http://localhost:5000/api/'+params.get("facility")+'/')
       .then(response => {
-        const filter1 = response.data.filter(d => d.attributes.STATE === this.state.state);
+        const filter1 = response.data.filter(d => Math.abs(d.attributes.LATITUDE - this.state.latitude) < .36 );
+        const filter2 = filter1.filter(d => Math.abs(d.attributes.LONGITUDE - this.state.longitude) < .36 );
+        // const filter3 = filter2.sort(function(a, b) {
+        //   return a.attributes.LONGITUDE - b.attributes.LONGITUDE;
+        // });
+        // filter3.sort(function(a, b) {
+        //   return a.attributes.LATITUDE - b.attributes.LATITUDE;
+        // });
+        filter2.sort(function(a, b) {
+          var distance_a = Math.sqrt(Math.pow((a.attributes.LATITUDE - params.get("latitude")), 2) + Math.pow((a.attributes.LONGITUDE - params.get("longitude")), 2));
+          var distance_b = Math.sqrt(Math.pow((b.attributes.LATITUDE - params.get("latitude")), 2) + Math.pow((b.attributes.LONGITUDE - params.get("longitude")), 2));
+          return distance_a - distance_b;
+        });
         this.setState({
-          facilities: filter1,
+          facilities: filter2,
         })
       })
       .catch(error => {
@@ -157,6 +172,7 @@ class FacilityList extends Component{
       <div className="list-page">
       <div className="list-content">
         <h1 className="list-title">#nearby!</h1>
+        {this.state.latitude}, {this.state.longitude}
       </div>
       <div>
         <table className="table">
