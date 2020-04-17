@@ -8,15 +8,38 @@ import SelectPage from './SelectPage';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { google } from 'google-maps';
+import Geocode from "react-geocode";
+
+
+function googleGeoCode(address) {
+  const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyBCqW6K3maZLWP-1SAoRzKy87ZFQKxIv1k',
+    Promise: Promise
+  });
+
+  return googleMapsClient.geocode({ address: address }).asPromise();
+}
+
+async function getGeoCode(address) {
+  try {
+    const result = await googleGeoCode(address);
+    return result;
+  } catch (error) {
+    return "error";
+  }
+}
 
 
 class HomePage extends Component{
+
+
   constructor() {
     super();
-
     this.onChange = this.onChange.bind(this);
     this.autocomplete = null;
     this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
+    this.handleSearchUserAddress = this.handleSearchUserAddress.bind(this);
+    this.handleSearchCustonAddress = this.handleSearchCustonAddress.bind(this);
     this.state = {
       streetAddress: "",
       city: "",
@@ -28,7 +51,28 @@ class HomePage extends Component{
       userZipcode: "",
     };
   }
-
+  handleSearchUserAddress(){
+    const geoResponse = getGeoCode(this.state.userStreetAddress + ", " + this.state.userCity + ", " + this.state.userState);
+    geoResponse.then((result)=>{
+    const lat = result.json.results[0].geometry.location.lat
+    const long = result.json.results[0].geometry.location.lng
+    window.location = "/select?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode+"&latitude="+lat+"&longitude="+long
+    console.log(result)
+    }).catch((err)=>{
+     console.log(err);
+    })
+  }
+  handleSearchCustonAddress(){
+    const geoResponse = getGeoCode(this.state.streetAddress + ", " + this.state.city + ", " + this.state.state);
+    geoResponse.then((result)=>{
+    const lat = result.json.results[0].geometry.location.lat
+    const long = result.json.results[0].geometry.location.lng
+    window.location = "/select?state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode+"&latitude="+lat+"&longitude="+long
+    console.log(result)
+    }).catch((err)=>{
+     console.log(err);
+    })
+  }
   componentDidMount(){
     this.autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {})
     this.autocomplete.addListener("place_changed", this.handlePlaceSelect)
@@ -81,7 +125,7 @@ class HomePage extends Component{
         <div className="home-content">
           <h1 className = "home-title">#discover!</h1>
           <div className = "home-description">welcome! enter your to discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more!</div>
-          <Button variant="outlined" color="primary" component={Link} to={"/select?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode}>
+          <Button variant="outlined" color="primary" component={Link} onClick={this.handleSearchUserAddress}>
             search your current address
           </Button>
           <Button variant="outlined" color="primary" component={Link} to={"/update/"+this.props.id}>
@@ -131,7 +175,7 @@ class HomePage extends Component{
               onChange={this.onChange}
             />
           </div>
-          <Button variant="outlined" color="primary" component={Link} to={"/select?state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode}>
+          <Button variant="outlined" color="primary" component={Link} onClick={this.handleSearchCustonAddress}>
             search address
           </Button>
         </form>

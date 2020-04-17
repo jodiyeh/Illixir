@@ -10,8 +10,8 @@ class SelectPage extends Component{
       state: "",
       zipcode: "",
       streetAddress: "",
-      userLatitude: "",
-      userLongitude: ""
+      latitude: "",
+      longitude: ""
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -23,6 +23,8 @@ class SelectPage extends Component{
       city: params.get("city"),
       zipcode: params.get("zipcode"),
       streetAddress: params.get("streetAddress"),
+      latitude: params.get("latitude"),
+      longitude: params.get("longitude")
     })
   }
   handleClick(string) {
@@ -33,6 +35,8 @@ class SelectPage extends Component{
         +"&city="+this.state.city
         +"&streetAddress="+this.state.streetAddress
         +"&zipcode="+this.state.zipcode
+        +"&latitude="+this.state.latitude
+        +"&longitude="+this.state.longitude
 
   }
 

@@ -8,6 +8,7 @@ import SelectPage from './SelectPage';
 import UpdateAddress from './UpdateAddressPage';
 import FacilityList from './FacilityListPage';
 import FacilityPage from './FacilityPage';
+import AboutPage from './AboutPage';
 import {HeaderRow, Layout, Header, Navigation, Drawer,Textfield, Content, FooterLinkList, Footer, FooterSection, FooterDropDownSection} from 'react-mdl';
 import { Route, Switch, useLocation} from "react-router-dom";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -76,6 +77,7 @@ class SideBar extends Component {
               <Route path="/select" component = {SelectPage}/>
               <Route path="/facility" component = {FacilityList}/>
               <Route path="/information" component = {FacilityPage}/>
+              <Route path="/about" component = {AboutPage}/>
             </Switch>
           </Content>
           <Footer size="mega">
@@ -83,7 +85,7 @@ class SideBar extends Component {
         <FooterDropDownSection title="Footer">
         <FooterLinkList>
             <a href="#">Home</a>
-            <a href="#">About</a>
+            <a href="/about">About</a>
             <a href="#">Update Address</a>
             <a href="#">FAQ</a>
             <a href="#">Tell Friends</a>

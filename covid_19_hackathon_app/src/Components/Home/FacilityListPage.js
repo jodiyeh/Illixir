@@ -50,6 +50,9 @@ class FacilityList extends Component{
       zipcode: params.get("zipcode"),
       streetAddress: params.get("streetAddress"),
       facility: params.get("facility"),
+      latitude: params.get("latitude"),
+      longitude: params.get("longitude"),
+
     })
     axios.get('http://localhost:5000/api/'+params.get("facility")+'/')
       .then(response => {
