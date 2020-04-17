@@ -33,6 +33,7 @@ class FacilityList extends Component{
   constructor(props) {
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.state = {
       city: "",
       state: "",
@@ -45,6 +46,10 @@ class FacilityList extends Component{
       distance: "",
     };
   }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value / 69 });
+  };
   handleClick(){
     window.location = "/facility?facility="+this.state.facility
       +"&state="+this.state.state
@@ -53,7 +58,7 @@ class FacilityList extends Component{
       +"&zipcode="+this.state.zipcode
       +"&latitude="+this.state.latitude
       +"&longitude="+this.state.longitude
-      +"&distance="+.5
+      +"&distance="+this.state.distance
   }
 
 
@@ -186,9 +191,21 @@ class FacilityList extends Component{
       <div className="list-content">
         <h1 className="list-title">#nearby!</h1>
         {this.state.latitude}, {this.state.longitude}
-        <Button variant="outlined" color="primary" component={Link} onClick={this.handleClick}>
-          refresh
-        </Button>
+        <form className="home-search" onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <div className="search-title">distance: </div>
+            <input
+              name="distance"
+              type="text"
+              className="form-control"
+              value={this.state.distance * 69}
+              onChange={this.onChange}
+            />
+          </div>
+          <Button variant="outlined" color="primary" component={Link} onClick={this.handleClick}>
+            refresh
+          </Button>
+        </form>
       </div>
       <div>
         <table className="table">
