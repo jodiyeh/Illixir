@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', (req,res) => {
   console.log("Attempt to get hospitals");
-  axios.get('https://gis.fema.gov/arcgis/rest/services/FEMA/State_EOC/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json')
+  axios.get('https://services1.arcgis.com/Hp6G80Pky0om7QvQ/arcgis/rest/services/Local_Emergency_Operations_Centers_EOC/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json')
     .then(response => {
       console.log("RESPONSE: ");
       res.json(response.data.features)

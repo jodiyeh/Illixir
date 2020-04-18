@@ -7,8 +7,8 @@ const Facility = props => (
   <tr className='list-container'>
     <td>{ props.facility.attributes.NAME }</td>
     <td>{ props.facility.attributes.ADDRESS}, {props.facility.attributes.CITY}, {props.facility.attributes.STATE }</td>
-    <td>{ props.facility.attributes.LATITUDE}, {props.facility.attributes.LONGITUDE}</td>
-    <td>{69 * Math.sqrt(Math.pow(props.facility.attributes.LATITUDE - props.user.userLatitude, 2) + Math.pow(props.facility.attributes.LONGITUDE - props.user.userLongitude, 2))} miles</td>
+    <td>{ props.facility.geometry.y}, {props.facility.geometry.x}</td>
+    <td>{69 * Math.sqrt(Math.pow(props.facility.geometry.y - props.user.userLatitude, 2) + Math.pow(props.facility.geometry.x - props.user.userLongitude, 2))} miles</td>
     <td>
     <Button variant="outlined" color="primary" component={Link} to={
       "/information?state="+props.user.state
@@ -45,11 +45,10 @@ class FacilityList extends Component{
       facilities: [],
       distance: "",
     };
-  }
-
+}
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value / 69 });
-  };
+  }
   handleClick(){
     window.location = "/facility?facility="+this.state.facility
       +"&state="+this.state.state
@@ -77,7 +76,8 @@ class FacilityList extends Component{
     })
     axios.get('http://localhost:5000/api/'+params.get("facility")+'/')
       .then(response => {
-        const data = response.data.filter(d => Math.sqrt(Math.pow((d.attributes.LATITUDE - params.get("latitude")), 2) + Math.pow((d.attributes.LONGITUDE - params.get("longitude")), 2)) < this.state.distance );
+        //const data = response.data.filter(d => d.attributes.CITY = params.get("city") );
+
         //const filter2 = filter1.filter(d => Math.abs(d.attributes.LONGITUDE - this.state.longitude) < .36 );
         // const filter3 = filter2.sort(function(a, b) {
         //   return a.attributes.LONGITUDE - b.attributes.LONGITUDE;
@@ -85,11 +85,14 @@ class FacilityList extends Component{
         // filter3.sort(function(a, b) {
         //   return a.attributes.LATITUDE - b.attributes.LATITUDE;
         // });
+        alert(JSON.stringify(response.data))
+        const data = response.data.filter(d => Math.sqrt(Math.pow((d.geometry.y - params.get("latitude")), 2) + Math.pow((d.geometry.x - params.get("longitude")), 2)) < this.state.distance );
         data.sort(function(a, b) {
-          var distance_a = Math.sqrt(Math.pow((a.attributes.LATITUDE - params.get("latitude")), 2) + Math.pow((a.attributes.LONGITUDE - params.get("longitude")), 2));
-          var distance_b = Math.sqrt(Math.pow((b.attributes.LATITUDE - params.get("latitude")), 2) + Math.pow((b.attributes.LONGITUDE - params.get("longitude")), 2));
+          var distance_a = Math.sqrt(Math.pow((a.geometry.y - params.get("latitude")), 2) + Math.pow((a.geometry.x - params.get("longitude")), 2));
+          var distance_b = Math.sqrt(Math.pow((b.geometry.y - params.get("latitude")), 2) + Math.pow((b.geometry.x - params.get("longitude")), 2));
           return distance_a - distance_b;
         });
+        alert(JSON.stringify(data))
         this.setState({
           facilities: data,
         })
