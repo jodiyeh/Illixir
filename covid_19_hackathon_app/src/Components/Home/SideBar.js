@@ -86,9 +86,9 @@ class SideBar extends Component {
       <FooterSection type="middle">
         <FooterDropDownSection title="Footer">
         <FooterLinkList>
-            <a href="#">Home</a>
+            <a href="/home">Home</a>
             <a href="/about">About</a>
-            <a href="#">Update Address</a>
+            <a href={"/update/" + this.props.auth.user.id}>Update Address</a>
             <a href="/FAQ">FAQ</a>
             <a href="#">Tell Friends</a>
             <a href="#">Add Database</a>
