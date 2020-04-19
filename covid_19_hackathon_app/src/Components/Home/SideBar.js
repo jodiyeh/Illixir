@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import HomePage from './HomePage';
 import InfoPage from './infopage';
+import FAQPage from './FAQPage';
 import SelectPage from './SelectPage';
 import UpdateAddress from './UpdateAddressPage';
 import FacilityList from './FacilityListPage';
@@ -78,6 +79,7 @@ class SideBar extends Component {
               <Route path="/facility" component = {FacilityList}/>
               <Route path="/information" component = {FacilityPage}/>
               <Route path="/about" component = {AboutPage}/>
+              <Route path="/FAQ" component = {FAQPage}/>
             </Switch>
           </Content>
           <Footer size="mega">
@@ -87,7 +89,7 @@ class SideBar extends Component {
             <a href="#">Home</a>
             <a href="/about">About</a>
             <a href="#">Update Address</a>
-            <a href="#">FAQ</a>
+            <a href="/FAQ">FAQ</a>
             <a href="#">Tell Friends</a>
             <a href="#">Add Database</a>
         </FooterLinkList>

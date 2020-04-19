@@ -21,3 +21,5 @@ class InfoPage extends Component{
  export default GoogleApiWrapper({
     apiKey: ('AIzaSyATfqDvOYhuTkacoeFvXzrvbgGIYw7YwWM')
   })(InfoPage)
+
+  
