@@ -66,8 +66,6 @@ class SideBar extends Component {
          <div className="sidebar-drawer-container">
          <a className="sidebar-header-element" href={"/home"}>Home</a>
          <a className="sidebar-header-element" href={"/update/" + this.props.auth.user.id}>Update Address</a>
-         <a className="sidebar-header-element" href={"/home"}>Tell Friends</a>
-         <a className="sidebar-header-element" href={"/home"}>Add Database</a>
          <a className="sidebar-header-element" onClick={this.onLogoutClick}>Logout</a>
          </div>
        </Drawer>
@@ -90,8 +88,6 @@ class SideBar extends Component {
             <a href="/about">About</a>
             <a href={"/update/" + this.props.auth.user.id}>Update Address</a>
             <a href="/FAQ">FAQ</a>
-            <a href="#">Tell Friends</a>
-            <a href="#">Add Database</a>
         </FooterLinkList>
         </FooterDropDownSection>
       </FooterSection>
