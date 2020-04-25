@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import "./Styles/UpdatePage.css";
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 export default class UpdateAddress  extends Component {
   constructor (props){
@@ -105,12 +108,16 @@ export default class UpdateAddress  extends Component {
     return (
       <div className="sidebar-page">
         <div className="update-content">
-          <h1 className="update-title">#home!</h1>
-        </div>
+          <div className="update-title-section">
+            <div className="update-title">Update Your Address</div>
+          </div>
+          <div className="update-search">
+
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
+          <div className="search-title">Look Up Location: </div>
           <input id="autocomplete" className="input-field" ref="input" type="text"/>
-            <div className="search-title">street address: </div>
+            <div className="search-title">Street Address: </div>
             <input
               type="text"
               className="form-control"
@@ -119,7 +126,7 @@ export default class UpdateAddress  extends Component {
             />
           </div>
           <div className="form-group">
-            <div className="search-title">city: </div>
+            <div className="search-title">City: </div>
             <input
               type="text"
               className="form-control"
@@ -128,7 +135,7 @@ export default class UpdateAddress  extends Component {
             />
           </div>
           <div className="form-group">
-            <div className="search-title">state: </div>
+            <div className="search-title">State: </div>
             <input
               type="text"
               className="form-control"
@@ -137,7 +144,7 @@ export default class UpdateAddress  extends Component {
             />
           </div>
           <div className="form-group">
-            <div className="search-title">zipcode: </div>
+            <div className="search-title">Zipcode: </div>
             <input
               type="text"
               className="form-control"
@@ -145,10 +152,14 @@ export default class UpdateAddress  extends Component {
               onChange={this.onChangeZipcode}
             />
           </div>
-          <div className="form-group">
-            <input type="submit" value="Update!" className="btn btn-primary" />
+          <div className="update-button-section">
+          <Button variant="contained" color="secondary" component={Link} onClick={this.onSubmit}>
+            <div className="update-button-text">Update!</div>
+          </Button>
           </div>
         </form>
+        </div>
+        </div>
       </div>
     )
   }

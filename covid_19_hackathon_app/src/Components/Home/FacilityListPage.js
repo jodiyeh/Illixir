@@ -20,6 +20,11 @@ const Facility = props => (
       +"&userLatitude="+props.user.userLatitude
       +"&latitude="+props.facility.attributes.LATITUDE
       +"&longitude="+props.facility.attributes.LONGITUDE
+      +"&facilityName="+props.facility.attributes.NAME
+      +"&facilityAddress="+props.facility.attributes.ADDRESS
+      +"&facilityCity="+props.facility.attributes.CITY
+      +"&facilityState="+props.facility.attributes.STATE
+      +"&distance="+(Math.round(69 * 100 * Math.sqrt(Math.pow(props.facility.geometry.y - props.user.userLatitude, 2) + Math.pow(props.facility.geometry.x - props.user.userLongitude, 2)))/100)
     }>
     Details
     </Button>

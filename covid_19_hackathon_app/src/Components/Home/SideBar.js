@@ -10,14 +10,21 @@ import UpdateAddress from './UpdateAddressPage';
 import FacilityList from './FacilityListPage';
 import FacilityPage from './FacilityPage';
 import AboutPage from './AboutPage';
-import {HeaderRow, Layout, Header, Navigation, Drawer,Textfield, Content, FooterLinkList, Footer, FooterSection, FooterDropDownSection} from 'react-mdl';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import { Route, Switch, useLocation} from "react-router-dom";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Geocode from "react-geocode";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './SideBar.css';
-import Button from '@material-ui/core/Button';
+import './Styles/SideBar.css';
+import { faShieldVirus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class SideBar extends Component {
   constructor(props) {
@@ -36,7 +43,14 @@ class SideBar extends Component {
     e.preventDefault();
     this.props.logoutUser();
     window.location.href = "../login";
-
+  };
+  onHomeClick = e => {
+    e.preventDefault();
+    window.location.href = "/home";
+  };
+  onUpdateClick = e => {
+    e.preventDefault();
+    window.location.href = "/update/"+this.props.auth.user.id;
   };
 
   componentDidMount () {
@@ -56,54 +70,49 @@ class SideBar extends Component {
   }
 
 
+
+
   render() {
     return (
-      <div className="sidebar">
-        <Layout >
-        <Header title="Covid 19 App" scroll>
-       </Header>
-       <Drawer title={"Hey there, "+this.state.username.split(" ")[0] + "!"}>
-         <div className="sidebar-drawer-container">
-         <a className="sidebar-header-element" href={"/home"}>Home</a>
-         <a className="sidebar-header-element" href={"/update/" + this.props.auth.user.id}>Update Address</a>
-         <a className="sidebar-header-element" onClick={this.onLogoutClick}>Logout</a>
-         </div>
-       </Drawer>
-          <Content className="sidebar-content">
-            <Switch>
-              <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
-              <Route path="/update/:id" render = {() => (<UpdateAddress id={this.props.auth.user.id}/>)}/>
-              <Route path="/select" component = {SelectPage}/>
-              <Route path="/facility" component = {FacilityList}/>
-              <Route path="/information" component = {FacilityPage}/>
-              <Route path="/about" component = {AboutPage}/>
-              <Route path="/FAQ" component = {FAQPage}/>
-            </Switch>
-          </Content>
-          <Footer size="mega">
-      <FooterSection type="middle">
-        <FooterDropDownSection title="Footer">
-        <FooterLinkList>
-            <a href="/home">Home</a>
-            <a href="/about">About</a>
-            <a href={"/update/" + this.props.auth.user.id}>Update Address</a>
-            <a href="/FAQ">FAQ</a>
-        </FooterLinkList>
-        </FooterDropDownSection>
-      </FooterSection>
-      <FooterSection type="bottom" logo="Covid App">
-          <FooterLinkList>
-              <a href="#">Contact Us</a>
-              <a href="#">Logout</a>
-          </FooterLinkList>
-      </FooterSection>
-  </Footer>
-        </Layout>
+      <div className="application">
+        <AppBar className="appbar" position="static" style={{ background: '#77A6F7' }}>
+          <Toolbar className="appbar">
+          <div className="sidebar-container">
+          <div className="sidebar-header">
+          <FontAwesomeIcon size="1x" color="white" icon={faShieldVirus}/>
+          &nbsp;Illixir
+          </div>
+          <div className="sidebar-links">
+          <div className="sidebar-header-element" onClick={this.onHomeClick}>Home</div>
+          </div>
+          <div className="sidebar-links">
+          <div className="sidebar-header-element" onClick={this.onUpdateClick}>Update Address</div>
+          </div>
+          <div className="sidebar-links">
+          <div className="sidebar-header-element" onClick={this.onLogoutClick}>Logout</div>
+          </div>
+          </div>
 
+          </Toolbar>
+        </AppBar>
+        <Switch>
+          <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
+          <Route path="/update/:id" render = {() => (<UpdateAddress id={this.props.auth.user.id}/>)}/>
+          <Route path="/select" component = {SelectPage}/>
+          <Route path="/facility" component = {FacilityList}/>
+          <Route path="/information" component = {FacilityPage}/>
+          <Route path="/about" component = {AboutPage}/>
+          <Route path="/FAQ" component = {FAQPage}/>
+        </Switch>
       </div>
     );
   }
 }
+
+
+
+
+
 
 SideBar.propTypes = {
   logoutUser: PropTypes.func.isRequired,

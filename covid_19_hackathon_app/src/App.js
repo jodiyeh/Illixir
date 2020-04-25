@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -39,9 +40,9 @@ class App extends Component {
 render() {
   return (
     <Provider store={store}>
-      <Router>
+      <BrowserRouter>
         <Greetings />
-      </Router>
+      </BrowserRouter>
     </Provider>
   );
 }

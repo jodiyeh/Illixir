@@ -2,14 +2,18 @@ import React, {Component } from 'react';
 import {Grid, Cell} from 'react-mdl';
 import {useHistory} from 'react-router-dom';
 import Collapsible from 'react-collapsible';
-import { Link } from 'react-router-dom';
 import { Route, Switch } from "react-router-dom";
 import SelectPage from './SelectPage';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { google } from 'google-maps';
 import Geocode from "react-geocode";
-
+import "./Styles/HomePage.css";
+import { faHouseUser, faMapMarkerAlt, faHospitalAlt, faRoute, faInfoCircle, faLocationArrow} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Fade from 'react-reveal/Fade';
+import Typing from 'react-typing-animation';
 
 function googleGeoCode(address) {
   const googleMapsClient = require('@google/maps').createClient({
@@ -123,62 +127,156 @@ class HomePage extends Component{
     return(
       <div className="sidebar-page">
         <div className="home-content">
-          <h1 className = "home-title">#discover!</h1>
-          <div className = "home-description">welcome! enter your to discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more!</div>
-          <Button variant="outlined" color="primary" component={Link} onClick={this.handleSearchUserAddress}>
-            search your current address
-          </Button>
-          <Button variant="outlined" color="primary" component={Link} to={"/update/"+this.props.id}>
-            update address
-          </Button>
-          <div className="home-description">search different address:</div>
+          <div className="home-title-section">
+            <div className="titleContainer">
+            <div className="home-title">
+            <Typing loop={true}>
+              <span> What is Illixir?</span>
+              <Typing.Delay ms={1500} />
+              <Typing.Backspace count={20} />
+              <span> Illixir is a facility finder!</span>
+              <Typing.Delay ms={1500} />
+              <Typing.Backspace count={30} />
+              <span> What is its purpose?</span>
+              <Typing.Delay ms={1500} />
+              <Typing.Backspace count={30} />
+              <span> Illixir provides easy access to public data!</span>
+              <Typing.Delay ms={1500} />
+              <Typing.Backspace count={45} />
+            </Typing>
+            </div>
+            <div className="home-title-description">Welcome! Discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more!</div>
+            </div>
+          </div>
+          <div className = "home-description">
+            <div className="how-to-use">
+              <div className="home-title-section">
+              <div className="home-steps-title">How Do I Use Illixir?</div>
+              </div>
+              <Fade left>
+              <div className="step">
+              <div className="step-pic">
+                <FontAwesomeIcon size="9x" color="#F78888" icon={faHouseUser} />
+              </div>
+                <div className="step-content">
+                <div className="step-title">1. Search my address.</div>
+                <div className="step-description">Your address is saved in the application so searching is one click of a button away! You can update your saved address at anytime.</div>
+                </div>
+              </div>
+              </Fade>
+              <Fade right>
+              <div className="step1">
+              <div className="step-pic">
+                <FontAwesomeIcon size="9x" color="#77A6F7" icon={faLocationArrow} />
+              </div>
+                <div className="step-content">
+                <div className="step-title1">2. Search an alternate address.</div>
+                <div className="step-description">If you are interested in a location other than your saved address, you can fill out the form below to search another address!</div>
+                </div>
+              </div>
+              </Fade>
+              <Fade left>
+              <div className="step2">
+
+                <div className="step-pic">
+                <FontAwesomeIcon size="9x" color="#F3D250" icon={faHospitalAlt} />
+                </div>
+                <div className="step-content">
+                <div className="step-title2">3. Select a facility.</div>
+                <div className="step-description">After searching an address, click the facility type you are interested in! These facilities are retrieved from federal databases and then filtered by distance from your address.</div>
+                </div>
+              </div>
+              </Fade>
+              <Fade right>
+              <div className="step">
+
+              <div className="step-pic">
+              <FontAwesomeIcon size="9x" color="#F78888" icon={faRoute} />
+              </div>
+                <div className="step-content">
+                <div className="step-title">4. Filter the facility by distance.</div>
+                <div className="step-description">The default filter distance is 25 miles. You can adjust this to any distance you want and refresh the page.</div>
+                </div>
+              </div>
+              </Fade>
+              <Fade left>
+              <div className="step1">
+
+              <div className="step-pic">
+              <FontAwesomeIcon size="9x" color="#77A6F7" icon={faInfoCircle} />
+              </div>
+                <div className="step-content">
+                <div className="step-title1">5. Get the details.</div>
+                <div className="step-description">Once you have located the desired facility, click the details button to learn more about the facility. Here you will be able to view the facility and your address on a map to get more insight on their locations.</div>
+                </div>
+              </div>
+              </Fade>
+            </div>
+            <div className="home-button-section">
+            <Button  variant="contained" color="secondary" component={Link} onClick={this.handleSearchUserAddress}>
+              <div className="home-button-text">Search my address!</div>
+            </Button>
+            <Button  variant="contained" color="secondary" component={Link} to={"/update/"+this.props.id}>
+              <div className="home-button-text">Update my address!</div>
+            </Button>
+            </div>
+          </div>
+          <div className="home-form">
+          <div className="home-title-section">
+          <div className="home-form-title">Enter A Custom Address</div>
+
+          </div>
+          <form className="home-search" onSubmit={this.onSubmit}>
+            <div className="form-group">
+            <div className="search-title">Location Look Up: </div>
+              <input id="autocomplete" className="input-field" ref="input" type="text"/>
+              <div className="search-title">Street Address: </div>
+              <input
+                name="streetAddress"
+                type="text"
+                className="form-control"
+                value={this.state.streetAddress}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <div className="search-title">City: </div>
+              <input
+                name="city"
+                type="text"
+                className="form-control"
+                value={this.state.city}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <div className="search-title">State: </div>
+              <input
+                name="state"
+                type="text"
+                className="form-control"
+                value={this.state.state}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="form-group">
+              <div className="search-title">Zipcode: </div>
+              <input
+                name="zipcode"
+                type="text"
+                className="form-control"
+                value={this.state.zipcode}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className="home-button-section">
+            <Button variant="contained" color="secondary" component={Link} onClick={this.handleSearchCustonAddress}>
+              <div className="home-button-text">Search Alternate Address!</div>
+            </Button>
+            </div>
+          </form>
+          </div>
         </div>
-        <form className="home-search" onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <input id="autocomplete" className="input-field" ref="input" type="text"/>
-            <div className="search-title">street address: </div>
-            <input
-              name="streetAddress"
-              type="text"
-              className="form-control"
-              value={this.state.streetAddress}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="form-group">
-            <div className="search-title">city: </div>
-            <input
-              name="city"
-              type="text"
-              className="form-control"
-              value={this.state.city}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="form-group">
-            <div className="search-title">state: </div>
-            <input
-              name="state"
-              type="text"
-              className="form-control"
-              value={this.state.state}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="form-group">
-            <div className="search-title">zipcode: </div>
-            <input
-              name="zipcode"
-              type="text"
-              className="form-control"
-              value={this.state.zipcode}
-              onChange={this.onChange}
-            />
-          </div>
-          <Button variant="outlined" color="primary" component={Link} onClick={this.handleSearchCustonAddress}>
-            search address
-          </Button>
-        </form>
       </div>
     )
   }

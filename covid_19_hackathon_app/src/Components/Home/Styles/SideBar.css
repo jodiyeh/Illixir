@@ -1,0 +1,242 @@
+
+
+
+.sidebar-links{
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar-container{
+  display:flex;
+  flex-direction: row;
+  padding: 2vh
+}
+.about-title{
+  font-size: 2vh;
+  padding-top: 15px;
+}
+
+.about-description{
+  font-size: 1.5vh;
+}
+
+.about-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.about-page{
+  font-size: 5vh;
+  font-style: italic;
+}
+
+.sidebar{
+  font-family: 'Didact Gothic';
+
+}
+
+.sidebar-content{
+}
+
+.sidebar-page{
+  font-family: 'Didact Gothic';
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.sidebar-drawer-container{
+  font-family: 'Didact Gothic';
+   display: flex;
+   flex-direction: column;
+
+}
+.sidebar-header{
+  font-size: 5vh;
+  overflow: hidden;
+  font-family: 'Didact Gothic';
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.sidebar-title{
+  font-size: 4vh;
+  padding: 10px;
+  margin: 10px;
+  line-height: 4.5vh;
+  color: rgba(0,0,255,0.5);
+}
+.sidebar-header-element{
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-family: 'Didact Gothic';
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
+  font-size: 3vh;
+  border-radius: 5px;
+
+}
+
+.sidebar-header-element:hover{
+  cursor: pointer;
+  background-color: #D2FDFF;
+  color: black;
+}
+.mdl-layout__header .mdl-layout__drawer-button i {
+  color: #000;
+}
+.list-page{
+  height: 100%;
+  padding: 2vw;
+  overflow-y: scroll;
+}
+
+.header-color{
+  background: #CC95C0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.landing-grid{
+  background: #CC95C0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100%;
+  padding: 5vw;
+  overflow-y: scroll;
+}
+
+.list-content{
+  text-align: center;
+}
+
+.list-container{
+  font-size: 1.3vh;
+}
+
+.list-title {
+	display: inline;
+	position: relative;
+	font: 10vw Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: rgba(0,0,255,0.5);
+}
+
+.list-title:after {
+	content: "#nearby!";
+	position: absolute; left: .5vw; top: .5vw;
+	color: rgba(255,0,0,0.5);
+}
+
+.facility-content{
+  text-align: center;
+}
+
+.facility-title {
+	display: inline;
+	position: relative;
+	font: 10vw Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: rgba(0,0,255,0.5);
+}
+
+.facility-title:after {
+	content: "#details!";
+	position: absolute; left: .5vw; top: .5vw;
+	color: rgba(255,0,0,0.5);
+}
+
+.facility-info{
+  padding: 2vw;
+  background-color: pink;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.facility-info-container{
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+}
+
+.facility-info-title{
+  background-color: green;
+  text-align: center;
+  margin-bottom: 2vw;
+}
+
+.facility-info-content{
+  background-color: yellow;
+}
+
+.facility-maps-container{
+  text-align: center;
+  align-content: center;
+  width: 80vh;
+  height: 80vh;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.facility-map-link{
+
+}
+
+.search-title{
+
+  font-size: 2.5vh;
+  color: #F78888;
+}
+
+.footer{
+  font-family: 'Didact Gothic';
+}
+@media all and (max-width: 500px) {
+  .sidebar-header-element{
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-family: 'Didact Gothic';
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 2.5vh;
+  }
+  .sidebar-header-element:hover{
+    cursor: pointer;
+    background-color: #D2FDFF;
+    color: black;
+  }
+  .sidebar-links{
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-container{
+    display:flex;
+    flex-direction: column;
+    padding: 2vh;
+  }
+  .sidebar-header{
+    font-size: 5vh;
+    overflow: hidden;
+    font-family: 'Didact Gothic';
+    display: flex;
+    flex-direction: row;
+  }
+}

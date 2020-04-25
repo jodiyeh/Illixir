@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
-
+import "./Auth.css"
 // Login is connected to the redux provider through connect.
 // The state is mapped to the props.
 // The Login component then accesses the state through props.

@@ -1,0 +1,44 @@
+.update-search{
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 5vw;
+}
+.update-title-section{
+  text-align: center;
+  width: 100%;
+}
+
+.update-title {
+  width: 100%;
+  padding: 1vh;
+	display: inline;
+	position: relative;
+	font: 5vw Didact Gothic, Sans-Serif;
+	color: rgba(0,0,255,0.5);
+}
+
+.update-title:after {
+	content: "Update Your Address";
+	position: absolute; left: .2vw; top: .2vw;
+	color: rgba(255,0,0,0.5);
+}
+
+.update-content{
+  justify-content: center;
+}
+.update-button{
+  width: 25vh;
+}
+.update-button-text{
+  font-size: 2vh;
+  line-height: 3vh;
+  text-transform: none;
+}
+.update-button-section{
+  padding: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
