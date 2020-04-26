@@ -1,9 +1,10 @@
+/*global google*/
 import React, {Component } from 'react';
 import axios from 'axios';
 import InfoPage from './infopage';
-import Places from "google-places-web";
-import { google } from 'google-maps';
+//import Places from "google-places-web";
 
+//const Places: GooglePlaces = require("google-places-web").default; // instance of GooglePlaces Class;
 
 //Places.apiKey = "AIzaSyBCqW6K3maZLWP-1SAoRzKy87ZFQKxIv1k";
 
@@ -24,6 +25,35 @@ import { google } from 'google-maps';
 //     return "error";
 //   }
 // }
+function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.866, lng: 151.196},
+          zoom: 15
+        });
+
+        var request = {
+          placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+        };
+
+        var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        alert("hi")
+        service.getDetails(request, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+      }
 
 function googleGeoCode(address) {
   const googleMapsClient = require('@google/maps').createClient({
@@ -49,6 +79,7 @@ class FacilityPage extends Component{
     super();
     this.capitalizeFirstLetter = this.capitalizeFirstLetter.bind(this);
     this.capitalize = this.capitalize.bind(this);
+    this.details = null;
     this.state = {
       city: "",
       state: "",
@@ -93,27 +124,10 @@ class FacilityPage extends Component{
     this.setState({
       placeId: place_id,
     });
+    initMap();
 
-    // const response = Places.details({ placeid: result.json.results[0].place_id });
-    // alert(response)
-    // const { status, result2 } = response;
-    // alert(JSON.stringify(result2));
-
-
-
-    }).catch((err)=>{
-     console.log(err);
-    })
-
-
-
-
-
-
-
-
-
-  }
+  })
+}
 
   capitalize(string) {
     string = string.toLowerCase();
