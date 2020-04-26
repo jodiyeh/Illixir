@@ -4,6 +4,7 @@ import { google } from 'google-maps';
 import './Styles/SelectPage.css';
 import { faClinicMedical, faHandHoldingMedical, faProcedures, faAmbulance, faUserNurse, faHospital} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Fade from 'react-reveal/Fade';
 
 class SelectPage extends Component{
   constructor(props) {
@@ -72,20 +73,26 @@ styleObj2 = {
         <div className="select-content">
         <div className="page-title-section">
           <div className="titleContainer">
+          <Fade bottom>
           <div className="page-title">
           Choose A Category
           </div>
-
+</Fade>
         </div>
         </div>
+        <Fade bottom>
         <div className="select-title-description">
         Your address is currently set as <span id="your-address">{this.state.streetAddress}</span>, <span id="your-address">{this.state.city}</span>, <span id="your-address">{this.state.state}</span>, <span id="your-address">{this.state.zipcode}</span>. Choose
         a facility from the options below.
         </div>
+        </Fade>
+        <Fade bottom>
+
           <div className="select-cards">
           <div class="cards-list">
             <div class="card 1">
               <div class="card_image" onClick={this.handleClick.bind(this, "hospitals")}> <FontAwesomeIcon size="6x" color="#F78888" icon={faHospital} /> </div>
+
               <div class="card_title title-white">
                 <p style = {this.styleObj}>
                   Hospitals
@@ -126,7 +133,9 @@ styleObj2 = {
               </div>
             </div>
           </div>
+
           </div>
+          </Fade>
         </div>
       </div>
     )
