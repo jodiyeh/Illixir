@@ -26,7 +26,7 @@ About Illixir
           <div className="about-title">Description</div>
           </Fade>
           <Fade right>
-          <div className="about-description">Covid19 is an app developed by two college students that aims to provide a singular platform where users can find various forms of aid in this period of the Covid-19 pandemic. Starting out as a hackathon project in late March, this application has been continually developed to incorporate more and more features to enhance its utility. The platform’s core technology is basic but useful search filtering algorithms to allow for users to be matched with nearby facilities.</div>
+          <div className="about-description">Illixir is an app developed by two college students that aims to provide a singular platform where users can find various forms of aid in this period of the Covid-19 pandemic. Starting out as a hackathon project in late March of 2020, this application has been continually developed to incorporate more and more features to enhance its utility. The platform’s core technology uses basic but useful searching/filtering algorithms to allow users to be matched with nearby facilities.</div>
           </Fade>
           <Fade left>
           <div className="about-title">Contributers</div>

@@ -9,7 +9,7 @@ class LandingPage extends Component {
         <div className="col">
           <div className="col s12 center-align">
             <h4>
-              <b>COVID-19 Facilities Finder</b>
+              <b>Illixir</b>
             </h4>
             <p className="flow-text grey-text text-darken-1">
             An application to match you to nearby hospitals, pharmacies, shelters, emergency medical centers, and more!

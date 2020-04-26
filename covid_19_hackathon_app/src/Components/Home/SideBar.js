@@ -124,7 +124,7 @@ class SideBar extends Component {
                 <a style={{ color: '#77A6F7' }} href="/home">Home</a>
               </li>
               <li className="footer-text">
-                <a style={{ color: '#77A6F7' }} onClick="/about">About</a>
+                <a style={{ color: '#77A6F7' }} href="/about">About</a>
               </li>
               <li className="footer-text">
                 <a style={{ color: '#77A6F7' }} onClick={this.onUpdateClick}>Update Address</a>
