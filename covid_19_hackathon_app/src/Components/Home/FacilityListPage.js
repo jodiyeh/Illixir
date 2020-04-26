@@ -2,7 +2,16 @@ import React, {Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
+import Fade from 'react-reveal/Fade';
 
+const stringDict = {
+  "hospital":"Hospitals",
+  "nursingHomes":"Nursing Homes",
+  "emergencyServices":"Emergency Medical Service Stations",
+  "urgentCare":"Urgent Care Facilities",
+  "veteranHealth":"Veteran Health Administrations",
+  "emergencyOps":"Local Emergency Operations",
+}
 
 function capitalize(string) {
   string = string.toLowerCase();
@@ -19,6 +28,7 @@ function capitalizeFirstLetter(string) {
 }
 
 const Facility = props => (
+  <Fade bottom>
   <tr className='list-container' style={{ fontSize: "1.7vh" }}>
     <td>{ capitalizeFirstLetter(props.facility.attributes.NAME) }. { capitalizeFirstLetter(props.facility.attributes.ADDRESS) }, { capitalizeFirstLetter(props.facility.attributes.CITY) }, { props.facility.attributes.STATE }</td>
     <td>{(Math.round(69 * 100 * Math.sqrt(Math.pow(props.facility.geometry.y - props.user.userLatitude, 2) + Math.pow(props.facility.geometry.x - props.user.userLongitude, 2)))/100)} miles</td>
@@ -43,6 +53,7 @@ const Facility = props => (
     </Button>
     </td>
   </tr>
+  </Fade>
 )
 
 
@@ -218,21 +229,28 @@ class FacilityList extends Component{
       <div className="list-content">
       <div className="page-title-section">
         <div className="titleContainer">
+        <Fade bottom>
         <div className="page-title">
         Facilities Near You
         </div>
+        </Fade>
 
       </div>
+      <Fade bottom>
       <div className="select-title-description">
-      Showing the <span id="your-address">{this.state.facility}</span> within <span id="your-address">{(Math.round(69 * 100 * this.state.distance/100))}</span> miles.
+      Showing the <span id="your-address">{stringDict[this.state.facility]}</span> within <span id="your-address">{(Math.round(69 * 100 * this.state.distance/100))}</span> miles.
       </div>
+      </Fade>
       </div>
 
       <div className="facility-list">
 
         <form className="list-filter" onSubmit={this.onSubmit}>
           <div className="form-group">
+          <Fade left>
             <div className="search-title">Filter by distance: </div>
+            </Fade>
+            <Fade right>
             <input
               name="distance"
               type="text"
@@ -240,10 +258,12 @@ class FacilityList extends Component{
               value={(Math.round(69 * 100 * this.state.distance/100))}
               onChange={this.onChange}
             />
-            
+            </Fade>
           </div>
           <div className="home-button-section">
+          <Fade left>
           <div className="home-button-form" onClick={this.handleClick}>Refresh</div>
+          </Fade>
           </div>
         </form>
       </div>
