@@ -3,10 +3,11 @@ import axios from 'axios';
 import "./Styles/UpdatePage.css";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Typing from 'react-typing-animation';
 
 export default class UpdateAddress  extends Component {
-  constructor (props){
-    super(props);
+  constructor (){
+    super();
     this.autocomplete = null;
     this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
     this.onChangeState = this.onChangeState.bind(this);
@@ -20,19 +21,33 @@ export default class UpdateAddress  extends Component {
       city: '',
       streetAddress: '',
       zipcode: '',
+      initialState: '',
+      initialCity: '',
+      initialAddress: '',
+      initialZip: '',
     }
   }
 
   componentDidMount() { // called before anything is displayed
+
+    const params = new URLSearchParams(this.props.location.search);
+    this.setState({
+      initialState: params.get("state"),
+      initialCity: params.get("city"),
+      initialAddress: params.get("address"),
+      initialZip: params.get("zipcode"),
+      id: params.get("id"),
+    })
     this.autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {})
     this.autocomplete.addListener("place_changed", this.handlePlaceSelect)
-    axios.get('http://localhost:5000/api/users/'+this.props.id)
+    axios.get('http://localhost:5000/api/users/'+params.get("id"))
       .then(response => {
         this.setState({
           state: response.data.state,
           city: response.data.city,
           streetAddress: response.data.streetAddress,
-          zipcode: response.data.zipcode
+          zipcode: response.data.zipcode,
+
         })
       })
       .catch( function (error) {
@@ -108,8 +123,18 @@ export default class UpdateAddress  extends Component {
     return (
       <div className="sidebar-page">
         <div className="update-content">
+          <div className="titleContainer">
           <div className="update-title-section">
-            <div className="update-title">Update Your Address</div>
+            <div className="update-title">
+            Want to change your address?
+            </div>
+            <div className="update-title-description">
+            Your curent address is {this.state.initialAddress}, {this.state.initialCity}, {this.state.initialState}, {this.state.initialZip}.
+            </div>
+          </div>
+          </div>
+          <div className="update-title-section">
+            <div className="update-title">Find Address</div>
           </div>
           <div className="update-search">
 
@@ -153,9 +178,9 @@ export default class UpdateAddress  extends Component {
             />
           </div>
           <div className="update-button-section">
-          <Button variant="contained" color="secondary" component={Link} onClick={this.onSubmit}>
-            <div className="update-button-text">Update!</div>
-          </Button>
+          <div className="update-button" onClick={this.onSubmit}>Update</div>
+
+
           </div>
         </form>
         </div>

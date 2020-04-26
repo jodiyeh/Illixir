@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import { google } from 'google-maps';
 import Geocode from "react-geocode";
 import "./Styles/HomePage.css";
-import { faHouseUser, faMapMarkerAlt, faHospitalAlt, faRoute, faInfoCircle, faLocationArrow} from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkedAlt, faHouseUser, faMapMarkerAlt, faHospitalAlt, faRoute, faInfoCircle, faLocationArrow} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fade from 'react-reveal/Fade';
 import Typing from 'react-typing-animation';
@@ -41,6 +41,8 @@ class HomePage extends Component{
     super();
     this.onChange = this.onChange.bind(this);
     this.autocomplete = null;
+    this.handleUpdate = this.handleUpdate.bind(this);
+
     this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
     this.handleSearchUserAddress = this.handleSearchUserAddress.bind(this);
     this.handleSearchCustonAddress = this.handleSearchCustonAddress.bind(this);
@@ -93,7 +95,9 @@ class HomePage extends Component{
         console.log(error);
       })
   }
-
+  handleUpdate(){
+    window.location = "/update?state="+this.state.userState+"&city="+this.state.userCity+"&address="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode+"&id"+this.props.id
+  }
   handlePlaceSelect() {
     let addressObject = this.autocomplete.getPlace()
     let address = addressObject.address_components
@@ -134,18 +138,18 @@ class HomePage extends Component{
               <span> What is Illixir?</span>
               <Typing.Delay ms={1500} />
               <Typing.Backspace count={20} />
-              <span> Illixir is a facility finder!</span>
+              <span> Illixir is a facility finder.</span>
               <Typing.Delay ms={1500} />
               <Typing.Backspace count={30} />
               <span> What is its purpose?</span>
               <Typing.Delay ms={1500} />
               <Typing.Backspace count={30} />
-              <span> Illixir provides easy access to public data!</span>
+              <span> To provide access to public data.</span>
               <Typing.Delay ms={1500} />
               <Typing.Backspace count={45} />
             </Typing>
             </div>
-            <div className="home-title-description">Welcome! Discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more!</div>
+            <div className="home-title-description">Welcome! Discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more.</div>
             </div>
           </div>
           <div className = "home-description">
@@ -171,7 +175,7 @@ class HomePage extends Component{
               </div>
                 <div className="step-content">
                 <div className="step-title1">2. Search an alternate address.</div>
-                <div className="step-description">If you are interested in a location other than your saved address, you can fill out the form below to search another address!</div>
+                <div className="step-description">If you are interested in a location other than your saved address, you can fill out the form below to search another address.</div>
                 </div>
               </div>
               </Fade>
@@ -211,21 +215,43 @@ class HomePage extends Component{
                 </div>
               </div>
               </Fade>
+
+              <Fade left>
+              <div className="step2">
+
+              <div className="step-pic">
+              <FontAwesomeIcon size="9x" color="#F3D250" icon={faMapMarkedAlt} />
+              </div>
+                <div className="step-content">
+                <div className="step-title2">6. View on Google Maps.</div>
+                <div className="step-description">In the details section, you will find an interactive map where your search location and chosen facility are plotted! Use this map to gage how far the facility is from your location.</div>
+                </div>
+              </div>
+              </Fade>
             </div>
-            <div className="home-button-section">
-            <Button  variant="contained" color="secondary" component={Link} onClick={this.handleSearchUserAddress}>
-              <div className="home-button-text">Search my address!</div>
-            </Button>
-            <Button  variant="contained" color="secondary" component={Link} to={"/update/"+this.props.id}>
-              <div className="home-button-text">Update my address!</div>
-            </Button>
-            </div>
-          </div>
-          <div className="home-form">
-          <div className="home-title-section">
-          <div className="home-form-title">Enter A Custom Address</div>
 
           </div>
+          <div className="home-info-container">
+          <div className="home-info">
+            Your address is currently set as <span id="your-address">{this.state.userStreetAddress}</span>, <span id="your-address">{this.state.userCity}</span>, <span id="your-address">{this.state.userState}</span>, <span id="your-address">{this.state.userZipcode}</span>. You can
+            either search for facilities near your current address, update your current address, or search a customized address.
+          </div>
+          <div className="home-button-section">
+          <Fade left>
+          <div className="home-button" onClick={this.handleSearchUserAddress}>Search My Address</div>
+          </Fade>
+          <Fade right>
+          <div className="home-button" onClick={this.handleUpdate}>Update My Address</div>
+          </Fade>
+          </div>
+          </div>
+
+          <div className="home-form">
+
+          <div className="home-title-section">
+          <div className="home-form-title">Enter A Custom Address</div>
+          </div>
+          <Fade bottom>
           <form className="home-search" onSubmit={this.onSubmit}>
             <div className="form-group">
             <div className="search-title">Location Look Up: </div>
@@ -269,12 +295,15 @@ class HomePage extends Component{
                 onChange={this.onChange}
               />
             </div>
+            <Fade bottom>
             <div className="home-button-section">
-            <Button variant="contained" color="secondary" component={Link} onClick={this.handleSearchCustonAddress}>
-              <div className="home-button-text">Search Alternate Address!</div>
-            </Button>
+            <div className="home-button-form" onClick={this.handleSearchCustonAddress}>Search Alternate Address</div>
+
+
             </div>
+            </Fade>
           </form>
+          </Fade>
           </div>
         </div>
       </div>

@@ -8,26 +8,61 @@
   width: 100%;
 }
 
+.titleContainer{
+  display: flex;
+  flex-direction: column;
+  background-color: #FEF9C7;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 50vh
+}
+.update-title-section{
+  text-align: center;
+  width: 100%;
+}
 .update-title {
   width: 100%;
   padding: 1vh;
-	display: inline;
 	position: relative;
-	font: 5vw Didact Gothic, Sans-Serif;
-	color: rgba(0,0,255,0.5);
+	font: 8vh Didact Gothic, Sans-Serif;
+	color: black;
+
 }
 
-.update-title:after {
-	content: "Update Your Address";
-	position: absolute; left: .2vw; top: .2vw;
-	color: rgba(255,0,0,0.5);
-}
 
+.update-title-description{
+  font-size: 3vh;
+  line-height: 3.2vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
 .update-content{
   justify-content: center;
 }
 .update-button{
-  width: 25vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-family: 'Didact Gothic';
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-right: 10px;
+  font-size: 3vh;
+  border-radius: 5px;
+  border-width: thin;
+  border-color: black;
+  border-style: solid;
+
+}
+
+.update-button:hover{
+  cursor: pointer;
+  color: black;
+  border-style: none;
 }
 .update-button-text{
   font-size: 2vh;

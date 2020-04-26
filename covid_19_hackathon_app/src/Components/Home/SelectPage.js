@@ -2,6 +2,8 @@ import React, {Component } from 'react';
 import { Link } from 'react-router-dom';
 import { google } from 'google-maps';
 import './Styles/SelectPage.css';
+import { faClinicMedical, faHandHoldingMedical, faProcedures, faAmbulance, faUserNurse, faHospital} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class SelectPage extends Component{
   constructor(props) {
@@ -68,52 +70,58 @@ styleObj2 = {
     return(
       <div className="sidebar-page">
         <div className="select-content">
-          <div className="select-title-container">
-            <div className="select-title">Choose An Industry</div>
+        <div className="page-title-section">
+          <div className="titleContainer">
+          <div className="page-title">
+          Choose A Category
           </div>
-          <div className="select-title-description">
-            <div className="select-address">Your inputted search address is {this.state.streetAddress}, {this.state.city}, {this.state.state}, {this.state.zipcode}!</div>
-            <div className="select-subtitle">Here is a list of facilities</div>
-          </div>
+
+        </div>
+        </div>
+        <div className="select-title-description">
+        Your address is currently set as <span id="your-address">{this.state.streetAddress}</span>, <span id="your-address">{this.state.city}</span>, <span id="your-address">{this.state.state}</span>, <span id="your-address">{this.state.zipcode}</span>. Choose
+        a facility from the options below.
+        </div>
           <div className="select-cards">
           <div class="cards-list">
             <div class="card 1">
-              <div class="card_image" onClick={this.handleClick.bind(this, "hospitals")}> <img src= {process.env.PUBLIC_URL + "resources/hospital.jpg"} /> </div>
+              <div class="card_image" onClick={this.handleClick.bind(this, "hospitals")}> <FontAwesomeIcon size="6x" color="#F78888" icon={faHospital} /> </div>
               <div class="card_title title-white">
                 <p style = {this.styleObj}>
                   Hospitals
                   </p>
               </div>
             </div>
-            <div class="card 2">
-              <div class="card_image" onClick={this.handleClick.bind(this, "nursingHomes")}> <img src={process.env.PUBLIC_URL + "resources/pharmacy.jpg"} /> </div>
-              <div class="card_title title-white">
+            <div class="card1 2">
+              <div class="card_image" onClick={this.handleClick.bind(this, "nursingHomes")}> <FontAwesomeIcon size="6x" color="#77A6F7" icon={faUserNurse} /></div>
+              <div class="card_title1 title-white">
               <p style = {this.styleObj}>
                   Nursing Homes
                   </p>
               </div>
             </div>
-            <div class="card 3">
-              <div class="card_image" onClick={this.handleClick.bind(this, "emergencyServices")}> <img src={process.env.PUBLIC_URL + "resources/ems-station.jpg"} /> </div>
-              <div class="card_title title-white">
+            <div class="card2 3">
+              <div class="card_image" onClick={this.handleClick.bind(this, "emergencyServices")}>  <FontAwesomeIcon size="6x" color="#F3D250" icon={faAmbulance} /></div>
+              <div class="card_title2 title-white">
                 <p style = {this.styleObj2}> Emergency Medical Services Stations</p>
               </div>
             </div>
             <div class="card 4">
-              <div class="card_image" onClick={this.handleClick.bind(this, "urgentCare")}> <img src={process.env.PUBLIC_URL + "resources/urgentcare.jpg"} /> </div>
+              <div class="card_image" onClick={this.handleClick.bind(this, "urgentCare")}><FontAwesomeIcon size="6x" color="#F78888" icon={faProcedures} /> </div>
               <div class="card_title title-white">
                 <p style = {this.styleObj}>Urgent Care Facilities</p>
               </div>
             </div>
-            <div class="card 5">
-              <div class="card_image" onClick={this.handleClick.bind(this, "veteranHealth")}> <img src={process.env.PUBLIC_URL + "resources/veteranhealth.jpg"} /> </div>
-              <div class="card_title title-white">
+            <div class="card1 5">
+              <div class="card_image" onClick={this.handleClick.bind(this, "veteranHealth")}> <FontAwesomeIcon size="6x" color="#77A6F7" icon={faClinicMedical} /> </div>
+              <div class="card_title1 title-white">
                 <p style = {this.styleObj}> Veterans Health Administrations</p>
               </div>
             </div>
-            <div class="card 7">
-              <div class="card_image" onClick={this.handleClick.bind(this, "emergencyOps")}> <img src={process.env.PUBLIC_URL + "resources/localemerg.jpg"} /> </div>
-              <div class="card_title title-white">
+            <div class="card2 7">
+              <div class="card_image" onClick={this.handleClick.bind(this, "emergencyOps")}> <FontAwesomeIcon size="6x" color="#F3D250" icon={faHandHoldingMedical} />
+</div>
+              <div class="card_title2 title-white">
                 <p style = {this.styleObj}>Local Emergency Operations</p>
               </div>
             </div>

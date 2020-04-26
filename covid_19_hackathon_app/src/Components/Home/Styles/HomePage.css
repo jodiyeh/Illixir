@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  height: 50vh
+  height: 50vh;
 }
 .home-title-section{
   text-align: center;
@@ -52,12 +52,13 @@
 
 .home-form{
   padding-top: 10vh;
-  background-color: #FFCCBC;
 }
 
 .home-title-description{
   font-size: 3vh;
   line-height: 3.2vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
 .home-description{
   margin-left: 5vw;
@@ -119,15 +120,67 @@
   align-content: center;
 }
 .home-button{
-  width: 25vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-family: 'Didact Gothic';
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-right: 10px;
+  font-size: 3vh;
+  border-radius: 5px;
+  border-width: thin;
+  border-color: black;
+  border-style: solid;
+}
 
+.home-button:hover{
+  cursor: pointer;
+  background-color: #F78888;
+  color: black;
+  border-style: none;
+}
+
+.home-button-form{
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-family: 'Didact Gothic';
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-right: 10px;
+  font-size: 3vh;
+  border-radius: 5px;
+  border-width: thin;
+  border-color: black;
+  border-style: solid;
+
+}
+
+.home-button-form:hover{
+  cursor: pointer;
+  color: black;
+  border-style: none;
 }
 .home-button-text{
   font-size: 2vh;
   line-height: 3vh;
   text-transform: none;
 }
-
+.home-info-container{
+  background-color: #FFCCBC;
+  font-size: 3vh;
+  line-height: 3.2vh;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-top: 5vh;
+}
 .home-button-section{
   padding: 5vh;
   display: flex;
@@ -135,6 +188,11 @@
   justify-content: space-around;
   text-align: center;
   align-items: center;
+
+
+}
+#your-address{
+  color: #F78888;
 }
 .step-title{
   color: #F78888;
@@ -167,9 +225,18 @@
   line-height: 3.2vh;
 }
 @media all and (max-width: 500px) {
+  .titleContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #FEF9C7;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 70vh;
+  }
   .home-form{
     padding-top: 5vh;
-    background-color: #FFCCBC;
+
   }
 
 
@@ -255,14 +322,10 @@
     padding-right: 10vw;
     padding-top: 10vw;
   }
-  .home-title {
-    width: 100%;
-    padding: 1vh;
-  	position: relative;
-  	font: 6vh Didact Gothic, Sans-Serif;
-  	color: black;
 
-  }
+
+
+
   .home-steps-title {
     width: 100%;
     padding: 1vh;

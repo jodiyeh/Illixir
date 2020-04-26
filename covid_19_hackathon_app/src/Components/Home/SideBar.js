@@ -25,6 +25,7 @@ import axios from 'axios';
 import './Styles/SideBar.css';
 import { faShieldVirus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
 class SideBar extends Component {
   constructor(props) {
@@ -50,7 +51,10 @@ class SideBar extends Component {
   };
   onUpdateClick = e => {
     e.preventDefault();
-    window.location.href = "/update/"+this.props.auth.user.id;
+    window.location = "/update?state="+this.state.state+"&city="+this.state.city+"&address="+this.state.streetAddress+"&zipcode="+this.state.zipcode
+    +"&id="+this.props.auth.user.id
+
+
   };
 
   componentDidMount () {
@@ -95,15 +99,56 @@ class SideBar extends Component {
 
           </Toolbar>
         </AppBar>
-        <Switch>
+        <Switch className="switch">
           <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
-          <Route path="/update/:id" render = {() => (<UpdateAddress id={this.props.auth.user.id}/>)}/>
+          <Route path="/update" component = {UpdateAddress}/>
           <Route path="/select" component = {SelectPage}/>
           <Route path="/facility" component = {FacilityList}/>
           <Route path="/information" component = {FacilityPage}/>
           <Route path="/about" component = {AboutPage}/>
           <Route path="/FAQ" component = {FAQPage}/>
         </Switch>
+        <MDBFooter className="font-small pt-4 mt-4" style={{ background: '#D2FDFF' }}>
+      <MDBContainer fluid className="text-center text-md-left footer">
+        <MDBRow>
+          <MDBCol md="6">
+            <h5 className="footer-title" style={{ color: '#77A6F7' }}>Illixir</h5>
+            <p className="footer-description" style={{ color: '#77A6F7' }}>
+              Here you can use rows and columns here to organize your footer
+              content.
+            </p>
+          </MDBCol>
+          <MDBCol md="6">
+            <h5 className="footer-text">Links</h5>
+            <ul>
+              <li className="footer-text">
+                <a style={{ color: '#77A6F7' }} href="/home">Home</a>
+              </li>
+              <li className="footer-text">
+                <a style={{ color: '#77A6F7' }} href="/about">About</a>
+              </li>
+              <li className="footer-text">
+                <a style={{ color: '#77A6F7' }} onClick={this.onUpdateClick}>Update Address</a>
+              </li>
+              <li className="footer-text">
+                <a style={{ color: '#77A6F7' }} href="/FAQ">FAQ</a>
+              </li>
+              <li className="footer-text">
+                <a style={{ color: '#77A6F7' }} href="">Contact Us</a>
+              </li>
+              <li className="footer-text">
+                <a style={{ color: '#77A6F7' }} onClick={this.onLogoutClick}>Logout</a>
+              </li>
+            </ul>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+      <div className="footer-copyright text-center py-" style={{ background: '#77A6F7' }}>
+        <MDBContainer fluid>
+          Created By: Lorne & Brian, Last Updated: 4/25/2020
+        </MDBContainer>
+      </div>
+    </MDBFooter>
       </div>
     );
   }

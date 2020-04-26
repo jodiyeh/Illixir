@@ -3,14 +3,27 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 
+
+function capitalize(string) {
+  string = string.toLowerCase();
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function capitalizeFirstLetter(string) {
+  var ret = '';
+  var strs = string.split(' ');
+  for(var i=0; i<strs.length; i++){
+    ret += capitalize(strs[i]) + ' ';
+  }
+  return ret.slice(0,ret.length-1);
+}
+
 const Facility = props => (
-  <tr className='list-container'>
-    <td>{ props.facility.attributes.NAME }</td>
-    <td>{ props.facility.attributes.ADDRESS}, {props.facility.attributes.CITY}, {props.facility.attributes.STATE }</td>
-    <td>{ props.facility.geometry.y}, {props.facility.geometry.x}</td>
-    <td>{69 * Math.sqrt(Math.pow(props.facility.geometry.y - props.user.userLatitude, 2) + Math.pow(props.facility.geometry.x - props.user.userLongitude, 2))} miles</td>
+  <tr className='list-container' style={{ fontSize: "1.7vh" }}>
+    <td>{ capitalizeFirstLetter(props.facility.attributes.NAME) }. { capitalizeFirstLetter(props.facility.attributes.ADDRESS) }, { capitalizeFirstLetter(props.facility.attributes.CITY) }, { props.facility.attributes.STATE }</td>
+    <td>{(Math.round(69 * 100 * Math.sqrt(Math.pow(props.facility.geometry.y - props.user.userLatitude, 2) + Math.pow(props.facility.geometry.x - props.user.userLongitude, 2)))/100)} miles</td>
     <td>
-    <Button variant="outlined" color="primary" component={Link} to={
+    <Button variant="outlined" style={{ backgroundColor: '#77A6F7', textTransform: 'none', fontFamily: 'Didact Gothic', }} component={Link} to={
       "/information?state="+props.user.state
       +"&city="+props.user.city
       +"&streetAddress="+props.user.streetAddress
@@ -63,7 +76,6 @@ class FacilityList extends Component{
       +"&longitude="+this.state.longitude
       +"&distance="+this.state.distance
   }
-
 
 
   componentDidMount(){
@@ -204,31 +216,41 @@ class FacilityList extends Component{
     return(
       <div className="list-page">
       <div className="list-content">
-        <h1 className="list-title">#nearby!</h1>
-        {this.state.latitude}, {this.state.longitude}
-        <form className="home-search" onSubmit={this.onSubmit}>
+      <div className="page-title-section">
+        <div className="titleContainer">
+        <div className="page-title">
+        Facilities Near You
+        </div>
+
+      </div>
+      <div className="select-title-description">
+      Showing the <span id="your-address">{this.state.facility}</span> within <span id="your-address">{(Math.round(69 * 100 * this.state.distance/100))}</span> miles.
+      </div>
+      </div>
+
+      <div className="facility-list">
+
+        <form className="list-filter" onSubmit={this.onSubmit}>
           <div className="form-group">
-            <div className="search-title">distance: </div>
+            <div className="search-title">Filter by distance: </div>
             <input
               name="distance"
               type="text"
               className="form-control"
-              value={this.state.distance * 69}
+              value={(Math.round(69 * 100 * this.state.distance/100))}
               onChange={this.onChange}
             />
+            
           </div>
-          <Button variant="outlined" color="primary" component={Link} onClick={this.handleClick}>
-            refresh
-          </Button>
+          <div className="home-button-section">
+          <div className="home-button-form" onClick={this.handleClick}>Refresh</div>
+          </div>
         </form>
       </div>
-      <div>
+      </div>
+      <div className="table">
         <table className="table">
           <thread className="thread-light">
-            <tr>
-              <th>Name</th>
-              <th>Address</th>
-            </tr>
           </thread>
           <tbody>
             { this.facilitiesList() }

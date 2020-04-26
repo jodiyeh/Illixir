@@ -4,8 +4,15 @@ class FAQPage extends Component{
     render(){
         return(
           <div className="sidebar-page">
+          <div className="page-title-section">
+            <div className="titleContainer">
+            <div className="page-title">
+    Frequently Asked Questions
+    </div>
+    </div>
+    </div>
             <div className="about-content">
-              <div className="about-page">FAQs</div>
+
               <div className="about-title">What is the purpose of this website?</div>
               <div className="about-description">This website allows users to discover hospitals, pharmacies, emergency medical centers, and more during the COVID-19 pandemic. The website provides accurate and useful information regarding these health facilities.</div>
               <div className="about-title">How do I use this website after logging in?</div>

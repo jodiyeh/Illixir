@@ -1,4 +1,18 @@
 
+.page-title-section{
+  text-align: center;
+  width: 100%;
+}
+.page-title {
+  width: 100%;
+  padding: 1vh;
+	position: relative;
+	font: 8vh Didact Gothic, Sans-Serif;
+	color: black;
+
+}
+
+
 
 
 .sidebar-links{
@@ -11,13 +25,22 @@
   flex-direction: row;
   padding: 2vh
 }
+
+
 .about-title{
-  font-size: 2vh;
-  padding-top: 15px;
+  color: #F78888;
+  padding: 1vh;
+  font-size: 3vh;
+  line-height: 3.2vh;
+  padding: 1vh;
+  border-radius: 10px;
 }
 
 .about-description{
-  font-size: 1.5vh;
+  color: black;
+  padding: 1vh;
+  font-size: 2.5vh;
+  line-height: 3vh;
 }
 
 .about-content{
@@ -45,7 +68,7 @@
 .sidebar-page{
   font-family: 'Didact Gothic';
   height: 100%;
-  overflow-y: scroll;
+  width: 100%;
 }
 
 .sidebar-drawer-container{
@@ -97,8 +120,6 @@
 }
 .list-page{
   height: 100%;
-  padding: 2vw;
-  overflow-y: scroll;
 }
 
 .header-color{
@@ -117,8 +138,17 @@
 }
 
 .list-content{
-  text-align: center;
+
 }
+.table{
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+.list-filter{
+  padding-left: 25vw;
+  padding-right: 25vw;
+}
+
 
 .list-container{
   font-size: 1.3vh;
@@ -198,11 +228,26 @@
 .search-title{
 
   font-size: 2.5vh;
-  color: #F78888;
 }
 
-.footer{
+.switch{
+  width:100%;
+}
+
+.footer-text{
   font-family: 'Didact Gothic';
+  color: #77A6F7;
+  font-size: 2vh;
+}
+.footer-description{
+  font-family: 'Didact Gothic';
+  color: #77A6F7;
+  font-size: 3vh;
+}
+.footer-title{
+  font-family: 'Didact Gothic';
+  color: #77A6F7;
+  font-size: 5vh;
 }
 @media all and (max-width: 500px) {
   .sidebar-header-element{
@@ -214,6 +259,7 @@
     padding-top: 10px;
     margin-left: 10px;
     padding-right: 10px;
+    padding-bottom: 10px;
     margin-right: 10px;
     border-radius: 5px;
     font-size: 2.5vh;
