@@ -114,18 +114,17 @@ class SideBar extends Component {
           <MDBCol md="6">
             <h5 className="footer-title" style={{ color: '#77A6F7' }}>Illixir</h5>
             <p className="footer-description" style={{ color: '#77A6F7' }}>
-              Here you can use rows and columns here to organize your footer
-              content.
+              A web application developed by Duke Students.
             </p>
           </MDBCol>
           <MDBCol md="6">
-            <h5 className="footer-text">Links</h5>
+            <h5 className="footer-text1">Explore:</h5>
             <ul>
               <li className="footer-text">
                 <a style={{ color: '#77A6F7' }} href="/home">Home</a>
               </li>
               <li className="footer-text">
-                <a style={{ color: '#77A6F7' }} href="/about">About</a>
+                <a style={{ color: '#77A6F7' }} onClick="/about">About</a>
               </li>
               <li className="footer-text">
                 <a style={{ color: '#77A6F7' }} onClick={this.onUpdateClick}>Update Address</a>

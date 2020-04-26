@@ -239,6 +239,18 @@
   color: #77A6F7;
   font-size: 2vh;
 }
+.footer-text1{
+  font-family: 'Didact Gothic';
+  color: #77A6F7;
+  font-size: 2.2vh;
+}
+.footer-text:hover{
+  font-family: 'Didact Gothic';
+  color: #77A6F7;
+  font-size: 2vh;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .footer-description{
   font-family: 'Didact Gothic';
   color: #77A6F7;

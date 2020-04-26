@@ -249,7 +249,9 @@ class HomePage extends Component{
           <div className="home-form">
 
           <div className="home-title-section">
+          <Fade bottom>
           <div className="home-form-title">Enter A Custom Address</div>
+          </Fade>
           </div>
           <Fade bottom>
           <form className="home-search" onSubmit={this.onSubmit}>

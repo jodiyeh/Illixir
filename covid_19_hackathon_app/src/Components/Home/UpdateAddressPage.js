@@ -4,6 +4,7 @@ import "./Styles/UpdatePage.css";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Typing from 'react-typing-animation';
+import Fade from 'react-reveal/Fade';
 
 export default class UpdateAddress  extends Component {
   constructor (){
@@ -125,19 +126,25 @@ export default class UpdateAddress  extends Component {
         <div className="update-content">
           <div className="titleContainer">
           <div className="update-title-section">
+          <Fade left>
             <div className="update-title">
             Want to change your address?
             </div>
+            </Fade>
+            <Fade right>
             <div className="update-title-description">
             Your curent address is {this.state.initialAddress}, {this.state.initialCity}, {this.state.initialState}, {this.state.initialZip}.
             </div>
+            </Fade>
           </div>
           </div>
           <div className="update-title-section">
+          <Fade bottom>
             <div className="update-title">Find Address</div>
+            </Fade>
           </div>
           <div className="update-search">
-
+<Fade bottom>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
           <div className="search-title">Look Up Location: </div>
@@ -178,11 +185,13 @@ export default class UpdateAddress  extends Component {
             />
           </div>
           <div className="update-button-section">
+          <Fade bottom>
           <div className="update-button" onClick={this.onSubmit}>Update</div>
 
-
+</Fade>
           </div>
         </form>
+        </Fade>
         </div>
         </div>
       </div>
