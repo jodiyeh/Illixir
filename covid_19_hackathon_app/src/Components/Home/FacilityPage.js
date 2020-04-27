@@ -284,7 +284,7 @@ class FacilityPage extends Component{
                 <Fade bottom>
                 <div>Address: <span className="info-text">{capitalizeFirstLetter(this.state.facilityAddress)}</span>, <span className="info-text">{capitalizeFirstLetter(this.state.facilityCity)}</span>, <span className="info-text">{capitalizeFirstLetter(this.state.facilityState)}</span>.</div>
                 <div>Distance: <span className="info-text">{this.state.distance}</span> miles.</div>
-                <div>Rating: <span className="info-text">{this.state.rating}</span> from <span className="info-text">{this.state.ratingNumber}</span> ratings.</div>
+                <div>Rating: <span className="info-text">{this.state.rating}</span>/5 from <span className="info-text">{this.state.ratingNumber}</span> ratings.</div>
                 <div>Operation Status: <span className="info-text">{this.state.businessStatus}</span>.</div>
                 <div>Phone Number: <span className="info-text">{this.state.formatedPhone}</span>.</div>
                 <div>Website: <span className="info-text">{this.state.website}</span>.</div>
