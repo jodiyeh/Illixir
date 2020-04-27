@@ -102,9 +102,9 @@ class Register extends Component {
     const { errors } = this.state;
     return (
       <div className="container">
-      <div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg4"></div>
+      <div class="bg4"></div>
+<div class="bg4 bg2"></div>
+<div class="bg4 bg3"></div>
 <div class="content">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">

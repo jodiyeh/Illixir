@@ -1,3 +1,5 @@
+
+
 .login-page{
   height: 100vh;
   justify-content: center;
@@ -62,9 +64,9 @@ body {
   margin:0;
 }
 
-.bg {
+.bg5 {
   animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #F78888 50%, #F3D250 50%);
+  background-image: linear-gradient(-60deg, lightskyblue 50%, #F78888 50%);
   bottom:0;
   left:-50%;
   opacity:.5;
@@ -77,6 +79,18 @@ body {
 .bg4 {
   animation:slide 3s ease-in-out infinite alternate;
   background-image: linear-gradient(-60deg, #01FF70 50%, #F3D250 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #F78888 50%, #F3D250 50%);
   bottom:0;
   left:-50%;
   opacity:.5;
@@ -111,6 +125,20 @@ body {
   transform:translate(-50%, -50%);
 }
 .content2 {
+  margin-bottom: 15vh;
+  font-family: 'Didact Gothic';
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  padding:10vmin;
+  position:absolute;
+  text-align:center;
+  top:50%;
+  transform:translate(-50%, -50%);
+}
+.content3 {
   margin-bottom: 15vh;
   font-family: 'Didact Gothic';
   background-color:rgba(255,255,255,.8);
