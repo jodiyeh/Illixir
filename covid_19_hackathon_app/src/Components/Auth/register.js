@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
-
+import "./Auth.css";
 class Register extends Component {
   constructor() {
     super();
@@ -102,7 +102,10 @@ class Register extends Component {
     const { errors } = this.state;
     return (
       <div className="container">
-        <div className="row">
+      <div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg4"></div>
+<div class="content">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
@@ -113,7 +116,7 @@ class Register extends Component {
                 <b>Register</b> below
               </h4>
               <p className="grey-text text-darken-1">
-                Already have an account? <Link to="/login">Log in</Link>
+                Already have an account? <Link to="/login">Login</Link>
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
@@ -128,7 +131,7 @@ class Register extends Component {
                     invalid: errors.username
                   })}
                 />
-                <label htmlFor="username">Name</label>
+                <div className="search-title1">Name</div>
                 <span className="red-text">{errors.username}</span>
               </div>
               <div className="input-field col s12">
@@ -142,12 +145,12 @@ class Register extends Component {
                     invalid: errors.email
                   })}
                 />
-                <label htmlFor="email">Email</label>
+                <div className="search-title1">Email</div>
                 <span className="red-text">{errors.email}</span>
               </div>
-              <div className="form-group">
+              <div className="input-field col s12">
                 <input id="autocomplete" className="input-field" ref="input" type="text"/>
-                <div className="search-title">street address: </div>
+                <div className="search-title1">Address</div>
                 <input
                   name="streetAddress"
                   type="text"
@@ -156,8 +159,8 @@ class Register extends Component {
                   onChange={this.onChange}
                 />
               </div>
-              <div className="form-group">
-                <div className="search-title">city: </div>
+              <div className="input-field col s12">
+                <div className="search-title1">City</div>
                 <input
                   name="city"
                   type="text"
@@ -166,8 +169,8 @@ class Register extends Component {
                   onChange={this.onChange}
                 />
               </div>
-              <div className="form-group">
-                <div className="search-title">state: </div>
+              <div className="input-field col s12">
+                <div className="search-title1">State</div>
                 <input
                   name="state"
                   type="text"
@@ -176,8 +179,8 @@ class Register extends Component {
                   onChange={this.onChange}
                 />
               </div>
-              <div className="form-group">
-                <div className="search-title">zipcode: </div>
+              <div className="input-field col s12">
+                <div className="search-title1">Zipcode</div>
                 <input
                   name="zipcode"
                   type="text"
@@ -197,7 +200,7 @@ class Register extends Component {
                     invalid: errors.confirm
                   })}
                 />
-                <label htmlFor="password2">Confirm Password</label>
+                <div className="search-title1">Confirm Password</div>
                 <span className="red-text">{errors.confirm}</span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>

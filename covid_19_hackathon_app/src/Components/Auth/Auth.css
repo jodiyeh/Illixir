@@ -1,4 +1,139 @@
 .login-page{
-  background-color: #F8E9A1;
   height: 100vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #77A6F7;
+}
+.login{
+  margin-left: 25vw;
+  margin-right:25vw;
+  font-family: 'Didact Gothic';
+  background-color: #D2FDFF;
+  padding: 5vw;
+  border-radius: 10px
+}
+.button-text{
+  font-size: 2vh;
+  line-height: 3vh;
+  text-transform: none;
+}
+
+.button{
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-family: 'Didact Gothic';
+  padding-left: 20px;
+  padding-top: 10px;
+  margin-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  margin-right: 10px;
+  font-size: 3vh;
+  border-radius: 5px;
+  border-width: thin;
+  border-color: black;
+  border-style: solid;
+}
+.button-section{
+  padding: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+
+
+}
+.button:hover{
+  cursor: pointer;
+  background-color: #F78888;
+  color: black;
+  border-style: none;
+}
+html {
+  height:100%;
+}
+
+body {
+  margin:0;
+}
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #F78888 50%, #F3D250 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg4 {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #01FF70 50%, #F3D250 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+.content {
+  margin-top: 15vh;
+  margin-bottom: 5vh;
+  font-family: 'Didact Gothic';
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  padding:10vmin;
+  position:absolute;
+  text-align:center;
+  top:50%;
+  transform:translate(-50%, -50%);
+}
+.content2 {
+  margin-bottom: 15vh;
+  font-family: 'Didact Gothic';
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  padding:10vmin;
+  position:absolute;
+  text-align:center;
+  top:50%;
+  transform:translate(-50%, -50%);
+}
+
+h1 {
+  font-family:monospace;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
 }
