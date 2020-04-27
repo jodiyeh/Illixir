@@ -32,9 +32,9 @@ app.use(express.json());
 require('dotenv').config();
 
 // Set up MongoDB
-const uri = process.env.ATLAS_URI;
+//const uri = process.env.ATLAS_URI;
 mongoose
-  .connect(uri, {
+  .connect('mongodb+srv://lz150:lz150@covid-19-app-backend-qt3mk.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true

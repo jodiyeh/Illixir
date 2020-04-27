@@ -53,7 +53,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "server": "nodemon server.js",
+    "server": "nodemon backend/server",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
