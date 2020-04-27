@@ -103,7 +103,7 @@ class FacilityList extends Component{
     })
 
 
-    axios.get('http://localhost:5000/api/'+params.get("facility")+'/', {
+    axios.get('http://localhost:500/api/'+params.get("facility")+'/', {
       params: {
         lat: params.get("latitude"),
         long: params.get("longitude"),
