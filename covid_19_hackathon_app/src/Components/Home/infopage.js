@@ -1,9 +1,9 @@
 import React, {Component } from 'react';
 import {Grid, Cell} from 'react-mdl';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-const mapStyles = {
-  width: '80vh',
-  height: '80vh'
+var mapStyles = {
+  width: '50vw',
+  height: '50vw'
 };
 class InfoPage extends Component{
   constructor(props) {
@@ -18,6 +18,7 @@ class InfoPage extends Component{
     };
   }
   render() {
+
     return (
       <Map google={this.props.google} zoom={12} style={mapStyles} initialCenter={{ lat: this.state.userLat, lng: this.state.userLong}}>
         <Marker label={this.state.facilityAddress} position={{lat: this.state.facilityLat, lng: this.state.facilityLong}} />

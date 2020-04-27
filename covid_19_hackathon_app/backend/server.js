@@ -13,6 +13,7 @@ const nursingHomesRouter = require('./facilities/nursingHomes.routes');
 const shelterRouter = require('./facilities/shelter.routes');
 const veteranHealthRouter = require('./facilities/veteranHealth.routes');
 const emergencyServicesRouter = require('./facilities/emergencyServices.routes');
+const placeRouter = require('./GoogleAPIRoutes/PlaceRoutes');
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -54,6 +55,8 @@ app.use('/api/nursingHomes', nursingHomesRouter);
 app.use('/api/shelter', shelterRouter);
 app.use('/api/veteranHealth', veteranHealthRouter);
 app.use('/api/emergencyServices', emergencyServicesRouter);
+app.use('/api/GoogleMapsApi/place', placeRouter);
+
 
 
 

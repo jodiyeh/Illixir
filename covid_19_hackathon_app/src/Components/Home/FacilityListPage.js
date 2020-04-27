@@ -41,8 +41,8 @@ const Facility = props => (
       +"&facility="+props.user.facility
       +"&userLongitude="+props.user.userLongitude
       +"&userLatitude="+props.user.userLatitude
-      +"&latitude="+props.facility.attributes.LATITUDE
-      +"&longitude="+props.facility.attributes.LONGITUDE
+      +"&latitude="+props.facility.geometry.y
+      +"&longitude="+props.facility.geometry.x
       +"&facilityName="+props.facility.attributes.NAME
       +"&facilityAddress="+props.facility.attributes.ADDRESS
       +"&facilityCity="+props.facility.attributes.CITY

@@ -78,7 +78,7 @@
 
 }
 .sidebar-header{
-  font-size: 5vh;
+  font-size: 4vh;
   overflow: hidden;
   font-family: 'Didact Gothic';
   display: flex;
@@ -168,62 +168,7 @@
 	color: rgba(255,0,0,0.5);
 }
 
-.facility-content{
-  text-align: center;
-}
 
-.facility-title {
-	display: inline;
-	position: relative;
-	font: 10vw Helvetica, Sans-Serif;
-	letter-spacing: -5px;
-	color: rgba(0,0,255,0.5);
-}
-
-.facility-title:after {
-	content: "#details!";
-	position: absolute; left: .5vw; top: .5vw;
-	color: rgba(255,0,0,0.5);
-}
-
-.facility-info{
-  padding: 2vw;
-  background-color: pink;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.facility-info-container{
-  background-color: red;
-  display: flex;
-  flex-direction: column;
-  padding: 2vw;
-}
-
-.facility-info-title{
-  background-color: green;
-  text-align: center;
-  margin-bottom: 2vw;
-}
-
-.facility-info-content{
-  background-color: yellow;
-}
-
-.facility-maps-container{
-  text-align: center;
-  align-content: center;
-  width: 80vh;
-  height: 80vh;
-  background-color: blue;
-  display: flex;
-  flex-direction: column;
-}
-
-.facility-map-link{
-
-}
 
 .search-title{
 

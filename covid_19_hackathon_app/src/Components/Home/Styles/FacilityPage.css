@@ -1,0 +1,155 @@
+.information-box{
+  padding: 5vh;
+  font-size: 2.5vh;
+  background-color: #FFCCBC;
+  border-radius: 10px;
+
+}
+.info-title{
+  font-size: 3vh;
+}
+
+.facility-info-title{
+  color:#F78888;
+  text-align: center;
+  margin-bottom: 2vh;
+  font-size: 4vh;
+}
+
+.hours-box{
+  padding: 5vh;
+  margin-top: 5vh;
+  font-size: 2.5vh;
+  background-color: #D2FDFF;
+  border-radius: 10px;
+
+}
+
+.reviews-box{
+  padding: 5vh;
+  margin-top: 5vh;
+  font-size: 2.5vh;
+  background-color: #FEF9C7;
+  border-radius: 10px;
+  height: 50vh;
+  overflow: scroll;
+}
+.review{
+  margin-top: 20px;
+}
+.info-text{
+}
+
+.hours-text{
+
+}
+
+.review-text{
+  font-weight: bold;
+
+}
+
+.facility-content{
+  text-align: center;
+}
+
+.facility-title {
+	display: inline;
+	position: relative;
+	font: 10vw Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: rgba(0,0,255,0.5);
+}
+
+.facility-title:after {
+	content: "#details!";
+	position: absolute; left: .5vw; top: .5vw;
+	color: rgba(255,0,0,0.5);
+}
+
+.facility-info{
+  padding: 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.facility-info-container{
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+  max-width: 40vw;
+
+}
+
+
+
+.facility-info-content{
+
+}
+
+.facility-maps-container{
+  margin-top: 4vh;
+
+  text-align: center;
+  align-content: center;
+  width: 50vw;
+  height: 50vw;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.facility-map-link{
+
+}
+
+@media all and (max-width: 1200px) {
+  .facility-info-container{
+    display: flex;
+    flex-direction: column;
+    padding: 2vw;
+    max-width: 80vw;
+
+  }
+  .facility-info{
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+
+}
+
+
+@media all and (max-width: 500px) {
+  .info-title{
+    font-size: 2.6vh;
+  }
+  .information-box{
+    padding: 3vh;
+    font-size: 1.8vh;
+    background-color: #FFCCBC;
+    border-radius: 10px;
+
+  }
+  .hours-box{
+    padding: 3vh;
+    margin-top: 3vh;
+    font-size: 1.8vh;
+    background-color: #D2FDFF;
+    border-radius: 10px;
+
+  }
+
+  .reviews-box{
+    padding: 3vh;
+    margin-top: 3vh;
+    font-size: 1.8vh;
+    background-color: #FEF9C7;
+    border-radius: 10px;
+
+  }
+}
