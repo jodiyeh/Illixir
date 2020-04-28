@@ -134,22 +134,9 @@ class HomePage extends Component{
           <div className="home-title-section">
             <div className="titleContainer">
             <div className="home-title">
-            <Typing loop={true}>
-              <span> What is Illixir?</span>
-              <Typing.Delay ms={1500} />
-              <Typing.Backspace count={20} />
-              <span> Illixir is a facility finder.</span>
-              <Typing.Delay ms={1500} />
-              <Typing.Backspace count={30} />
-              <span> What is its purpose?</span>
-              <Typing.Delay ms={1500} />
-              <Typing.Backspace count={30} />
-              <span> To provide access to public data.</span>
-              <Typing.Delay ms={1500} />
-              <Typing.Backspace count={45} />
-            </Typing>
+            Welcome To Illixir
             </div>
-            <div className="home-title-description">Welcome! Discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more.</div>
+            <div className="home-title-description">Discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more.</div>
             </div>
           </div>
           <div className = "home-description">
@@ -238,10 +225,10 @@ class HomePage extends Component{
           </div>
           <div className="home-button-section">
           <Fade left>
-          <div className="home-button" onClick={this.handleSearchUserAddress}>Search My Address</div>
+          <div className="home-button" onTouchStart={this.handleSearchUserAddress} onClick={this.handleSearchUserAddress}>Search My Address</div>
           </Fade>
           <Fade right>
-          <div className="home-button" onClick={this.handleUpdate}>Update My Address</div>
+          <div className="home-button" onTouchStart={this.handleUpdate} onClick={this.handleUpdate}>Update My Address</div>
           </Fade>
           </div>
           </div>
@@ -299,7 +286,7 @@ class HomePage extends Component{
             </div>
             <Fade bottom>
             <div className="home-button-section">
-            <div className="home-button-form" onClick={this.handleSearchCustonAddress}>Search Alternate Address</div>
+            <div className="home-button-form" onTouchStart={this.handleSearchCustonAddress} onClick={this.handleSearchCustonAddress}>Search Alternate Address</div>
 
 
             </div>
