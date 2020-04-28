@@ -14,7 +14,7 @@ const shelterRouter = require('./facilities/shelter.routes');
 const veteranHealthRouter = require('./facilities/veteranHealth.routes');
 const emergencyServicesRouter = require('./facilities/emergencyServices.routes');
 const placeRouter = require('./GoogleAPIRoutes/PlaceRoutes');
-const path = require(“path”);
+const path = require('path');
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -30,21 +30,6 @@ app.use(
 );
 app.use(express.json());
 
-
-server {
- listen 80;
- location / {
- proxy_pass http://172.31.27.205:5000;
- proxy_http_version 1.1;
- proxy_set_header Upgrade $http_upgrade;
- proxy_set_header Connection ‘upgrade’;
- proxy_set_header Host $host;
- proxy_cache_bypass $http_upgrade;
- }
-}
-
-sudo ln -s /etc/nginx/sites-available/Illixir /etc/nginx/sites-enabled/Illixir// Config
-require('dotenv').config();
 
 // Set up MongoDB
 //const uri = process.env.ATLAS_URI;
