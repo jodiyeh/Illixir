@@ -115,7 +115,7 @@ export default class UpdateAddress  extends Component {
       state: this.state.state,
       zipcode: this.state.zipcode,
     };
-    axios.post('http://localhost:5000/api/users/update/'+this.props.id, user)
+    axios.post('/api/users/update/'+this.props.id, user)
       .then(res => console.log(res.data));
     window.location = '/home';
   }
