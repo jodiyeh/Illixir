@@ -192,6 +192,20 @@ class Register extends Component {
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
+                  value={this.state.password}
+                  error={errors.password}
+                  id="password"
+                  type="password"
+                  className={classnames("", {
+                    invalid: errors.password
+                  })}
+                />
+                <div className="search-title1">Password</div>
+                <span className="red-text">{errors.password}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
                   value={this.state.confirm}
                   error={errors.confirm}
                   id="confirm"
