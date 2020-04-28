@@ -18,7 +18,8 @@ async function getGeoCode(address) {
   try {
     const result = await googleGeoCode(address);
     console.log(result.json.results[0].geometry.location)
-    return result.json.results[0].geometry.location;
+    console.log(result.json.results[0].place_id)
+    return {location: result.json.results[0].geometry.location, place_id: result.json.results[0].place_id};
   } catch (error) {
     console.log(error)
     return error;
