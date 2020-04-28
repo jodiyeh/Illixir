@@ -26,6 +26,7 @@ export default class UpdateAddress  extends Component {
       initialCity: '',
       initialAddress: '',
       initialZip: '',
+      id: '',
     }
   }
 
@@ -115,7 +116,7 @@ export default class UpdateAddress  extends Component {
       state: this.state.state,
       zipcode: this.state.zipcode,
     };
-    axios.post('/api/users/update/'+this.props.id, user)
+    axios.post('/api/users/update/'+this.state.id, user)
       .then(res => console.log(res.data));
     window.location = '/home';
   }

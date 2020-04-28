@@ -127,6 +127,7 @@ router.route('/update/:id').post((req,res) => {
   //if(!isValid){
   //  return res.status(400).json(errors);
   //}
+  console.log(req.params.id)
   User.findById(req.params.id)
     .then(user => {
       console.log("user found");
@@ -138,7 +139,10 @@ router.route('/update/:id').post((req,res) => {
         .then(() => res.json('User address updated!'))
         .catch(err => res.status(400).json('Error ' + err));
     })
-    .catch(err => res.status(400).json('Error ' + err));
+    .catch(err => {
+      console.log(err);
+      res.status(400).json('Error ' + err);
+    })
 });
 
 module.exports = router;
