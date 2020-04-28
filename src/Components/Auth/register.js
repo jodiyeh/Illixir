@@ -150,7 +150,7 @@ class Register extends Component {
               </div>
               <div className="input-field col s12">
                 <input id="autocomplete" className="input-field" ref="input" type="text"/>
-                <div className="search-title1">Address</div>
+                <div className="search-title1">Search Your Address</div>
                 <input
                   name="streetAddress"
                   type="text"
@@ -158,9 +158,9 @@ class Register extends Component {
                   value={this.state.streetAddress}
                   onChange={this.onChange}
                 />
+                <div className="search-title1">Address</div>
               </div>
               <div className="input-field col s12">
-                <div className="search-title1">City</div>
                 <input
                   name="city"
                   type="text"
@@ -168,9 +168,9 @@ class Register extends Component {
                   value={this.state.city}
                   onChange={this.onChange}
                 />
+                <div className="search-title1">City</div>
               </div>
               <div className="input-field col s12">
-                <div className="search-title1">State</div>
                 <input
                   name="state"
                   type="text"
@@ -178,9 +178,9 @@ class Register extends Component {
                   value={this.state.state}
                   onChange={this.onChange}
                 />
+                <div className="search-title1">State</div>
               </div>
               <div className="input-field col s12">
-                <div className="search-title1">Zipcode</div>
                 <input
                   name="zipcode"
                   type="text"
@@ -188,8 +188,12 @@ class Register extends Component {
                   value={this.state.zipcode}
                   onChange={this.onChange}
                 />
+                <div className="search-title1">Zipcode</div>
               </div>
+
               <div className="input-field col s12">
+
+
                 <input
                   onChange={this.onChange}
                   value={this.state.password}
@@ -200,10 +204,11 @@ class Register extends Component {
                     invalid: errors.password
                   })}
                 />
-                <div className="search-title1">Password</div>
                 <span className="red-text">{errors.password}</span>
+                <div className="search-title1">Password</div>
               </div>
               <div className="input-field col s12">
+
                 <input
                   onChange={this.onChange}
                   value={this.state.confirm}
@@ -214,8 +219,9 @@ class Register extends Component {
                     invalid: errors.confirm
                   })}
                 />
-                <div className="search-title1">Confirm Password</div>
                 <span className="red-text">{errors.confirm}</span>
+                <div className="search-title1">Confirm Password</div>
+
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
