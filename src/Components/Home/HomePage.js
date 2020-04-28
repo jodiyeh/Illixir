@@ -58,13 +58,16 @@ class HomePage extends Component{
     };
   }
   handleSearchUserAddress(){
+    alert("1")
     const geoResponse = getGeoCode(this.state.userStreetAddress + ", " + this.state.userCity + ", " + this.state.userState);
     geoResponse.then((result)=>{
+      alert("2")
     const lat = result.json.results[0].geometry.location.lat
     const long = result.json.results[0].geometry.location.lng
     window.location = "/select?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode+"&latitude="+lat+"&longitude="+long
     console.log(result)
     }).catch((err)=>{
+      alert(err)
      console.log(err);
     })
   }
