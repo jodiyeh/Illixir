@@ -14,6 +14,8 @@ const shelterRouter = require('./facilities/shelter.routes');
 const veteranHealthRouter = require('./facilities/veteranHealth.routes');
 const emergencyServicesRouter = require('./facilities/emergencyServices.routes');
 const placeRouter = require('./GoogleAPIRoutes/PlaceRoutes');
+const geocodingRouter = require('./GoogleAPIRoutes/GeocodingRoutes');
+
 const path = require('path');
 
 const port = process.env.PORT || 5000;
@@ -56,6 +58,7 @@ app.use('/api/shelter', shelterRouter);
 app.use('/api/veteranHealth', veteranHealthRouter);
 app.use('/api/emergencyServices', emergencyServicesRouter);
 app.use('/api/GoogleMapsApi/place', placeRouter);
+app.use('/api/GoogleMapsApi/geocode', geocodingRouter);
 
 
 
