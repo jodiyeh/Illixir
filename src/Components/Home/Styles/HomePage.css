@@ -145,6 +145,7 @@
 }
 
 .home-button-form{
+  cursor: pointer;
   justify-content: center;
   align-content: center;
   align-items: center;
