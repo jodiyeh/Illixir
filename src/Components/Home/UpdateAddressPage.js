@@ -41,7 +41,7 @@ export default class UpdateAddress  extends Component {
     })
     this.autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {})
     this.autocomplete.addListener("place_changed", this.handlePlaceSelect)
-    axios.get('http://localhost:5000/api/users/'+params.get("id"))
+    axios.get('/api/users/'+params.get("id"))
       .then(response => {
         this.setState({
           state: response.data.state,

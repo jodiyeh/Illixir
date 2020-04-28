@@ -58,7 +58,7 @@ class SideBar extends Component {
   };
 
   componentDidMount () {
-    axios.get('http://localhost:5000/api/users/'+this.props.auth.user.id)
+    axios.get('/api/users/'+this.props.auth.user.id)
       .then(response => {
         this.setState({
           username: response.data.username,

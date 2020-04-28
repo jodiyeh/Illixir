@@ -139,7 +139,7 @@ class FacilityPage extends Component{
     this.setState({
       placeId: place_id,
     });
-    axios.get('http://localhost:5000/api/GoogleMapsApi/place/', {
+    axios.get('/api/GoogleMapsApi/place/', {
       params: {
         placeId: place_id
       }

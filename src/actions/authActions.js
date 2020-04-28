@@ -14,7 +14,7 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./authActionTypes";
 // returns an action of type GET_ERRORS and the response error
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("http://localhost:5000/api/users/register", userData)
+    .post("/api/users/register", userData)
     .then((res) => {
       history.push("/login");
       alert("hi")
@@ -34,7 +34,7 @@ export const registerUser = (userData, history) => dispatch => {
 // Sets token and then sets the current user
 export const loginUser = userData => dispatch => {
   axios
-    .post("http://localhost:5000/api/users/login", userData)
+    .post("/api/users/login", userData)
     .then(res => {
       // Sets token to the response data
       const { token } = res.data;
