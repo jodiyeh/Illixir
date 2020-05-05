@@ -58,21 +58,28 @@ class HomePage extends Component{
     };
   }
   handleSearchUserAddress(){
-    const geoResponse = getGeoCode(this.state.userStreetAddress + ", " + this.state.userCity + ", " + this.state.userState);
-    geoResponse.then((result)=>{
-    const lat = result.json.results[0].geometry.location.lat
-    const long = result.json.results[0].geometry.location.lng
+    axios.get('/api/GoogleMapsApi/geocode/', {
+      params: {
+        address: this.state.userStreetAddress + ", " + this.state.userCity + ", " + this.state.userState,
+      }
+    }).then((result)=>{
+    const lat = result.data.location.lat
+    const long = result.data.location.lng
     window.location = "/select?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode+"&latitude="+lat+"&longitude="+long
     console.log(result)
     }).catch((err)=>{
+      alert(err)
      console.log(err);
     })
   }
   handleSearchCustonAddress(){
-    const geoResponse = getGeoCode(this.state.streetAddress + ", " + this.state.city + ", " + this.state.state);
-    geoResponse.then((result)=>{
-    const lat = result.json.results[0].geometry.location.lat
-    const long = result.json.results[0].geometry.location.lng
+    axios.get('/api/GoogleMapsApi/geocode/', {
+      params: {
+        address: this.state.streetAddress + ", " + this.state.city + ", " + this.state.state,
+      }
+    }).then((result)=>{
+    const lat = result.data.location.lat
+    const long = result.data.location.lng
     window.location = "/select?state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode+"&latitude="+lat+"&longitude="+long
     console.log(result)
     }).catch((err)=>{

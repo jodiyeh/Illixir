@@ -15,13 +15,12 @@ let User = require('./user.model');
 
 // Register user
 router.post("/register", (req, res) => {
-  console.log("register attempt");
+  console.log("POST: /api/user/register - Attempt to Register.");
 
   // Form validation
   const {errors, isValid} = validateUserRegister(req.body);
-  console.log(errors);
-  console.log(isValid);
-  console.log(JSON.stringify(req.body));
+  console.log("Errors: " + errors);
+  console.log("Valid: " + isValid);
 
   // Check validation
   if(!isValid) {
@@ -30,8 +29,8 @@ router.post("/register", (req, res) => {
 
   User.findOne({email: req.body.email}).then(user => {
     // Check if email exists
-    console.log("1");
     if(user) {
+      console.log("User already exists.")
       return res.status(400).json({email: "Email already exists"});
     } else {
       newUser = new User({
@@ -43,29 +42,30 @@ router.post("/register", (req, res) => {
         zipcode: req.body.zipcode,
         password: req.body.password
       });
-      console.log("2");
 
       // Hash password
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
-          console.log("4");
           newUser.save()
             .then(user => res.json(user))
             .catch(err => console.log(err));
         });
       });
-      console.log("3");
     }
   });
 });
 
 // Login user
 router.post("/login", (req, res) => {
+  console.log("POST: /api/user/login - Attempt to Login.");
+
   // Form validation
   const {errors, isValid} = validateUserLogin(req.body);
-  console.log("login attempt");
+  console.log("Errors: " + errors);
+  console.log("Valid: " + isValid);
+
   // Check validation
   if(!isValid){
     return res.status(400).json(errors);
@@ -74,6 +74,7 @@ router.post("/login", (req, res) => {
   // Find user by email
   User.findOne({email: req.body.email}).then(user => {
     if(!user){
+      console.log("User not found.")
       return res.status(404).json("Email not found");
     }
     // Check password
@@ -114,28 +115,25 @@ router.post("/login", (req, res) => {
 })
 
 router.route('/:id').get((req,res) => { // mongo has :id variable that can be used to access the id of an object
+  console.log("GET: /api/user/:id - Attempt to get user " + req.params.id + " data.");
+
   User.findById(req.params.id)
     .then(user => res.json(user))
     .catch(err => res.status(400).json('Error ' + err));
 });
 
 router.route('/update/:id').post((req,res) => {
-  // Form validation
-  //const {errors, isValid} = validateUserAddress(req.body);
-  console.log("address change attempt");
-  // Check validation
-  //if(!isValid){
-  //  return res.status(400).json(errors);
-  //}
+  console.log("POST: /api/user/update/:id - Attempt to update user " + req.params.id + " data.");
+
   User.findById(req.params.id)
     .then(user => {
-      console.log("user found");
+      console.log("User found.");
       user.streetAddress = req.body.streetAddress;
       user.city = req.body.city;
       user.state = req.body.state;
       user.zipcode = req.body.zipcode;
       user.save()
-        .then(() => res.json('User address updated!'))
+        .then(() => res.json('User address updated.'))
         .catch(err => res.status(400).json('Error ' + err));
     })
     .catch(err => res.status(400).json('Error ' + err));

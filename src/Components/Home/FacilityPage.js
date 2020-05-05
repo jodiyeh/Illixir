@@ -132,14 +132,16 @@ class FacilityPage extends Component{
 
     var place_id = "";
     //const geoResponse = getGeoCode(params.get("facilityAddress") + ", " + params.get("facilityCity") + ", " + params.get("facilityState"));
-    const geoResponse = getGeoCode(params.get("facilityName"));
-
-    geoResponse.then((result)=>{
-    place_id = result.json.results[0].place_id;
+    axios.get('/api/GoogleMapsApi/geocode/', {
+      params: {
+        address: params.get("facilityName")
+      }
+    }).then((result)=>{
+    place_id = result.data.place_id;
     this.setState({
       placeId: place_id,
     });
-    axios.get('http://localhost:5000/api/GoogleMapsApi/place/', {
+    axios.get('/api/GoogleMapsApi/place/', {
       params: {
         placeId: place_id
       }
