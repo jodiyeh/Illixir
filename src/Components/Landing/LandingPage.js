@@ -19,7 +19,7 @@ class LandingPage extends Component {
             &nbsp;Illixir
             </h2>
             <p className="flow-text grey-text text-darken-1">
-            An application to match you to nearby hospitals, pharmacies, shelters, emergency medical centers, and more!
+            An application to match you to nearby medical facilities and provide personalized home remedies!
             </p>
             <br />
             <div className="col">
