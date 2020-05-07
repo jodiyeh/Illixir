@@ -47,11 +47,11 @@ class SideBar extends Component {
   };
   onHomeClick = e => {
     e.preventDefault();
-    window.location.href = "/home";
+    window.location.href = "/facilityfinder/home";
   };
   onUpdateClick = e => {
     e.preventDefault();
-    window.location = "/update?state="+this.state.state+"&city="+this.state.city+"&address="+this.state.streetAddress+"&zipcode="+this.state.zipcode
+    window.location = "/facilityfinder/update?state="+this.state.state+"&city="+this.state.city+"&address="+this.state.streetAddress+"&zipcode="+this.state.zipcode
     +"&id="+this.props.auth.user.id
 
 
@@ -100,15 +100,15 @@ class SideBar extends Component {
           </Toolbar>
         </AppBar>
 
-        
+
         <Switch className="switch">
-          <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
-          <Route path="/update" component = {UpdateAddress}/>
-          <Route path="/select" component = {SelectPage}/>
-          <Route path="/facility" component = {FacilityList}/>
-          <Route path="/information" component = {FacilityPage}/>
-          <Route path="/about" component = {AboutPage}/>
-          <Route path="/FAQ" component = {FAQPage}/>
+          <Route path="/facilityfinder/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
+          <Route path="/facilityfinder/update" component = {UpdateAddress}/>
+          <Route path="/facilityfinder/select" component = {SelectPage}/>
+          <Route path="/facilityfinder/facility" component = {FacilityList}/>
+          <Route path="/facilityfinder/information" component = {FacilityPage}/>
+          <Route path="/facilityfinder/about" component = {AboutPage}/>
+          <Route path="/facilityfinder/FAQ" component = {FAQPage}/>
         </Switch>
 
 

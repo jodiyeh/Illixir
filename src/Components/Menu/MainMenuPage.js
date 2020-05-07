@@ -12,6 +12,7 @@ import HomePage from '../Home/HomePage';
 import FAQPage from '../Home/FAQPage';
 import SelectPage from '../Home/SelectPage';
 import FacilityPage from '../Home/FacilityPage';
+
 import AboutPage from '../Home/AboutPage';
 import UpdateAddress from '../Home/UpdateAddressPage';
 import FacilityList from '../Home/FacilityListPage';
@@ -36,7 +37,7 @@ class MainMenuPage extends Component{
 
      goToFacilityFinder= e =>{
         e.preventDefault();
-        window.location.href = "/home";
+        window.location.href = "/facilityfinder/home";
     };
 
     onLogoutClick = e => {
@@ -52,7 +53,7 @@ class MainMenuPage extends Component{
       };
 
     render(){
-        return(        
+        return(
         <div className = "menu-background">
         <AppBar className="appbar" position="static" style={{ background: '#77A6F7' }}>
           <Toolbar className="appbar">
@@ -67,20 +68,11 @@ class MainMenuPage extends Component{
           </div>
           </Toolbar>
         </AppBar>
-        
-        <Switch className="switch">
-          <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
-          <Route path="/update" component = {UpdateAddress}/>
-          <Route path="/select" component = {SelectPage}/>
-          <Route path="/facility" component = {FacilityList}/>
-          <Route path="/information" component = {FacilityPage}/>
-          <Route path="/about" component = {AboutPage}/>
-          <Route path="/FAQ" component = {FAQPage}/>
-        </Switch>
+
 
         <div className = "Menu-title">
             Welcome to Illixir
-        </div>                
+        </div>
         <div className = "Menu-subtitle">
             The all-encompassing app for your medical needs
         </div>
@@ -133,4 +125,3 @@ MainMenuPage.propTypes = {
     mapStateToProps,
     { logoutUser }
   )(MainMenuPage);
-  
