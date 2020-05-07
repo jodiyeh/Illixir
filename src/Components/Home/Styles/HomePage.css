@@ -13,19 +13,19 @@
   align-content: center;
   height: 50vh;
 }
+
 .home-title-section{
   text-align: center;
   width: 100%;
 }
+
 .home-title {
   width: 100%;
   padding: 1vh;
 	position: relative;
 	font: 8vh Didact Gothic, Sans-Serif;
 	color: black;
-
 }
-
 
 .home-steps-title {
   width: 100%;
