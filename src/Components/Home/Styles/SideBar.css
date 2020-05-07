@@ -223,7 +223,7 @@
   }
   .sidebar-header-element:hover{
     cursor: pointer;
-    background-color: #D2FDFF;
+    background-color: rgb(4, 5, 5);
     color: black;
   }
   .sidebar-links{

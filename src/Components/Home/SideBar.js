@@ -99,6 +99,8 @@ class SideBar extends Component {
 
           </Toolbar>
         </AppBar>
+
+        
         <Switch className="switch">
           <Route path="/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
           <Route path="/update" component = {UpdateAddress}/>
@@ -108,6 +110,8 @@ class SideBar extends Component {
           <Route path="/about" component = {AboutPage}/>
           <Route path="/FAQ" component = {FAQPage}/>
         </Switch>
+
+
         <MDBFooter className="font-small pt-4 mt-4" style={{ background: '#D2FDFF' }}>
       <MDBContainer fluid className="text-center text-md-left footer">
         <MDBRow>

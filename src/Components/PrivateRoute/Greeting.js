@@ -6,11 +6,12 @@ import SideBar from "../Home/SideBar";
 import LandingPage from "../Landing/LandingPage";
 import Register from "../Auth/register";
 import Login from "../Auth/login";
+import Menu from "../Menu/MainMenuPage";
 
 function Check(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {
-    return <SideBar />;
+    return <Menu />;
   }
   return <div className="App">
     <Route exact path="/" component={LandingPage} />

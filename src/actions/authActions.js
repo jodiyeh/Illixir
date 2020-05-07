@@ -45,7 +45,7 @@ export const loginUser = userData => dispatch => {
       const decoded = jwt_decode(token);
       // Set current user
       dispatch(setCurrentUser(decoded));
-      window.location = '/home';
+      window.location = '/MainMenuPage';
     })
     .catch(err =>
       dispatch({
