@@ -1,6 +1,7 @@
 import React, {Component } from 'react';
 import {Grid, Cell} from 'react-mdl';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+const keys = require("../../keys/config");
 var mapStyles = {
   width: '50vw',
   height: '50vw'
@@ -29,5 +30,5 @@ class InfoPage extends Component{
 }
 
  export default GoogleApiWrapper({
-    apiKey: ('AIzaSyBCqW6K3maZLWP-1SAoRzKy87ZFQKxIv1k')
+    apiKey: (keys.GoogleAPIKey)
   })(InfoPage)
