@@ -2,10 +2,13 @@ const axios = require('axios');
 const express = require('express');
 const router = express.Router();
 
+require('dotenv').config();
+const key = process.env.GOOGLE_API_KEY;
+
 // Function for initializing the place details service
 function googlePlaceDetails(place_id) {
   const googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyBCqW6K3maZLWP-1SAoRzKy87ZFQKxIv1k',
+    key: key,
     Promise: Promise
   });
   return googleMapsClient.place({ placeid: place_id }).asPromise();
