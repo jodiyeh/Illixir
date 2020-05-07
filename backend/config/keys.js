@@ -1,3 +1,4 @@
 module.exports = {
-  secretOrKey: "secret"
+  secretOrKey: "secret",
+  GoogleAPIKey: "AIzaSyBCqW6K3maZLWP-1SAoRzKy87ZFQKxIv1k"
 };

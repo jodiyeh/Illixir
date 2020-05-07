@@ -1,11 +1,12 @@
 const axios = require('axios');
 const express = require('express');
 const router = express.Router();
+const keys = require("../config/keys");
 
 // Function for initializing the place details service
 function googlePlaceDetails(place_id) {
   const googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyBCqW6K3maZLWP-1SAoRzKy87ZFQKxIv1k',
+    key: keys.GoogleAPIKey,
     Promise: Promise
   });
   return googleMapsClient.place({ placeid: place_id }).asPromise();
