@@ -53,7 +53,7 @@ class MainMenuPage extends Component{
 
     render(){
         return(        
-        <div className = "background">
+        <div className = "menu-background">
         <AppBar className="appbar" position="static" style={{ background: '#77A6F7' }}>
           <Toolbar className="appbar">
           <div className="sidebar-container">
@@ -97,46 +97,6 @@ class MainMenuPage extends Component{
             </div>
         </div>
 
-        <MDBFooter className="font-small pt-4 mt-4" style={{ background: '#D2FDFF' }}>
-        <MDBContainer fluid className="footer">
-            <MDBRow>
-            <MDBCol md="6">
-                <h5 className="footer-title" style={{ color: '#77A6F7' }}>Illixir</h5>
-                <p className="footer-description" style={{ color: '#77A6F7' }}>
-                A web application developed by Duke Students.
-                </p>
-            </MDBCol>
-            <MDBCol md="6">
-                <h5 className="footer-text1">Explore:</h5>
-                <ul>
-                <li className="footer-text">
-                    <a style={{ color: '#77A6F7' }} href="/home">Home</a>
-                </li>
-                <li className="footer-text">
-                    <a style={{ color: '#77A6F7' }} href="/about">About</a>
-                </li>
-                <li className="footer-text">
-                    <a style={{ color: '#77A6F7' }} onClick={this.onUpdateClick}>Update Address</a>
-                </li>
-                <li className="footer-text">
-                    <a style={{ color: '#77A6F7' }} href="/FAQ">FAQ</a>
-                </li>
-                <li className="footer-text">
-                    <a style={{ color: '#77A6F7' }} href="">Contact Us</a>
-                </li>
-                <li className="footer-text">
-                    <a style={{ color: '#77A6F7' }} onClick={this.onLogoutClick}>Logout</a>
-                </li>
-                </ul>
-            </MDBCol>
-            </MDBRow>
-        </MDBContainer>
-        <div className="footer-copyright text-center py-" style={{ background: '#77A6F7' }}>
-            <MDBContainer fluid>
-            Created By: Lorne & Brian, Last Updated: 4/25/2020
-            </MDBContainer>
-        </div>
-        </MDBFooter>
         <span></span>
         <span></span>
         <span></span>
