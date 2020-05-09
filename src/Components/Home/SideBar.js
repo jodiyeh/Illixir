@@ -148,7 +148,7 @@ class SideBar extends Component {
       </MDBContainer>
       <div className="footer-copyright text-center py-" style={{ background: '#77A6F7' }}>
         <MDBContainer fluid>
-          Created By: Lorne & Brian, Last Updated: 4/25/2020
+          Created By: Lorne & Brian, Last Updated: 5/8/2020
         </MDBContainer>
       </div>
     </MDBFooter>
