@@ -231,7 +231,7 @@ class FacilityList extends Component{
     let searchDesc;
     if(this.state.facilities.length == 0){
       searchDesc = <div className="select-title-description">
-        Sorry, we found no <span id="your-address">{stringDict[this.state.facility]}</span> within <span id="your-address">{(Math.round(69 * 100 * this.state.distance/100))}</span> miles of your address. Please expand your search radius or search another address.
+        Sorry, we found no <span id="your-address">{stringDict[this.state.facility]}</span> . Please expand your search radius or search another address.
       </div>
     }
     else{
