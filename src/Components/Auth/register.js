@@ -5,15 +5,14 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
 import "./Auth.css";
+
 class Register extends Component {
   constructor() {
     super();
-
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.autocomplete = null;
     this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
-
     this.state = {
       username: "",
       email: "",
@@ -37,18 +36,25 @@ class Register extends Component {
     }
   }
 
+  // static getDerivedStateFromProps(nextProps, prevState){
+  //   if(nextProps.errors){
+  //     return true;
+  //   }
+  //   else return null;
+  // }
+  //
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.props.auth.isAuthenticated) {
+  //     this.props.history.push("/login");
+  //     window.location = '/login';
+  //   }
+  // }
 
-  static getDerivedStateFromProps(nextProps, prevState){
-    if(nextProps.errors){
-      return true;
-    }
-    else return null;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/login");
-      window.location = '/login';
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
     }
   }
 
@@ -59,7 +65,6 @@ class Register extends Component {
     var city = "locality";
     var state = "administrative_area_level_1";
     var zip = "postal_code";
-
     for (var i=0 ; i < address.length ; i++) {
       if (address[i].types[0] == city) {
         results.push(address[i].long_name);
@@ -102,10 +107,10 @@ class Register extends Component {
     const { errors } = this.state;
     return (
       <div className="container">
-      <div class="bg4"></div>
-<div class="bg4 bg2"></div>
-<div class="bg4 bg3"></div>
-<div class="content">
+        <div class="bg4"></div>
+        <div class="bg4 bg2"></div>
+        <div class="bg4 bg3"></div>
+        <div class="content">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
@@ -150,44 +155,79 @@ class Register extends Component {
               </div>
               <div className="input-field col s12">
                 <input id="autocomplete" className="input-field" ref="input" type="text"/>
-                <div className="search-title1">Address</div>
+                <div className="search-title1">Look Up Address</div>
                 <input
                   name="streetAddress"
                   type="text"
                   className="form-control"
                   value={this.state.streetAddress}
                   onChange={this.onChange}
+                  error={errors.streetAddress}
+                  className={classnames("", {
+                    invalid: errors.streetAddress
+                  })}
                 />
+                <div className="search-title1">Address</div>
+                <span className="red-text">{errors.streetAddress}</span>
               </div>
               <div className="input-field col s12">
-                <div className="search-title1">City</div>
                 <input
                   name="city"
                   type="text"
                   className="form-control"
                   value={this.state.city}
                   onChange={this.onChange}
+                  error={errors.city}
+                  className={classnames("", {
+                    invalid: errors.city
+                  })}
                 />
+                <div className="search-title1">City</div>
+                <span className="red-text">{errors.city}</span>
               </div>
               <div className="input-field col s12">
-                <div className="search-title1">State</div>
                 <input
                   name="state"
                   type="text"
                   className="form-control"
                   value={this.state.state}
                   onChange={this.onChange}
+                  error={errors.state}
+                  className={classnames("", {
+                    invalid: errors.state
+                  })}
                 />
+                <div className="search-title1">State</div>
+                <span className="red-text">{errors.state}</span>
               </div>
               <div className="input-field col s12">
-                <div className="search-title1">Zipcode</div>
                 <input
                   name="zipcode"
                   type="text"
                   className="form-control"
                   value={this.state.zipcode}
                   onChange={this.onChange}
+                  error={errors.zipcode}
+                  className={classnames("", {
+                    invalid: errors.zipcode
+                  })}
                 />
+                <div className="search-title1">Zipcode</div>
+                <span className="red-text">{errors.zipcode}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.password}
+                  error={errors.password}
+                  id="password"
+                  type="password"
+                  className={classnames("", {
+                    invalid: errors.password
+                  })}
+                />
+                <div className="search-title1">Password</div>
+                <span className="red-text">{errors.confirm}</span>
               </div>
               <div className="input-field col s12">
                 <input

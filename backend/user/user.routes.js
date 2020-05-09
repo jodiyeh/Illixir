@@ -63,7 +63,7 @@ router.post("/login", (req, res) => {
 
   // Form validation
   const {errors, isValid} = validateUserLogin(req.body);
-  console.log("Errors: " + errors);
+  console.log("Errors: " + JSON.stringify(errors));
   console.log("Valid: " + isValid);
 
   // Check validation
@@ -75,12 +75,13 @@ router.post("/login", (req, res) => {
   User.findOne({email: req.body.email}).then(user => {
     if(!user){
       console.log("User not found.")
-      return res.status(404).json("Email not found");
+      return res.status(404).json("Email not found.");
     }
     // Check password
     bcrypt.compare(req.body.password, user.password).then(isMatch => {
       if (isMatch) {
         // User matched Create JWT Payload ?
+        console.log("User found and correct password.")
         const payload = {
           id: user.id,
           username: user.username,
@@ -106,6 +107,7 @@ router.post("/login", (req, res) => {
           }
         );
       } else {
+        console.log("Password Incorrect.")
         return res
           .status(400)
           .json({ passwordincorrect: "Password incorrect" });

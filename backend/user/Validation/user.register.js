@@ -24,31 +24,43 @@ module.exports = function validateUserRegister(data) {
   // Validate className
   if (Validator.isEmpty(data.username)) {
     errors.username = "Name field is required";
-    console.log("EEEEEEE");
+  }
+
+  // Validate address
+  if (Validator.isEmpty(data.streetAddress)) {
+    errors.streetAddress = "Address field is required";
+  }
+  if (Validator.isEmpty(data.city)) {
+    errors.city = "City field is required";
+  }
+  if (Validator.isEmpty(data.state)) {
+    errors.state = "State field is required";
+  }
+  if (Validator.isEmpty(data.zipcode)) {
+    errors.zipcode = "Zipcode field is required";
   }
 
   // Validate email
   if (Validator.isEmpty(data.email)) {
     errors.email = "Email field is required";
-    console.log("EEEEEEE");
   } else if (!Validator.isEmail(data.email)) {
     errors.email = "Email is invalid";
-    console.log("EEEEEEE");
   }
 
   // Validate password
   if (Validator.isEmpty(data.password)) {
     errors.password = "Password field is required";
-    console.log("EEEEEEE");
+  }
+
+  if (Validator.isEmpty(data.confirm)) {
+    errors.confirm = "Confirm password field is required";
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     if(isEmpty(errors.password)) {
       errors.password = "Password must be at least 6 characters";
-      console.log("EEEEEEE");
     } else {
       errors.password += "\nPassword must be at least 6 characters";
-      console.log("EEEEEEE");
     }
   }
 
@@ -70,8 +82,8 @@ module.exports = function validateUserRegister(data) {
 
   if (!Validator.equals(data.password, data.confirm)) {
     errors.confirm = "Passwords must match";
-    console.log("EEEEEEE");
   }
+
 
   // Return validity
   if(isEmpty(errors)) {
