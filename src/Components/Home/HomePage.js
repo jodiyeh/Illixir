@@ -65,7 +65,7 @@ class HomePage extends Component{
     }).then((result)=>{
     const lat = result.data.location.lat
     const long = result.data.location.lng
-    window.location = "/select?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode+"&latitude="+lat+"&longitude="+long
+    window.location = "/facilityfinder/select?state="+this.state.userState+"&city="+this.state.userCity+"&streetAddress="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode+"&latitude="+lat+"&longitude="+long
     console.log(result)
     }).catch((err)=>{
       alert(err)
@@ -80,7 +80,7 @@ class HomePage extends Component{
     }).then((result)=>{
     const lat = result.data.location.lat
     const long = result.data.location.lng
-    window.location = "/select?state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode+"&latitude="+lat+"&longitude="+long
+    window.location = "/facilityfinder/select?state="+this.state.state+"&city="+this.state.city+"&streetAddress="+this.state.streetAddress+"&zipcode="+this.state.zipcode+"&latitude="+lat+"&longitude="+long
     console.log(result)
     }).catch((err)=>{
      console.log(err);
@@ -103,7 +103,7 @@ class HomePage extends Component{
       })
   }
   handleUpdate(){
-    window.location = "/update?state="+this.state.userState+"&city="+this.state.userCity+"&address="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode+"&id"+this.props.id
+    window.location = "/facilityfinder/update?state="+this.state.userState+"&city="+this.state.userCity+"&address="+this.state.userStreetAddress+"&zipcode="+this.state.userZipcode+"&id"+this.props.id
   }
   handlePlaceSelect() {
     let addressObject = this.autocomplete.getPlace()

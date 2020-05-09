@@ -34,7 +34,7 @@ class SelectPage extends Component{
   handleClick(string) {
 
 
-      window.location = "/facility?facility="+string
+      window.location = "/facilityfinder/facility?facility="+string
         +"&state="+this.state.state
         +"&city="+this.state.city
         +"&streetAddress="+this.state.streetAddress

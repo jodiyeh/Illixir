@@ -125,16 +125,16 @@ class SideBar extends Component {
             <h5 className="footer-text1">Explore:</h5>
             <ul>
               <li className="footer-text">
-                <a style={{ color: '#77A6F7' }} href="/home">Home</a>
+                <a style={{ color: '#77A6F7' }} href="/facilityfinder/home">Home</a>
               </li>
               <li className="footer-text">
-                <a style={{ color: '#77A6F7' }} href="/about">About</a>
+                <a style={{ color: '#77A6F7' }} href="/facilityfinder/about">About</a>
               </li>
               <li className="footer-text">
                 <a style={{ color: '#77A6F7' }} onClick={this.onUpdateClick}>Update Address</a>
               </li>
               <li className="footer-text">
-                <a style={{ color: '#77A6F7' }} href="/FAQ">FAQ</a>
+                <a style={{ color: '#77A6F7' }} href="/facilityfinder/FAQ">FAQ</a>
               </li>
               <li className="footer-text">
                 <a style={{ color: '#77A6F7' }} href="">Contact Us</a>

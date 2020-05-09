@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Fade from 'react-reveal/Fade';
 
 const stringDict = {
-  "hospital":"Hospitals",
+  "hospitals":"Hospitals",
   "nursingHomes":"Nursing Homes",
   "emergencyServices":"Emergency Medical Service Stations",
   "urgentCare":"Urgent Care Facilities",
@@ -34,7 +34,7 @@ const Facility = props => (
     <td>{(Math.round(69 * 100 * Math.sqrt(Math.pow(props.facility.geometry.y - props.user.userLatitude, 2) + Math.pow(props.facility.geometry.x - props.user.userLongitude, 2)))/100)} miles</td>
     <td>
     <Button variant="outlined" style={{ backgroundColor: '#77A6F7', textTransform: 'none', fontFamily: 'Didact Gothic', }} component={Link} to={
-      "/information?state="+props.user.state
+      "/facilityfinder/information?state="+props.user.state
       +"&city="+props.user.city
       +"&streetAddress="+props.user.streetAddress
       +"&zipcode="+props.user.zipcode
@@ -72,13 +72,14 @@ class FacilityList extends Component{
       streetAddress: "",
       facilities: [],
       distance: "",
+      count: "",
     };
 }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value / 69 });
   }
   handleClick(){
-    window.location = "/facility?facility="+this.state.facility
+    window.location = "/facilityfinder/facility?facility="+this.state.facility
       +"&state="+this.state.state
       +"&city="+this.state.city
       +"&streetAddress="+this.state.streetAddress
@@ -130,7 +131,8 @@ class FacilityList extends Component{
         });
         this.setState({
           facilities: data,
-        })
+          count: data.length,
+        });
       })
       .catch(error => {
         console.log("ERROR: " + error);
@@ -220,10 +222,25 @@ class FacilityList extends Component{
     //
     // alert(JSON.string);
     return this.state.facilities.map(current => {
+      //this.setState({ count: this.state.count + 1 })
       return <Facility facility={current} user={user}/>;
     })
   }
   render(){
+
+    let searchDesc;
+    if(this.state.facilities.length == 0){
+      searchDesc = <div className="select-title-description">
+        Sorry, we found no <span id="your-address">{stringDict[this.state.facility]}</span> within <span id="your-address">{(Math.round(69 * 100 * this.state.distance/100))}</span> miles of your address. Please expand your search radius or search another address.
+      </div>
+    }
+    else{
+      searchDesc = <div className="select-title-description">
+      Found {this.state.count} <span id="your-address">{stringDict[this.state.facility]}</span> within <span id="your-address">{(Math.round(69 * 100 * this.state.distance/100))}</span> miles of your address.
+      </div>
+    }
+
+
     return(
       <div className="list-page">
       <div className="list-content">
@@ -237,9 +254,7 @@ class FacilityList extends Component{
 
       </div>
       <Fade bottom>
-      <div className="select-title-description">
-      Showing the <span id="your-address">{stringDict[this.state.facility]}</span> within <span id="your-address">{(Math.round(69 * 100 * this.state.distance/100))}</span> miles.
-      </div>
+      {searchDesc}
       </Fade>
       </div>
 
@@ -269,6 +284,7 @@ class FacilityList extends Component{
       </div>
       </div>
       <div className="table">
+
         <table className="table">
           <thread className="thread-light">
           </thread>
