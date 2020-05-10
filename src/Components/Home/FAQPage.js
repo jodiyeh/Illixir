@@ -9,11 +9,11 @@ class FAQPage extends Component{
             <div className="titleContainer">
             <Fade bottom>
             <div className="page-title">
-    Frequently Asked Questions
-    </div>
-    </Fade>
-    </div>
-    </div>
+              Frequently Asked Questions
+             </div>
+            </Fade>
+            </div>
+          </div>
             <div className="about-content">
 <Fade left>
               <div className="about-title">What is the purpose of this website?</div>

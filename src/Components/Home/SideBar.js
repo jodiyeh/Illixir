@@ -10,6 +10,7 @@ import UpdateAddress from './UpdateAddressPage';
 import FacilityList from './FacilityListPage';
 import FacilityPage from './FacilityPage';
 import AboutPage from './AboutPage';
+import ContactPage from './ContactPage';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -109,6 +110,8 @@ class SideBar extends Component {
           <Route path="/facilityfinder/information" component = {FacilityPage}/>
           <Route path="/facilityfinder/about" component = {AboutPage}/>
           <Route path="/facilityfinder/FAQ" component = {FAQPage}/>
+          <Route path="/facilityfinder/contact" component = {ContactPage}/>
+
         </Switch>
 
 
@@ -137,7 +140,7 @@ class SideBar extends Component {
                 <a style={{ color: '#77A6F7' }} href="/facilityfinder/FAQ">FAQ</a>
               </li>
               <li className="footer-text">
-                <a style={{ color: '#77A6F7' }} href="">Contact Us</a>
+                <a style={{ color: '#77A6F7' }} href="/facilityfinder/contact">Contact Us</a>
               </li>
               <li className="footer-text">
                 <a style={{ color: '#77A6F7' }} onClick={this.onLogoutClick}>Logout</a>
