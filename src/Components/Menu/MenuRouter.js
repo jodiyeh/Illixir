@@ -14,6 +14,7 @@ import SelectPage from '../Home/SelectPage';
 import FacilityPage from '../Home/FacilityPage';
 import SideBar from '../Home/SideBar';
 import MainMenuPage from './MainMenuPage';
+import RemedySideBar from '../Remedy/RemedySideBar';
 import AboutPage from '../Home/AboutPage';
 import UpdateAddress from '../Home/UpdateAddressPage';
 import FacilityList from '../Home/FacilityListPage';
@@ -47,19 +48,20 @@ class MenuRouter extends Component{
         window.location.href = "../login";
       };
 
+      goToRemedy = e =>{
+        e.preventDefault();
+        window.location.href = '/Remedy/RemedyHome';
+    };
 
 
     render(){
         return(
 
-
-
         <Switch className="switch">
           <Route path="/mainmenupage" render = {() => (<MainMenuPage id={this.props.auth.user.id}/>)}/>
           <Route path="/facilityfinder" render = {() => (<SideBar id={this.props.auth.user.id}/>)}/>
-
+          <Route path="/remedy" render = {() => (<RemedySideBar id={this.props.auth.user.id}/>)}/>
         </Switch>
-
 
 
         )

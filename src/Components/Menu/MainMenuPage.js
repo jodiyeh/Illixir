@@ -40,6 +40,11 @@ class MainMenuPage extends Component{
         window.location.href = "/facilityfinder/home";
     };
 
+    goToRemedy= e =>{
+      e.preventDefault();
+      window.location.href = "/Remedy/RemedyHome";
+  };
+
     onLogoutClick = e => {
         e.preventDefault();
         this.props.logoutUser();
@@ -82,7 +87,7 @@ class MainMenuPage extends Component{
                 Facility Finder
                 </p>
             </div>
-            <div className = "remedy-repo-button" onClick >
+            <div className = "remedy-repo-button" onClick = {this.goToRemedy} >
                 <p>
                 Custom Remedies
                 </p>
