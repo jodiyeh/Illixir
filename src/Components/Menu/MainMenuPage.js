@@ -39,6 +39,10 @@ class MainMenuPage extends Component{
         e.preventDefault();
         window.location.href = "/facilityfinder/home";
     };
+    goToCustomRemidies= e =>{
+       e.preventDefault();
+       window.location.href = "/customremedies/home";
+   };
 
     onLogoutClick = e => {
         e.preventDefault();
@@ -46,11 +50,7 @@ class MainMenuPage extends Component{
         window.location.href = "../login";
       };
 
-      onUpdateClick = e => {
-        e.preventDefault();
-        window.location = "/update?state="+this.state.state+"&city="+this.state.city+"&address="+this.state.streetAddress+"&zipcode="+this.state.zipcode
-        +"&id="+this.props.auth.user.id
-      };
+
 
     render(){
         return(
@@ -82,7 +82,7 @@ class MainMenuPage extends Component{
                 Facility Finder
                 </p>
             </div>
-            <div className = "remedy-repo-button" onClick >
+            <div className = "remedy-repo-button" onClick = {this.goToCustomRemidies} >
                 <p>
                 Custom Remedies
                 </p>
