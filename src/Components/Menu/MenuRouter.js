@@ -17,7 +17,6 @@ import SelectPage from '../Home/SelectPage';
 import FacilityPage from '../Home/FacilityPage';
 import SideBar from '../Home/SideBar';
 import MainMenuPage from './MainMenuPage';
-import RemedySideBar from '../Remedy/RemedySideBar';
 import AboutPage from '../Home/AboutPage';
 import UpdateAddress from '../Home/UpdateAddressPage';
 import FacilityList from '../Home/FacilityListPage';
