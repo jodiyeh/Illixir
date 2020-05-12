@@ -53,7 +53,7 @@ class MenuRouter extends Component{
 
       goToRemedy = e =>{
         e.preventDefault();
-        window.location.href = '/Remedy/RemedyHome';
+        window.location.href = '/customremidies/home';
     };
 
 

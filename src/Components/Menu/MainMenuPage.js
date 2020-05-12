@@ -43,7 +43,7 @@ class MainMenuPage extends Component{
 
     goToRemedy= e =>{
       e.preventDefault();
-      window.location.href = "/Remedy/RemedyHome";
+      window.location.href = "/customremedies/home";
   };
 
     onLogoutClick = e => {

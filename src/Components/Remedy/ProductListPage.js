@@ -14,32 +14,20 @@ import Fade from 'react-reveal/Fade';
 import Typing from 'react-typing-animation';
 
 
-class HomePage extends Component{
-  constructor(props) {
-    super();
-  }
-  goToProducts = e => {
-    e.preventDefault();
-    window.location.href = "/customremedies/products";
-  };
-  goToConditions = e => {
-    e.preventDefault();
-    window.location.href = "/customremedies/conditions";
-  };
+class ProductListPage extends Component{
+
     render(){
     return(
       <div className = "Remedy-Home">
           <div className = "Remedy-title">
-              Remedy Repository
+              Products
           </div>
           <div className = "Remedy-subtitle">
-              Please fill out the form below
+              Here are our recommended products.
           </div>
-          <div className="home-button-form" onClick={this.goToProducts}>Go To Products</div>
-          <div className="home-button-form" onClick={this.goToConditions}>Go To Conditions</div>
       </div>
     )
   }
 }
 
-export default HomePage
+export default ProductListPage

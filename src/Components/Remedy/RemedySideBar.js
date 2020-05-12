@@ -17,7 +17,9 @@ import { faShieldVirus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
-import HomePage from "./HomePage"
+import HomePage from "./HomePage";
+import ConditionListPage from "./ConditionListPage";
+import ProductListPage from "./ProductListPage";
 
 class RemedySideBar extends Component {
   constructor(props) {
@@ -74,6 +76,8 @@ class RemedySideBar extends Component {
 
         <Switch className="switch">
           <Route path="/customremedies/home" render = {() => (<HomePage id={this.props.auth.user.id}/>)}/>
+          <Route path="/customremedies/conditions" component = {ConditionListPage}/>
+          <Route path="/customremedies/products" component = {ProductListPage}/>
         </Switch>
 
 
