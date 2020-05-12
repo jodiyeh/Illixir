@@ -14,9 +14,12 @@ class Login extends Component {
     super();
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onGuestSubmit = this.onGuestSubmit.bind(this);
     this.state = {
       email: "",
       password: "",
+      guestEmail: "testuser@gmail.com",
+      guestPassword: "testuser",
       errors: {}
     };
   }
@@ -75,6 +78,15 @@ class Login extends Component {
     this.props.loginUser(userData);
   };
 
+  onGuestSubmit(e){
+    e.preventDefault();
+    const userData = {
+      email: this.state.guestEmail,
+      password: this.state.guestPassword
+    };
+    this.props.loginUser(userData);
+  };
+
   render() {
     const { errors } = this.state;
     return (
@@ -97,6 +109,35 @@ class Login extends Component {
                   Don't have an account? <Link to="/register">Register</Link>
                 </p>
               </div>
+
+              <form onSubmit = {this.onGuestSubmit}>
+               <div className = "guestLogin">
+                 <div className = "email"
+                   onChange = {this.onChange}
+                   value={this.state.guestEmail}
+                   error={errors.email}
+                   id="email"
+                   type="email"
+                   className={classnames("", {
+                   invalid: errors.email || errors.emailnotfound
+                 })}
+                 />
+                 <div className = "password"
+                 onChange={"testuser"}
+                 value={this.state.guestPassword}
+                 error={errors.password}
+                 id="password"
+                 type="password"
+                 className={classnames("", {
+                   invalid: errors.password || errors.passwordincorrect
+                 })}/>
+                 <button className = "guest-label"
+                   type = "submit">
+                   Continue as Guest
+                 </button> 
+               </div>
+             </form>
+
               <form onSubmit={this.onSubmit}>
                 <div className="input-field col s12">
                   <input

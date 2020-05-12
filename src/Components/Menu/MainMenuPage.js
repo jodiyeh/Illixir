@@ -39,10 +39,12 @@ class MainMenuPage extends Component{
         e.preventDefault();
         window.location.href = "/facilityfinder/home";
     };
-    goToCustomRemidies= e =>{
-       e.preventDefault();
-       window.location.href = "/customremedies/home";
-   };
+
+
+    goToRemedy= e =>{
+      e.preventDefault();
+      window.location.href = "/Remedy/RemedyHome";
+  };
 
     onLogoutClick = e => {
         e.preventDefault();
@@ -82,7 +84,8 @@ class MainMenuPage extends Component{
                 Facility Finder
                 </p>
             </div>
-            <div className = "remedy-repo-button" onClick = {this.goToCustomRemidies} >
+            <div className = "remedy-repo-button" onClick = {this.goToRemedy} >
+
                 <p>
                 Custom Remedies
                 </p>
