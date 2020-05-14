@@ -114,6 +114,7 @@
   justify-content: flex-start;
 }
 .how-to-use{
+
   display: flex;
   flex-direction: column;
   justify-content: center;
