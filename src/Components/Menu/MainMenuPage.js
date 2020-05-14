@@ -40,9 +40,10 @@ class MainMenuPage extends Component{
         window.location.href = "/facilityfinder/home";
     };
 
+
     goToRemedy= e =>{
       e.preventDefault();
-      window.location.href = "/Remedy/RemedyHome";
+      window.location.href = "/customremedies/home";
   };
 
     onLogoutClick = e => {
@@ -51,11 +52,7 @@ class MainMenuPage extends Component{
         window.location.href = "../login";
       };
 
-      onUpdateClick = e => {
-        e.preventDefault();
-        window.location = "/update?state="+this.state.state+"&city="+this.state.city+"&address="+this.state.streetAddress+"&zipcode="+this.state.zipcode
-        +"&id="+this.props.auth.user.id
-      };
+
 
     render(){
         return(
@@ -88,6 +85,7 @@ class MainMenuPage extends Component{
                 </p>
             </div>
             <div className = "remedy-repo-button" onClick = {this.goToRemedy} >
+
                 <p>
                 Custom Remedies
                 </p>

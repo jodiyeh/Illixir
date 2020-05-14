@@ -8,16 +8,19 @@ import "./MainMenuPage.css";
 import { faShieldVirus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Route, Switch, useLocation} from "react-router-dom";
+
+import RemedySideBar from '../Remedy/RemedySideBar';
+
 import HomePage from '../Home/HomePage';
 import FAQPage from '../Home/FAQPage';
 import SelectPage from '../Home/SelectPage';
 import FacilityPage from '../Home/FacilityPage';
 import SideBar from '../Home/SideBar';
 import MainMenuPage from './MainMenuPage';
-import RemedySideBar from '../Remedy/RemedySideBar';
 import AboutPage from '../Home/AboutPage';
 import UpdateAddress from '../Home/UpdateAddressPage';
 import FacilityList from '../Home/FacilityListPage';
+
 import { logoutUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 
@@ -50,7 +53,7 @@ class MenuRouter extends Component{
 
       goToRemedy = e =>{
         e.preventDefault();
-        window.location.href = '/Remedy/RemedyHome';
+        window.location.href = '/customremidies/home';
     };
 
 
@@ -60,7 +63,7 @@ class MenuRouter extends Component{
         <Switch className="switch">
           <Route path="/mainmenupage" render = {() => (<MainMenuPage id={this.props.auth.user.id}/>)}/>
           <Route path="/facilityfinder" render = {() => (<SideBar id={this.props.auth.user.id}/>)}/>
-          <Route path="/remedy" render = {() => (<RemedySideBar id={this.props.auth.user.id}/>)}/>
+          <Route path="/customremedies" render = {() => (<RemedySideBar id={this.props.auth.user.id}/>)}/>
         </Switch>
 
 
