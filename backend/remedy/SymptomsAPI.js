@@ -3,9 +3,9 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req,res) => {
-  var symptoms = parseFloat(req.query.symptoms);
-  var gender = parseFloat(req.query.gender);
-  var year_of_birth = parseFloat(req.query.year_of_birth);
+    //format is always JSON 
+  var format = parseFloat(req.query.format);
+  //language is always en-gb
   var language = parseFloat(req.query.language);
 
   console.log("GET: /api/symptoms/ - Attempt to get diagnosis data.");
@@ -17,8 +17,8 @@ router.get('/', (req,res) => {
     "x-rapidapi-key":"47dd31d7afmsh2cb07155fce1f9ap10b028jsn99dddbd263b9",
     "useQueryString":true
     },"params":{
-    "format":"json",
-    "language":"en-gb"
+    "format":format,
+    "language":language
     }
 })
 .then(response => {

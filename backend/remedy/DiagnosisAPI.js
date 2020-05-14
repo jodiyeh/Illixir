@@ -6,6 +6,7 @@ router.get('/', (req,res) => {
   var symptoms = parseFloat(req.query.symptoms);
   var gender = parseFloat(req.query.gender);
   var year_of_birth = parseFloat(req.query.year_of_birth);
+  //language is always en-gb
   var language = parseFloat(req.query.language);
 
   console.log("GET: /api/diagnosis/ - Attempt to get diagnosis data.");
