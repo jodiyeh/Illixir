@@ -39,7 +39,6 @@ class HomePage extends Component{
 
   }
   componentDidMount() {
-    alert("hi")
     axios.get('/api/remedy/symptoms/', {
       params: {
         format: "JSON",
