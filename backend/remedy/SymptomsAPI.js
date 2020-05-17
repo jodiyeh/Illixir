@@ -11,12 +11,13 @@ router.get('/', (req,res) => {
   console.log("GET: /api/symptoms/ - Attempt to get diagnosis data.");
   axios.get('https://priaid-symptom-checker-v1.p.rapidapi.com/symptoms',
   {
-    "headers":{
+    headers:{
     "content-type":"application/octet-stream",
     "x-rapidapi-host":"priaid-symptom-checker-v1.p.rapidapi.com",
     "x-rapidapi-key":"47dd31d7afmsh2cb07155fce1f9ap10b028jsn99dddbd263b9",
     "useQueryString":true
-    },"params":{
+    },
+    params:{
     "format":format,
     "language":language
     }
