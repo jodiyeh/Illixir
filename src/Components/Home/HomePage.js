@@ -141,20 +141,7 @@ class HomePage extends Component{
           <div className="home-title-section">
             <div className="titleContainer">
             <div className="home-title">
-            <Typing loop={true}>
-              <span> What is Illixir?</span>
-              <Typing.Delay ms={1500} />
-              <Typing.Backspace count={20} />
-              <span> Illixir is a facility finder.</span>
-              <Typing.Delay ms={1500} />
-              <Typing.Backspace count={30} />
-              <span> What is its purpose?</span>
-              <Typing.Delay ms={1500} />
-              <Typing.Backspace count={30} />
-              <span> To provide access to public data.</span>
-              <Typing.Delay ms={1500} />
-              <Typing.Backspace count={45} />
-            </Typing>
+              Illixir - Facility Finder
             </div>
             <div className="home-title-description">Welcome! Discover nearby hospitals, pharmacies, shelters, emergency medical centers, and more.</div>
             </div>

@@ -56,17 +56,17 @@ class RemedySideBar extends Component {
       <div className="application">
         <AppBar className="appbar" position="static" style={{ background: '#77A6F7' }}>
           <Toolbar className="appbar">
-            <div className="remedysidebar-container">
-              <div className="remedysidebar-header">
+            <div className="sidebar-container">
+              <div className="sidebar-header">
                 <FontAwesomeIcon size="1x" color="white" icon={faShieldVirus}/>
                   &nbsp;Illixir
               </div>
-              <div className="remedysidebar-links">
-                <div className="remedysidebar-header-element" onClick={this.onHomeClick}>Home</div>
+              <div className="sidebar-links">
+                <div className="sidebar-header-element" onClick={this.onHomeClick}>Home</div>
               </div>
-              <div className="remedysidebar-links">
-                <div className="remedysidebar-links">
-                  <div className="remedysidebar-header-element" onClick={this.onLogoutClick}>Logout</div>
+              <div className="sidebar-links">
+                <div className="sidebar-links">
+                  <div className="sidebar-header-element" onClick={this.onLogoutClick}>Logout</div>
                 </div>
               </div>
             </div>

@@ -1,0 +1,17 @@
+.remedy-content{
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding-top: 3vh;
+  padding-bottom: 3vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.remedy-form{
+  background-color: #FFCCBC;
+  padding: 5vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  border-radius: 10px;
+}
