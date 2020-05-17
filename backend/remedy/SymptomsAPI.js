@@ -23,6 +23,7 @@ router.get('/', (req,res) => {
     }
 })
 .then(response => {
+  console.log(response)
   res.json(response.data.features)
 })
 .catch(error => {

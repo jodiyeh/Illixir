@@ -19,11 +19,32 @@ class ProductListPage extends Component{
     render(){
     return(
       <div className = "Remedy-Home">
-          <div className = "Remedy-title">
+      <div className="home-content">
+        <div className="home-title-section">
+          <div className="titleContainer">
+            <div className="home-title">
               Products
+            </div>
           </div>
-          <div className = "Remedy-subtitle">
-              Here are our recommended products.
+        </div>
+      </div>
+
+          <div className="remedy-content">
+          <div className="home-title-section">
+            <div className="home-steps-title">Here are some recommended products.</div>
+          </div>
+            <div className="remedy-conditions">
+              <div className="condition-card">
+                a
+              </div>
+              <div className="condition-card">
+                b
+              </div>
+              <div className="condition-card">
+                c
+              </div>
+            </div>
+
           </div>
       </div>
     )

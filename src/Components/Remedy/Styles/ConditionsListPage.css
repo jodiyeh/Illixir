@@ -1,0 +1,13 @@
+.remedy-conditions{
+  background-color: #FFCCBC;
+  padding: 5vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  border-radius: 10px;
+}
+.condition-card{
+  background-color: white;
+  margin: 5vw;
+  border-radius: 10px;
+  padding: 2vw;
+}
