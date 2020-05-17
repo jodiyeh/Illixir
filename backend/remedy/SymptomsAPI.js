@@ -4,22 +4,18 @@ const router = express.Router();
 
 router.get('/', (req,res) => {
   //format is always JSON
-  var format = req.query.format;
+  var formatval = req.query.format;
   //language is always en-gb
-  var language = req.query.language;
-  console.log(format, language)
+  var languageval = req.query.language;
+  console.log(formatval, languageval)
   console.log("GET: /api/remedy/symptoms/ - Attempt to get symptoms data.");
-  axios.get('https://priaid-symptom-checker-v1.p.rapidapi.com/symptoms',
+  axios.get('https://priaid-symptom-checker-v1.p.rapidapi.com/symptoms?format=json&language=en-gb',
   {
     headers:{
-    "content-type":"application/octet-stream",
-    "x-rapidapi-host":"priaid-symptom-checker-v1.p.rapidapi.com",
-    "x-rapidapi-key":"47dd31d7afmsh2cb07155fce1f9ap10b028jsn99dddbd263b9",
-    "useQueryString":true
-    },
-    params:{
-    "format":format,
-    "language":language
+    'content-type':'application/octet-stream',
+    'x-rapidapi-host':'priaid-symptom-checker-v1.p.rapidapi.com',
+    'x-rapidapi-key':'47dd31d7afmsh2cb07155fce1f9ap10b028jsn99dddbd263b9',
+    'useQueryString':'true'
     }
 })
 .then(response => {
