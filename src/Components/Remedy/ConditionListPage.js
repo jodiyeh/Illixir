@@ -21,16 +21,7 @@ class ConditionListPage extends Component{
     this.state = {
       age: null,
       gender: null,
-      selected: [],
       symptoms: [],
-      isLoading: true,
-      options: [
-        {name: 'Cough', id: 1},
-        {name: 'Fever', id: 2},
-        {name: 'Sore throat', id: 3},
-        {name: 'Fatigue', id: 4},
-        {name: 'Headache', id: 25},
-      ]
     }
     this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
@@ -46,6 +37,25 @@ class ConditionListPage extends Component{
   onSelect(selectedList, selectedItem) {
     this.setState({
       symptoms: this.state.symptoms.concat([JSON.stringify(selectedItem.name)])
+    })
+  }
+  componentDidMount(){
+    const params = new URLSearchParams(this.props.location.search);
+    this.setState({
+      symptoms: params.get("symptoms"),
+      age: params.get("age"),
+      gender: params.get("gender"),
+    })
+
+    axios.get('/api/remedy/diagnosis/', {
+      params: {
+        symptoms: params.get("symptoms"),
+        year_of_birth: params.get("age"),
+        gender: params.get("gender"),
+      }
+    })
+    .then( response => {
+        alert(JSON.stringify(response))
     })
   }
 
@@ -115,7 +125,7 @@ class ConditionListPage extends Component{
                   onRemove={this.onRemove} // Function will trigger on remove event
                   displayValue="name" // Property name to display in the dropdown options
                 />
-                {this.state.symptoms.join(", ")}
+                {this.state.symptoms}
               </div>
               <div className="home-button-section">
               <div className="home-button-form" onClick={this.onSubmit}>Search</div>

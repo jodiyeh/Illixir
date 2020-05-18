@@ -12,6 +12,7 @@ const emergencyServicesRouter = require('./facilities/emergencyServices.routes')
 const placeRouter = require('./GoogleAPIRoutes/PlaceRoutes');
 const geocodingRouter = require('./GoogleAPIRoutes/GeocodingRoutes');
 const symptomsRouter = require('./remedy/SymptomsAPI');
+const diagnosisRouter = require('./remedy/DiagnosisAPI');
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -62,6 +63,7 @@ app.use('/api/GoogleMapsApi/place', placeRouter);
 app.use('/api/GoogleMapsApi/geocode', geocodingRouter);
 
 app.use('/api/remedy/symptoms', symptomsRouter);
+app.use('/api/remedy/diagnosis', diagnosisRouter);
 
 // Run app
 app.listen(port, () => {

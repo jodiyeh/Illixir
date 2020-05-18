@@ -1,20 +1,10 @@
 import React, {Component } from 'react';
-import {Grid, Cell} from 'react-mdl';
-import {useHistory} from 'react-router-dom';
 import Collapsible from 'react-collapsible';
 import { Route, Switch } from "react-router-dom";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import { google } from 'google-maps';
 import Geocode from "react-geocode";
-import { faMapMarkedAlt, faHouseUser, faMapMarkerAlt, faHospitalAlt, faRoute, faInfoCircle, faLocationArrow} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Fade from 'react-reveal/Fade';
-import Typing from 'react-typing-animation';
 import "./Styles/HomePage.css";
 import { Multiselect } from 'multiselect-react-dropdown';
-
 
 class HomePage extends Component{
   constructor(props) {
@@ -25,28 +15,33 @@ class HomePage extends Component{
       selected: [],
       symptoms: [],
       isLoading: true,
-      options: [
-        {name: 'Cough', id: 1},
-        {name: 'Fever', id: 2},
-        {name: 'Sore throat', id: 3},
-        {name: 'Fatigue', id: 4},
-        {name: 'Headache', id: 25},
-      ]
+      options: [],
     }
     this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onRemove = this.onRemove.bind(this);
 
+    this.onSubmit = this.onSubmit.bind(this);
+
   }
   componentDidMount() {
-    axios.get('/api/remedy/symptoms/', {
-      params: {
-        format: "JSON",
-        language: "en-gb",
+    axios.get('/api/remedy/symptoms/')
+    .then(response => {
+      var options = [];
+      response.data.forEach(processData);
+      function processData(value){
+        options.push({
+          name: value.Name,
+          id: value.ID,
+        });
       }
-    }).then((result)=>{
-      alert(JSON.stringify(result))
-    });
+      this.setState({
+        options: options,
+      })
+    })
+    .catch( function (error) {
+      console.log(error);
+    })
   }
   goToProducts = e => {
     e.preventDefault();
@@ -65,11 +60,22 @@ class HomePage extends Component{
 
   onSelect(selectedList, selectedItem) {
     this.setState({
-      symptoms: this.state.symptoms.concat([JSON.stringify(selectedItem.name)])
+      symptoms: this.state.symptoms.concat([JSON.stringify(selectedItem.id)])
     })
   }
 
   onRemove(selectedList, removedItem) {
+    var array = this.state.symptoms;
+    var index = array.indexOf(removedItem.id.toString());
+    alert(JSON.stringify(index))
+    array.splice(index, 1);
+    this.setState({symptoms: array});
+  }
+
+  onSubmit(){
+    var symptomString = this.state.symptoms.join("-")
+    alert(symptomString)
+    window.location = "/customremedies/conditions?symptoms="+symptomString+"&age="+this.state.age+"&gender="+this.state.gender
 
   }
 
@@ -95,7 +101,7 @@ class HomePage extends Component{
           <div className="remedy-form">
           <form className="home-search">
             <div className="form-group">
-              <div className="search-title">Age: </div>
+              <div className="search-title">Year of birth: </div>
               <input
               name="age"
               type="text"
