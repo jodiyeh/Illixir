@@ -18,7 +18,7 @@ const Condition = props => (
   <Fade bottom>
   <tr className='condition-card' style={{ fontSize: "1.7vh" }}>
     <td>{props.condition.Issue.Name}</td>
-    <a href={"https://google.com/search?q=" + props.condition.Issue.Name}  target="_blank">CSV</a>
+    <a href={"https://google.com/search?q=" + props.condition.Issue.Name}  target="_blank">Google Search</a>
     <td>Match: {props.condition.Issue.Accuracy}%</td>
   </tr>
   </Fade>
