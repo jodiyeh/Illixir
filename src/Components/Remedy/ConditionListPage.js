@@ -14,7 +14,15 @@ import Fade from 'react-reveal/Fade';
 import "./Styles/ConditionsListPage.css";
 import { Multiselect } from 'multiselect-react-dropdown';
 
-
+const Condition = props => (
+  <Fade bottom>
+  <tr className='condition-card' style={{ fontSize: "1.7vh" }}>
+    <td>{props.condition.Issue.Name}</td>
+    <a href={"https://google.com/search?q=" + props.condition.Issue.Name}  target="_blank">CSV</a>
+    <td>Match: {props.condition.Issue.Accuracy}%</td>
+  </tr>
+  </Fade>
+)
 class ConditionListPage extends Component{
   constructor(props) {
     super();
@@ -22,6 +30,7 @@ class ConditionListPage extends Component{
       age: null,
       gender: null,
       symptoms: [],
+      conditions: [],
     }
     this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
@@ -46,16 +55,29 @@ class ConditionListPage extends Component{
       age: params.get("age"),
       gender: params.get("gender"),
     })
+    var symptoms = params.get("symptoms");
+    var symptomsList = symptoms.split("-");
+    var ele;
+    for(ele in symptomsList){
+      axios.get('/api/remedy/diagnosis/', {
+        params: {
+          symptoms: symptomsList[ele],
+          year_of_birth: params.get("age"),
+          gender: params.get("gender"),
+        }
+      })
+      .then( response => {
+        alert(JSON.stringify(response.data));
+        this.setState({
+          conditions: new Set(this.state.conditions.concat(response.data))
+        })
+      })
+    }
 
-    axios.get('/api/remedy/diagnosis/', {
-      params: {
-        symptoms: params.get("symptoms"),
-        year_of_birth: params.get("age"),
-        gender: params.get("gender"),
-      }
-    })
-    .then( response => {
-        alert(JSON.stringify(response))
+  }
+  conditionsList() {
+    return this.state.conditions.map(current => {
+      return <Condition condition={current}/>;
     })
   }
 
@@ -77,15 +99,16 @@ class ConditionListPage extends Component{
             <div className="home-steps-title">Here are some possible conditions.</div>
           </div>
             <div className="remedy-conditions">
-              <div className="condition-card">
-                a
-              </div>
-              <div className="condition-card">
-                b
-              </div>
-              <div className="condition-card">
-                c
-              </div>
+            <div className="table">
+
+              <table className="table">
+                <thread className="thread-light">
+                </thread>
+                <tbody>
+                  { this.conditionsList() }
+                </tbody>
+              </table>
+            </div>
             </div>
 
           </div>

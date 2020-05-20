@@ -40,7 +40,7 @@ class HomePage extends Component{
       })
     })
     .catch( function (error) {
-      console.log(error);
+      alert(error);
     })
   }
   goToProducts = e => {

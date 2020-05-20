@@ -3,11 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req,res) => {
-  //format is always JSON
-  var formatval = req.query.format;
-  //language is always en-gb
-  var languageval = req.query.language;
-  console.log(formatval, languageval)
+
   console.log("GET: /api/remedy/symptoms/ - Attempt to get symptoms data.");
   axios.get('https://priaid-symptom-checker-v1.p.rapidapi.com/symptoms?format=json&language=en-gb',
   {
