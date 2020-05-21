@@ -69,7 +69,7 @@ class ConditionListPage extends Component{
       .then( response => {
         alert(JSON.stringify(response.data));
         this.setState({
-          conditions: new Set(this.state.conditions.concat(response.data))
+          conditions: this.state.conditions.concat(response.data)
         })
       })
     }
