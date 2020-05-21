@@ -96,7 +96,7 @@ class HomePage extends Component{
         </div>
         <div className="remedy-content">
           <div className="home-title-section">
-            <div className="home-steps-title">Fill Out This Form</div>
+            <div className="home-steps-title">Enter Details</div>
           </div>
           <div className="remedy-form">
           <form className="home-search">
