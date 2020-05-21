@@ -67,9 +67,19 @@ class ConditionListPage extends Component{
         }
       })
       .then( response => {
-        alert(JSON.stringify(response.data));
+        //alert(JSON.stringify(this.state.conditions.concat(response.data)));
+        var uniqueArray = []
+        for(var element in this.state.conditions.concat(response.data)){
+          if(!uniqueArray.includes(this.state.conditions.concat(response.data)[element])){
+            uniqueArray.push(this.state.conditions.concat(response.data)[element]);
+          }
+        }
+        uniqueArray.sort(function(a,b) {
+          return b.Issue.Accuracy - a.Issue.Accuracy
+        })
+        //alert(uniqueArray)
         this.setState({
-          conditions: this.state.conditions.concat(response.data)
+          conditions: uniqueArray,
         })
       })
     }
