@@ -16,20 +16,20 @@ puppeteer.launch({
         //console.log(name)
         mainCounterNumbers.push(name);
       }
-    
-    // var casebreakdown = []
-    // let group2 = await page.$$('.number-table-main')
-    //   for (let el of group2) {
-    //     const text = JSON.stringify(page.evaluateAsync(() => document.querySelector('.number-table-main').innerText));        //console.log(name)
-    //     casebreakdown.push(text);
-    //   }ß
+
+    var casebreakdown = []
+    let group2 = await page.$$('.number-table-main')
+      for (let el of group2) {
+        let text = await page.evaluateHandle(() => document.querySelector('.number-table-main').innerHTML);
+        await casebreakdown.push(text);
+    }
 
     console.log("Coronavirus Data");
     console.log("Total Cases: " + mainCounterNumbers[0]);
     console.log("Total Deaths: " + mainCounterNumbers[1]);
     console.log("Total Recovered: " + mainCounterNumbers[2]);
-    // console.log("Total Active: " + casebreakdown[0]);
-    // console.log("Total Closed: " + casebreakdown[1]);
+    console.log("Total Active: " + casebreakdown[0]);
+    console.log("Total Closed: " + casebreakdown[1]);
 
   })
 }).catch(error => {
